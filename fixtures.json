@@ -1,12 +1,12 @@
 {
-  "ExportOutput": {
+  "Export": {
     "creation_date": "2019-08-24T14:15:22Z",
     "completion_date": "2019-08-24T15:15:22Z",
     "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
     "url": "s3://buttondown/path-to-export",
     "status": "completed"
   },
-  "BulkActionOutput": {
+  "BulkAction": {
     "creation_date": "2019-08-24T14:15:22Z",
     "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
     "url": "s3://buttondown/path-to-export",

@@ -17,7 +17,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ExportOutput"
+                  "$ref": "#/components/schemas/Export"
                 }
               }
             }
@@ -75,7 +75,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Page_ExportOutput_"
+                  "$ref": "#/components/schemas/Page_Export_"
                 }
               }
             }
@@ -129,7 +129,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ExportOutput"
+                  "$ref": "#/components/schemas/Export"
                 }
               }
             }
@@ -163,7 +163,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TagOutput"
+                  "$ref": "#/components/schemas/Tag"
                 }
               }
             }
@@ -215,7 +215,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Page_TagOutput_"
+                  "$ref": "#/components/schemas/Page_Tag_"
                 }
               }
             }
@@ -249,7 +249,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TagOutput"
+                  "$ref": "#/components/schemas/Tag"
                 }
               }
             }
@@ -281,7 +281,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TagOutput"
+                  "$ref": "#/components/schemas/Tag"
                 }
               }
             }
@@ -367,7 +367,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ImageOutput"
+                  "$ref": "#/components/schemas/Image"
                 }
               }
             }
@@ -439,7 +439,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmailOutput"
+                  "$ref": "#/components/schemas/Email"
                 }
               }
             }
@@ -534,7 +534,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Page_EmailOutput_"
+                  "$ref": "#/components/schemas/Page_Email_"
                 }
               }
             }
@@ -588,7 +588,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmailOutput"
+                  "$ref": "#/components/schemas/Email"
                 }
               }
             }
@@ -666,7 +666,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SubscriberOutput"
+                  "$ref": "#/components/schemas/Subscriber"
                 }
               }
             }
@@ -756,7 +756,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Page_SubscriberOutput_"
+                  "$ref": "#/components/schemas/Page_Subscriber_"
                 }
               }
             }
@@ -810,7 +810,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SubscriberOutput"
+                  "$ref": "#/components/schemas/Subscriber"
                 }
               }
             }
@@ -877,7 +877,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SubscriberOutput"
+                  "$ref": "#/components/schemas/Subscriber"
                 }
               }
             }
@@ -1024,7 +1024,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Page_NewsletterOutput_"
+                  "$ref": "#/components/schemas/Page_Newsletter_"
                 }
               }
             }
@@ -1066,7 +1066,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/NewsletterOutput"
+                  "$ref": "#/components/schemas/Newsletter"
                 }
               }
             }
@@ -1130,7 +1130,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/NewsletterOutput"
+                  "$ref": "#/components/schemas/Newsletter"
                 }
               }
             }
@@ -1219,7 +1219,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BulkActionOutput"
+                  "$ref": "#/components/schemas/BulkAction"
                 }
               }
             }
@@ -1273,7 +1273,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BulkActionOutput"
+                  "$ref": "#/components/schemas/BulkAction"
                 }
               }
             }
@@ -1310,8 +1310,8 @@
         ],
         "type": "string"
       },
-      "ExportOutput": {
-        "title": "ExportOutput",
+      "Export": {
+        "title": "Export",
         "type": "object",
         "properties": {
           "id": {
@@ -1397,16 +1397,24 @@
           "collections"
         ]
       },
-      "Page_ExportOutput_": {
-        "title": "Page[ExportOutput]",
+      "Page_Export_": {
+        "title": "Page[Export]",
         "type": "object",
         "properties": {
           "results": {
             "title": "Results",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ExportOutput"
+              "$ref": "#/components/schemas/Export"
             }
+          },
+          "next": {
+            "title": "Next",
+            "type": "string"
+          },
+          "previous": {
+            "title": "Previous",
+            "type": "string"
           },
           "count": {
             "title": "Count",
@@ -1418,8 +1426,8 @@
           "count"
         ]
       },
-      "TagOutput": {
-        "title": "TagOutput",
+      "Tag": {
+        "title": "Tag",
         "type": "object",
         "properties": {
           "id": {
@@ -1479,16 +1487,24 @@
           "color"
         ]
       },
-      "Page_TagOutput_": {
-        "title": "Page[TagOutput]",
+      "Page_Tag_": {
+        "title": "Page[Tag]",
         "type": "object",
         "properties": {
           "results": {
             "title": "Results",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TagOutput"
+              "$ref": "#/components/schemas/Tag"
             }
+          },
+          "next": {
+            "title": "Next",
+            "type": "string"
+          },
+          "previous": {
+            "title": "Previous",
+            "type": "string"
           },
           "count": {
             "title": "Count",
@@ -1551,8 +1567,8 @@
           }
         }
       },
-      "ImageOutput": {
-        "title": "ImageOutput",
+      "Image": {
+        "title": "Image",
         "type": "object",
         "properties": {
           "id": {
@@ -1604,8 +1620,8 @@
         ],
         "type": "string"
       },
-      "EmailOutput": {
-        "title": "EmailOutput",
+      "Email": {
+        "title": "Email",
         "type": "object",
         "properties": {
           "id": {
@@ -1793,16 +1809,24 @@
           "subject"
         ]
       },
-      "Page_EmailOutput_": {
-        "title": "Page[EmailOutput]",
+      "Page_Email_": {
+        "title": "Page[Email]",
         "type": "object",
         "properties": {
           "results": {
             "title": "Results",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/EmailOutput"
+              "$ref": "#/components/schemas/Email"
             }
+          },
+          "next": {
+            "title": "Next",
+            "type": "string"
+          },
+          "previous": {
+            "title": "Previous",
+            "type": "string"
           },
           "count": {
             "title": "Count",
@@ -1901,8 +1925,8 @@
         ],
         "type": "string"
       },
-      "SubscriberOutput": {
-        "title": "SubscriberOutput",
+      "Subscriber": {
+        "title": "Subscriber",
         "type": "object",
         "properties": {
           "id": {
@@ -2013,16 +2037,24 @@
           "email"
         ]
       },
-      "Page_SubscriberOutput_": {
-        "title": "Page[SubscriberOutput]",
+      "Page_Subscriber_": {
+        "title": "Page[Subscriber]",
         "type": "object",
         "properties": {
           "results": {
             "title": "Results",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SubscriberOutput"
+              "$ref": "#/components/schemas/Subscriber"
             }
+          },
+          "next": {
+            "title": "Next",
+            "type": "string"
+          },
+          "previous": {
+            "title": "Previous",
+            "type": "string"
           },
           "count": {
             "title": "Count",
@@ -2135,8 +2167,8 @@
           }
         }
       },
-      "NewsletterOutput": {
-        "title": "NewsletterOutput",
+      "Newsletter": {
+        "title": "Newsletter",
         "type": "object",
         "properties": {
           "id": {
@@ -2176,16 +2208,24 @@
           "api_key"
         ]
       },
-      "Page_NewsletterOutput_": {
-        "title": "Page[NewsletterOutput]",
+      "Page_Newsletter_": {
+        "title": "Page[Newsletter]",
         "type": "object",
         "properties": {
           "results": {
             "title": "Results",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/NewsletterOutput"
+              "$ref": "#/components/schemas/Newsletter"
             }
+          },
+          "next": {
+            "title": "Next",
+            "type": "string"
+          },
+          "previous": {
+            "title": "Previous",
+            "type": "string"
           },
           "count": {
             "title": "Count",
@@ -2273,7 +2313,7 @@
       },
       "BulkActionStatus": {
         "title": "Status",
-        "description": "An enumeration.",
+        "description": "\n        Represents the status of a bulk action.\n\n        No action is required to move from one state or another; Buttondown\n        internally handles the transitions, and exposing the status is for\n        observability purposes only.\n        ",
         "enum": [
           "not_started",
           "in_progress",
@@ -2284,7 +2324,7 @@
       },
       "BulkActionType": {
         "title": "Type",
-        "description": "An enumeration.",
+        "description": "\n        Represents the action being performed on a bulk of objects.\n\n        (Not to be coy, but these names should be self-explanatory.)\n        ",
         "enum": [
           "apply_tags",
           "ban_subscribers",
@@ -2301,8 +2341,9 @@
         ],
         "type": "string"
       },
-      "BulkActionOutput": {
-        "title": "BulkActionOutput",
+      "BulkAction": {
+        "title": "BulkAction",
+        "description": "A bulk action represents, well, a bulk action. It is used to perform\nactions on a large number of objects at once. For example, you can\nuse it to delete a large number of emails, or to unsubscribe a large\nnumber of subscribers. The actions within a bulk action are processed\nserially by Buttondown; this should be considered an ergonomic way to\nbatch API calls across the network rather than a net-new piece of functionality\nin of itself.",
         "type": "object",
         "properties": {
           "id": {
@@ -2330,7 +2371,20 @@
             "title": "Metadata",
             "type": "object",
             "additionalProperties": {
-              "type": "string"
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "object"
+                }
+              ]
             }
           }
         },
@@ -2353,7 +2407,20 @@
             "title": "Metadata",
             "type": "object",
             "additionalProperties": {
-              "type": "string"
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "object"
+                }
+              ]
             }
           }
         },
