@@ -6,6 +6,12 @@
     "url": "s3://buttondown/path-to-export",
     "status": "completed"
   },
+  "BulkActionOutput": {
+    "creation_date": "2019-08-24T14:15:22Z",
+    "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+    "url": "s3://buttondown/path-to-export",
+    "status": "completed"
+  },
   "ErrorMessage": {
     "code": "something_went_wrong",
     "detail": "Your call is very important to us."
