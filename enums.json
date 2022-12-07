@@ -67,6 +67,11 @@
       "name": "Apply tags",
       "description": "This action requires two additional parameters within `metadata`: `tag_id` (the ID of the tag which you'd like to either add or remove to the list of subscribers) and `action` (which can be either `add` or `remove`)."
     },
+    "apply_metadata": {
+      "variant": "info",
+      "name": "Apply metadata (to subscribers)",
+      "description": "This action requires two additional parameters within `metadata`: `action` (which can be either `add`, `set`, or `remove`), and `metadata` (the value of the metadata which you'd like to either add or remove to the list of subscribers)."
+    },
     "ban_subscribers": {
       "variant": "info",
       "name": "Ban subscribers"

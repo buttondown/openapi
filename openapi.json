@@ -2327,6 +2327,7 @@
         "description": "\n        Represents the action being performed on a bulk of objects.\n\n        (Not to be coy, but these names should be self-explanatory.)\n        ",
         "enum": [
           "apply_tags",
+          "apply_metadata",
           "ban_subscribers",
           "delete_emails",
           "delete_subscribers",
