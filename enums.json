@@ -41,6 +41,78 @@
       "description": "Whenever an email has finished its delivery. Note that event happens immediately after all emails have been sent, but some email events may not have finished processing."
     }
   },
+  "BulkActionStatus": {
+    "not_started": {
+      "variant": "info",
+      "name": "Not started",
+      "description": "The bulk action has not yet started"
+    },
+    "in_progress": {
+      "variant": "info",
+      "name": "In progress",
+      "description": "The bulk action is currently being processed"
+    },
+    "processed": {
+      "variant": "success",
+      "description": "The bulk action has completed"
+    },
+    "failed": {
+      "variant": "error",
+      "description": "The bulk action was unable to be completed. Buttondown is looking into it."
+    }
+  },
+  "BulkActionType": {
+    "apply_tags": {
+      "variant": "info",
+      "name": "Apply tags",
+      "description": "This action requires two additional parameters within `metadata`: `tag_id` (the ID of the tag which you'd like to either add or remove to the list of subscribers) and `action` (which can be either `add` or `remove`)."
+    },
+    "ban_subscribers": {
+      "variant": "info",
+      "name": "Ban subscribers"
+    },
+    "delete_emails": {
+      "variant": "info",
+      "name": "Delete emails"
+    },
+    "delete_subscribers": {
+      "variant": "info",
+      "name": "Delete subscribers"
+    },
+    "delete_tags": {
+      "variant": "info",
+      "name": "Delete tags"
+    },
+    "reactivate_subscribers": {
+      "variant": "info",
+      "name": "Reactivate subscribers"
+    },
+    "replay_events": {
+      "variant": "info",
+      "name": "Replay events"
+    },
+    "resubscribe_subscribers": {
+      "variant": "info",
+      "name": "Resubscribe subscribers"
+    },
+    "send_emails": {
+      "variant": "info",
+      "name": "Send emails",
+      "description": "This action requires one additional parameter within `metadata`: `email_id` (the ID of the email which you'd like to send)."
+    },
+    "send_reminders": {
+      "variant": "info",
+      "name": "Send reminders"
+    },
+    "update_email_types": {
+      "variant": "info",
+      "name": "Update email types"
+    },
+    "unsubscribe_subscribers": {
+      "variant": "info",
+      "name": "Unsubscribe subscribers"
+    }
+  },
   "SubscriberType": {
     "regular": {
       "variant": "success",
