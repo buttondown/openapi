@@ -1,4 +1,54 @@
 {
+  "ExportCollection": {
+    "subscribers": {
+      "variant": "info",
+      "name": "Subscribers"
+    },
+    "emails": {
+      "variant": "info",
+      "name": "Emails"
+    },
+    "scheduled_emails": {
+      "variant": "info",
+      "name": "Scheduled emails"
+    },
+    "drafts": {
+      "variant": "info",
+      "name": "Drafts"
+    },
+    "unsubscribers": {
+      "variant": "info",
+      "name": "Unsubscribers"
+    },
+    "events": {
+      "variant": "info",
+      "name": "Events"
+    },
+    "referrals": {
+      "variant": "info",
+      "name": "Referrals"
+    }
+  },
+  "ExportStatus": {
+    "not_started": {
+      "variant": "info",
+      "name": "Not started",
+      "description": "The export has not yet started"
+    },
+    "in_progress": {
+      "variant": "info",
+      "name": "In progress",
+      "description": "The export is currently being processed"
+    },
+    "ready": {
+      "variant": "success",
+      "description": "The export has completed"
+    },
+    "error": {
+      "variant": "error",
+      "description": "The export was unable to be completed. Buttondown is looking into it."
+    }
+  },
   "EventType": {
     "subscriber.created": {
       "name": "subscriber.created",

@@ -11,6 +11,18 @@
       }
     }
   ],
+  "Tag": [
+    {
+      "description": "Basic tag",
+      "object": {
+        "color": "string",
+        "creation_date": "2019-08-24T14:15:22Z",
+        "description": "string",
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "name": "string"
+      }
+    }
+  ],
   "BulkAction": [
     {
       "description": "Basic bulk action",
