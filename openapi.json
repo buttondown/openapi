@@ -108,16 +108,16 @@
         ]
       }
     },
-    "/exports/{export_id}": {
+    "/exports/{pk}": {
       "get": {
         "operationId": "api_views_exports_retrieve_export",
         "summary": "Retrieve Export",
         "parameters": [
           {
             "in": "path",
-            "name": "export_id",
+            "name": "pk",
             "schema": {
-              "title": "Export Id",
+              "title": "Pk",
               "type": "string"
             },
             "required": true
@@ -1301,7 +1301,7 @@
     "schemas": {
       "ExportStatus": {
         "title": "Status",
-        "description": "An enumeration.",
+        "description": "\n        Represents the status of an export.\n\n        No action is required to move from one state or another; Buttondown\n        internally handles the transitions, and exposing the status is for\n        observability purposes only.\n        ",
         "enum": [
           "error",
           "in_progress",
@@ -1312,6 +1312,7 @@
       },
       "Export": {
         "title": "Export",
+        "description": "Some software applications may want programmatic access to their newsletter exports.\nThis assists with a few niche use cases, such as regular backups or data ingestion\n(into a data warehouse), or post-publishing processes that hinge on email events.\n\nIn general, you probably won't _need_ to use this endpoint unless you\n _absolutely_ need to use this endpoint.",
         "type": "object",
         "properties": {
           "id": {
@@ -1340,8 +1341,7 @@
         "required": [
           "id",
           "creation_date",
-          "status",
-          "url"
+          "status"
         ]
       },
       "ErrorMessage": {
@@ -1370,7 +1370,7 @@
       },
       "ExportCollection": {
         "title": "Collection",
-        "description": "An enumeration.",
+        "description": "\n        A group of data that can be exported in an export.\n        ",
         "enum": [
           "subscribers",
           "emails",
@@ -1428,6 +1428,7 @@
       },
       "Tag": {
         "title": "Tag",
+        "description": "Tags are a way to organize your subscribers. You can create, update, and\ndelete tags via the API. You can also list all tags for a given newsletter.\n\nTags don't have any strict functionality on their own, but you can send emails\nto subscribers with a given tag (or to all subscribers _without_ a given tag.)",
         "type": "object",
         "properties": {
           "id": {
@@ -1518,7 +1519,7 @@
       },
       "UpdateTagErrorCode": {
         "title": "UpdateTagErrorCode",
-        "description": "An enumeration.",
+        "description": "\n    A potential error code that can be returned when updating a tag.\n    ",
         "enum": [
           "name_already_exists"
         ],
@@ -1569,6 +1570,7 @@
       },
       "Image": {
         "title": "Image",
+        "description": "Images are, well, images! Buttondown allows you to upload images to its secure\nS3 bucket and do with them what you will. This is sort of an odd duck of an\nAPI, to be sure, but if you want to be able to do things like draft\nand send emails completely on your iPad you need a surefire way of creating images.",
         "type": "object",
         "properties": {
           "id": {
@@ -1594,7 +1596,7 @@
       },
       "EmailType": {
         "title": "Type",
-        "description": "An enumeration.",
+        "description": "\n        Represents the audience of an email, and to whom it is visible both in the initial\n        email and in online archives.\n        ",
         "enum": [
           "public",
           "private",
@@ -1607,7 +1609,7 @@
       },
       "EmailStatus": {
         "title": "Status",
-        "description": "An enumeration.",
+        "description": "\n        Represents the state of an email.\n\n        No action is required to move from one state or another; Buttondown\n        internally handles the transitions, and exposing the status is for\n        observability purposes only.\n        ",
         "enum": [
           "draft",
           "about_to_send",
@@ -1622,6 +1624,7 @@
       },
       "Email": {
         "title": "Email",
+        "description": "Emails are what you're for here on Buttondown at the end of the day, right?\nCreating an email via the API is just like creating one in the interface;\nit will instantly trigger sending actual emails,\nbased on the tags and email type you provide.",
         "type": "object",
         "properties": {
           "id": {
@@ -1697,7 +1700,7 @@
       },
       "EmailCreationErrorCode": {
         "title": "EmailCreationErrorCode",
-        "description": "An enumeration.",
+        "description": "\n    Represents the type of error that occurred when creating an email.\n\n    Human-readable error messages are provided in the `detail` field of the response;\n    these values are meant to be parseable by code or client logic.\n    ",
         "enum": [
           "subject_invalid",
           "email_duplicate",
@@ -1888,7 +1891,7 @@
       },
       "SubscriberType": {
         "title": "Type",
-        "description": "An enumeration.",
+        "description": "\n        Represents the state of a subscriber and what emails they\n        should or should not be receiving. This type is meant to be fully expressive\n        so as to consolidate the logic of determining what emails a subscriber should\n        receive into a single place.\n        ",
         "enum": [
           "regular",
           "premium",
@@ -1908,25 +1911,19 @@
       },
       "SubscriberSource": {
         "title": "Source",
-        "description": "An enumeration.",
+        "description": "\n        Represents the original provenance of a subscriber. This value is not exposed\n        to subscribers; it's only used for internal tracking purposes and governs some\n        of the behavior of the subscriber (i.e. whether or not to require double\n        opt-in.)\n        ",
         "enum": [
           "api",
-          "buttondown",
-          "csv",
-          "mailchimp",
+          "import",
           "organic",
-          "nouveau",
-          "substack",
-          "tinyletter",
-          "typeform",
           "user",
-          "admin",
-          "drip"
+          "admin"
         ],
         "type": "string"
       },
       "Subscriber": {
         "title": "Subscriber",
+        "description": "Subscribers are the main way you collect email addresses and\nrecipients on Buttondown. They're what you see on your\n[subscribers page](https://buttondown.email/subscribers).",
         "type": "object",
         "properties": {
           "id": {
@@ -2068,7 +2065,7 @@
       },
       "ListSubscribersErrorCode": {
         "title": "ListSubscribersErrorCode",
-        "description": "An enumeration.",
+        "description": "\n    Represents the type of error that occurred when listing subscribers.\n\n    Human-readable error messages are provided in the `detail` field of the response;\n    these values are meant to be parseable by code or client logic.\n    ",
         "enum": [
           "invalid_tag"
         ],
@@ -2101,7 +2098,7 @@
       },
       "UpdateSubscriberErrorCode": {
         "title": "UpdateSubscriberErrorCode",
-        "description": "An enumeration.",
+        "description": "\n    Represents the type of error that occurred when updating a subscriber.\n\n    Human-readable error messages are provided in the `detail` field of the response;\n    these values are meant to be parseable by code or client logic.\n    ",
         "enum": [
           "email_already_exists",
           "email_invalid",
@@ -2169,6 +2166,7 @@
       },
       "Newsletter": {
         "title": "Newsletter",
+        "description": "You will likely not need to interact with your newsletter settings\nprogrammatically, but if you do, this is the endpoint for you. You can\ncreate, update, and list newsletters via the API; this is ideal for\nintegrating with Buttondown as a headless email or newsletter provider\n(e.g. for a SaaS product.)",
         "type": "object",
         "properties": {
           "id": {
@@ -2239,7 +2237,7 @@
       },
       "CreateNewsletterErrorCode": {
         "title": "CreateNewsletterErrorCode",
-        "description": "An enumeration.",
+        "description": "\n    Represents the type of error that occurred when creating a newsletter.\n\n    Human-readable error messages are provided in the `detail` field of the response;\n    these values are meant to be parseable by code or client logic.\n    ",
         "enum": [
           "username_already_exists"
         ],
