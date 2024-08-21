@@ -1,4 +1,219 @@
 {
+  "Webhook": [
+    {
+      "description": "Basic webhook",
+      "object": {
+        "creation_date": "2019-08-24T14:15:22Z",
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "url": "https://example.com",
+        "description": "Register in remote database every time we get a new subscriber",
+        "event": "subscriber.created"
+      }
+    }
+  ],
+  "FilterGroup": [
+    {
+      "description": "Empty filters",
+      "object": {
+        "filters": [],
+        "groups": [],
+        "predicate": "and"
+      }
+    },
+    {
+      "description": "Filtering by a tag",
+      "object": {
+        "filters": [
+          {
+            "field": "subscriber.tags",
+            "operator": "contains",
+            "value": "tgs-cast-member"
+          }
+        ],
+        "groups": [],
+        "predicate": "and"
+      }
+    }
+  ],
+  "Empty": [
+    {
+      "description": "Empty response",
+      "object": {}
+    }
+  ],
+  "Survey": [
+    {
+      "description": "Basic survey",
+      "object": {
+        "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "creation_date": "2020-09-29T00:00:00+00:00",
+        "identifier": "color",
+        "question": "What's your favorite color?",
+        "response_count": 10,
+        "answers": [
+          "Red",
+          "Green",
+          "Blue"
+        ],
+        "notes": "",
+        "response_cadence": "once",
+        "status": "active",
+        "is_freeform_response_enabled": false
+      }
+    },
+    {
+      "description": "Feedback survey",
+      "object": {
+        "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "creation_date": "2020-09-29T00:00:00+00:00",
+        "identifier": "feedback",
+        "question": "How can we improve?",
+        "response_count": 10,
+        "answers": [
+          "More content",
+          "Better content",
+          "Other"
+        ],
+        "notes": "",
+        "response_cadence": "once_per_email",
+        "status": "active",
+        "is_freeform_response_enabled": false
+      }
+    }
+  ],
+  "Comment": [
+    {
+      "description": "Basic comment",
+      "object": {
+        "creation_date": "2019-08-24T14:15:22Z",
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "subscriber_id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "email_id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "body": "I really liked this email!",
+        "parent_id": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+      }
+    }
+  ],
+  "ExternalFeed": [
+    {
+      "description": "Basic automation",
+      "object": {
+        "creation_date": "2019-08-24T14:15:22Z",
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "status": "active",
+        "behavior": "emails",
+        "cadence": "every",
+        "subject": "New post: {{ item.title }}",
+        "body": "I just published a new post: {{ item.url }}"
+      }
+    }
+  ],
+  "Subscriber": [
+    {
+      "description": "Basic subscriber",
+      "object": {
+        "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "creation_date": "2020-09-29T00:00:00+00:00",
+        "email_address": "telemachus@buttondown.email",
+        "notes": "",
+        "metadata": {
+          "name": "Telemachus"
+        },
+        "tags": [],
+        "referrer_url": "",
+        "secondary_id": 1,
+        "type": "unactivated",
+        "source": "organic",
+        "utm_campaign": "",
+        "utm_medium": "",
+        "utm_source": "",
+        "referral_code": "",
+        "avatar_url": "",
+        "stripe_coupon": null,
+        "unsubscription_date": null,
+        "churn_date": null,
+        "unsubscription_reason": "",
+        "transitions": [],
+        "ip_address": null,
+        "last_open_date": null,
+        "last_click_date": null,
+        "stripe_customer_id": null,
+        "stripe_customer": null,
+        "subscriber_import_id": null
+      }
+    },
+    {
+      "description": "Unsubscribed subscriber",
+      "object": {
+        "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "creation_date": "2020-09-29T00:00:00+00:00",
+        "email_address": "telemachus@buttondown.email",
+        "notes": "",
+        "metadata": {
+          "name": "Telemachus"
+        },
+        "tags": [],
+        "referrer_url": "",
+        "secondary_id": 1,
+        "type": "unsubscribed",
+        "source": "organic",
+        "utm_campaign": "",
+        "utm_medium": "",
+        "utm_source": "",
+        "referral_code": "",
+        "avatar_url": "",
+        "stripe_coupon": null,
+        "unsubscription_date": "2020-09-30T00:00:00+00:00",
+        "churn_date": null,
+        "unsubscription_reason": "Too many emails",
+        "transitions": [],
+        "ip_address": null,
+        "last_open_date": null,
+        "last_click_date": null,
+        "stripe_customer_id": null,
+        "stripe_customer": null,
+        "subscriber_import_id": null
+      }
+    },
+    {
+      "description": "Premium subscriber with coupon",
+      "object": {
+        "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "creation_date": "2020-09-29T00:00:00+00:00",
+        "email_address": "telemachus@buttondown.email",
+        "notes": "",
+        "metadata": {
+          "name": "Telemachus"
+        },
+        "tags": [],
+        "referrer_url": "",
+        "secondary_id": 1,
+        "type": "premium",
+        "source": "organic",
+        "utm_campaign": "",
+        "utm_medium": "",
+        "utm_source": "",
+        "referral_code": "",
+        "avatar_url": "",
+        "stripe_coupon": {
+          "coupon_id": "coupon_whatever",
+          "percent_off": "10",
+          "amount_off": null,
+          "name": "Holiday Sale"
+        },
+        "unsubscription_date": null,
+        "churn_date": null,
+        "unsubscription_reason": "",
+        "transitions": [],
+        "ip_address": null,
+        "last_open_date": null,
+        "last_click_date": null,
+        "stripe_customer_id": "cus_whatever",
+        "stripe_customer": null,
+        "subscriber_import_id": null
+      }
+    }
+  ],
   "Export": [
     {
       "description": "Basic export",
@@ -8,6 +223,237 @@
         "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
         "url": "s3://buttondown/path-to-export",
         "status": "completed"
+      }
+    }
+  ],
+  "Analytics": [
+    {
+      "description": "Basic analytics response",
+      "object": {
+        "recipients": 100,
+        "deliveries": 99,
+        "opens": 50,
+        "clicks": 25,
+        "temporary_failures": 1,
+        "permanent_failures": 2,
+        "unsubscriptions": 3,
+        "complaints": 1,
+        "survey_responses": 0,
+        "webmentions": 0,
+        "page_views__lifetime": 0,
+        "page_views__30": 0,
+        "page_views__7": 0,
+        "subscriptions": 0,
+        "paid_subscriptions": 0,
+        "replies": 0,
+        "comments": 0
+      }
+    }
+  ],
+  "Email": [
+    {
+      "description": "Basic email",
+      "object": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "creation_date": "2000-01-01T00:00:00+00:00",
+        "modification_date": "2000-01-01T00:00:00+00:00",
+        "publish_date": "2000-01-01T00:00:00+00:00",
+        "attachments": [],
+        "subject": "Welcome to the newsletter",
+        "canonical_url": "",
+        "image": "",
+        "description": "",
+        "source": "app",
+        "body": "I hope you really enjoy it!",
+        "secondary_id": null,
+        "email_type": "public",
+        "slug": "welcome-to-the-newsletter",
+        "status": "sent",
+        "metadata": {},
+        "should_send_teaser": false,
+        "is_comments_disabled": false,
+        "custom_teaser": "",
+        "absolute_url": "http://127.0.0.1:8000/sheinhardt/archive/welcome-to-the-newsletter/",
+        "filters": {
+          "filters": [],
+          "groups": [],
+          "predicate": "and"
+        },
+        "analytics": null,
+        "template": null
+      }
+    },
+    {
+      "description": "Draft email",
+      "object": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "creation_date": "2000-01-01T00:00:00+00:00",
+        "modification_date": "2000-01-01T00:00:00+00:00",
+        "publish_date": null,
+        "attachments": [],
+        "subject": "Welcome to the newsletter",
+        "canonical_url": "",
+        "image": "",
+        "description": "",
+        "source": "app",
+        "body": "I hope you really enjoy it!",
+        "secondary_id": null,
+        "email_type": "public",
+        "slug": "welcome-to-the-newsletter",
+        "status": "draft",
+        "metadata": {},
+        "should_send_teaser": false,
+        "is_comments_disabled": false,
+        "custom_teaser": "",
+        "absolute_url": "http://127.0.0.1:8000/sheinhardt/archive/welcome-to-the-newsletter/",
+        "filters": {
+          "filters": [],
+          "groups": [],
+          "predicate": "and"
+        },
+        "analytics": null,
+        "template": null
+      }
+    },
+    {
+      "description": "Scheduled email",
+      "object": {
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "creation_date": "2000-01-01T00:00:00+00:00",
+        "modification_date": "2000-01-01T00:00:00+00:00",
+        "publish_date": "2000-01-02T00:00:00+00:00",
+        "attachments": [],
+        "subject": "Welcome to the newsletter",
+        "canonical_url": "",
+        "image": "",
+        "description": "",
+        "source": "app",
+        "body": "I hope you really enjoy it!",
+        "secondary_id": null,
+        "email_type": "public",
+        "slug": "welcome-to-the-newsletter",
+        "status": "scheduled",
+        "metadata": {},
+        "should_send_teaser": false,
+        "is_comments_disabled": false,
+        "custom_teaser": "",
+        "absolute_url": "http://127.0.0.1:8000/sheinhardt/archive/welcome-to-the-newsletter/",
+        "filters": {
+          "filters": [],
+          "groups": [],
+          "predicate": "and"
+        },
+        "analytics": null,
+        "template": null
+      }
+    }
+  ],
+  "Response": [
+    {
+      "description": "Basic response",
+      "object": {
+        "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "creation_date": "2020-09-29T00:00:00+00:00",
+        "answer": "Red",
+        "text": "",
+        "survey_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "survey": null,
+        "subscriber_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "subscriber": null,
+        "email_id": null,
+        "email": null,
+        "automation_id": null,
+        "automation": null
+      }
+    },
+    {
+      "description": "Basic response with expanded subscriber",
+      "object": {
+        "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "creation_date": "2020-09-29T00:00:00+00:00",
+        "answer": "Red",
+        "text": "",
+        "survey_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "survey": null,
+        "subscriber_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "subscriber": {
+          "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+          "creation_date": "2020-09-29T00:00:00+00:00",
+          "email_address": "telemachus@buttondown.email",
+          "notes": "",
+          "metadata": {
+            "name": "Telemachus"
+          },
+          "tags": [],
+          "referrer_url": "",
+          "secondary_id": 1,
+          "type": "unactivated",
+          "source": "organic",
+          "utm_campaign": "",
+          "utm_medium": "",
+          "utm_source": "",
+          "referral_code": "",
+          "avatar_url": "",
+          "stripe_coupon": null,
+          "unsubscription_date": null,
+          "churn_date": null,
+          "unsubscription_reason": "",
+          "transitions": [],
+          "ip_address": null,
+          "last_open_date": null,
+          "last_click_date": null,
+          "stripe_customer_id": null,
+          "stripe_customer": null,
+          "subscriber_import_id": null
+        },
+        "email_id": null,
+        "email": null,
+        "automation_id": null,
+        "automation": null
+      }
+    }
+  ],
+  "EmailEvent": [
+    {
+      "description": "Open event",
+      "object": {
+        "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "subscriber_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "subscriber": null,
+        "email_id": null,
+        "email": null,
+        "automation_id": null,
+        "automation": null,
+        "creation_date": "2020-09-29T00:00:00+00:00",
+        "metadata": {},
+        "event_type": "opened"
+      }
+    }
+  ],
+  "Newsletter": [
+    {
+      "description": "Basic newsletter",
+      "object": {
+        "api_key": "7f819f8f-8220-4dcd-b7e3-37c81ead8b7a",
+        "creation_date": "2019-08-24T14:15:22Z",
+        "description": "I write about corgis and Python and lifting and all sorts of stuff!",
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "name": "Justin's neat newsletter",
+        "username": "jmduke",
+        "footer": "Thanks, as always, for reading!",
+        "header": "Howdy, gang!",
+        "tint_color": "#0069FF",
+        "from_name": "Justin Duke"
+      }
+    }
+  ],
+  "Image": [
+    {
+      "description": "Basic image",
+      "object": {
+        "creation_date": "2019-08-24T14:15:22Z",
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "image": "string"
       }
     }
   ],
@@ -33,7 +479,9 @@
         "status": "completed",
         "type": "delete_subscribers",
         "metadata": {
-          "ids": ["497f6eca-6276-4993-bfeb-53cbbbba6f08"]
+          "ids": [
+            "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+          ]
         }
       }
     },
@@ -48,24 +496,9 @@
         "metadata": {
           "tag": "4931-4f5c-9b5b-2c9f6c9f6c9f",
           "action": "add",
-          "ids": ["497f6eca-6276-4993-bfeb-53cbbbba6f08"]
-        }
-      }
-    },
-    {
-      "description": "Bulk action to apply metadata (which also has a slightly different payload)",
-      "object": {
-        "creation_date": "2019-08-24T14:15:22Z",
-        "completion_date": "2019-08-24T14:17:22Z",
-        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
-        "status": "completed",
-        "type": "apply_metadata",
-        "metadata": {
-          "action": "set",
-          "ids": ["497f6eca-6276-4993-bfeb-53cbbbba6f08"],
-          "metadata": {
-            "foo": "bar"
-          }
+          "ids": [
+            "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+          ]
         }
       }
     }
@@ -76,6 +509,180 @@
       "object": {
         "code": "something_went_wrong",
         "detail": "Your call is very important to us."
+      }
+    }
+  ],
+  "Coupon": [
+    {
+      "description": "Basic coupon",
+      "object": {
+        "coupon_id": "coupon_whatever",
+        "percent_off": "10",
+        "amount_off": null,
+        "name": "Holiday Sale"
+      }
+    }
+  ],
+  "StripeCoupon": [
+    {
+      "description": "Basic coupon",
+      "object": {
+        "coupon_id": "coupon_whatever",
+        "percent_off": "10",
+        "amount_off": null,
+        "name": "Holiday Sale"
+      }
+    }
+  ],
+  "SurveyResponse": [
+    {
+      "description": "Basic survey response",
+      "object": {
+        "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "answer": "Red",
+        "creation_date": "2020-09-29T00:00:00+00:00",
+        "survey_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "survey": null,
+        "subscriber_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "subscriber": null,
+        "email_id": null,
+        "email": null,
+        "automation_id": null,
+        "automation": null
+      }
+    }
+  ],
+  "Automation": [
+    {
+      "description": "Basic automation",
+      "object": {
+        "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "creation_date": "2000-01-01T00:00:00+00:00",
+        "name": "Welcome email",
+        "status": "inactive",
+        "trigger": "subscriber.confirmed",
+        "timing": {
+          "time": "immediate",
+          "delay": null
+        },
+        "actions": [
+          {
+            "type": "send_email",
+            "metadata": {
+              "email_id": "eml_1234"
+            }
+          }
+        ],
+        "filters": [],
+        "metadata": {}
+      }
+    },
+    {
+      "description": "Automation in the future",
+      "object": {
+        "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb4",
+        "creation_date": "2000-01-01T00:00:00+00:00",
+        "name": "Welcome email",
+        "status": "inactive",
+        "trigger": "subscriber.confirmed",
+        "timing": {
+          "time": "delay",
+          "delay": {
+            "value": "1",
+            "unit": "days",
+            "time_of_day": "morning"
+          }
+        },
+        "actions": [
+          {
+            "type": "send_email",
+            "metadata": {
+              "email_id": "eml_1234"
+            }
+          }
+        ],
+        "filters": [],
+        "metadata": {}
+      }
+    }
+  ],
+  "Delay": [
+    {
+      "description": "Basic delay",
+      "object": {
+        "value": "1",
+        "unit": "days",
+        "time_of_day": "morning"
+      }
+    }
+  ],
+  "Timing": [
+    {
+      "description": "Immediate timing",
+      "object": {
+        "time": "immediate",
+        "delay": null
+      }
+    },
+    {
+      "description": "Future timing",
+      "object": {
+        "time": "delay",
+        "delay": {
+          "value": "1",
+          "unit": "days",
+          "time_of_day": "morning"
+        }
+      }
+    }
+  ],
+  "AutomationInput": [
+    {
+      "description": "Basic automation",
+      "object": {
+        "name": "Welcome email",
+        "trigger": "subscriber.confirmed",
+        "timing": {
+          "time": "immediate",
+          "delay": null
+        },
+        "actions": [
+          {
+            "type": "send_email",
+            "metadata": {
+              "email_id": "eml_1234"
+            }
+          }
+        ],
+        "filters": [],
+        "metadata": {},
+        "status": "inactive"
+      }
+    },
+    {
+      "description": "Automation in the future",
+      "object": {
+        "name": "Welcome email",
+        "trigger": "subscriber.confirmed",
+        "timing": {
+          "time": "delay",
+          "delay": {
+            "value": "1",
+            "unit": "days",
+            "time_of_day": "morning"
+          }
+        },
+        "actions": [
+          {
+            "type": "send_email",
+            "metadata": {
+              "email_id": "eml_1234"
+            }
+          }
+        ],
+        "filters": [],
+        "metadata": {},
+        "status": "inactive"
       }
     }
   ]
