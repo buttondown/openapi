@@ -1340,13 +1340,15 @@
             "in": "query",
             "name": "type",
             "schema": {
-              "proxy": "subscriber_type",
+              "description": "If provided, only return subscribers with the given type.",
+              "example": "regular",
               "type": "array",
               "items": {
                 "$ref": "#/components/schemas/SubscriberType"
               }
             },
-            "required": false
+            "required": false,
+            "description": "If provided, only return subscribers with the given type."
           },
           {
             "in": "query",
@@ -1366,17 +1368,19 @@
             "name": "email_address",
             "schema": {
               "title": "Email Address",
+              "description": "If provided, only return subscribers whose email address contains the given string.",
               "default": "",
+              "example": "telemachus@buttondown.email",
               "type": "string"
             },
-            "required": false
+            "required": false,
+            "description": "If provided, only return subscribers whose email address contains the given string."
           },
           {
             "in": "query",
             "name": "tag",
             "schema": {
               "title": "Tag",
-              "proxy": "tags",
               "type": "array",
               "items": {
                 "type": "string"
@@ -1408,57 +1412,59 @@
             "name": "utm_source",
             "schema": {
               "title": "Utm Source",
+              "description": "If provided, only return subscribers with the given UTM source(s).",
+              "example": "paid_campaign_2024",
               "type": "array",
               "items": {
                 "type": "string"
               }
             },
-            "required": false
+            "required": false,
+            "description": "If provided, only return subscribers with the given UTM source(s)."
           },
           {
             "in": "query",
             "name": "price",
             "schema": {
               "title": "Price",
-              "description": "Filter by price ID.",
-              "proxy": "stripe_customer__subscriptions__price__price_id",
+              "description": "If provided, only return subscribers with the given price ID(s).",
+              "example": "price_whatever",
               "type": "array",
               "items": {
                 "type": "string"
               }
             },
             "required": false,
-            "description": "Filter by price ID."
+            "description": "If provided, only return subscribers with the given price ID(s)."
           },
           {
             "in": "query",
             "name": "coupon",
             "schema": {
               "title": "Coupon",
-              "description": "Filter by coupon ID.",
-              "proxy": "stripe_customer__coupon__coupon_id",
+              "description": "If provided, only return subscribers with the given coupon ID(s).",
+              "example": "coupon_whatever",
               "type": "array",
               "items": {
                 "type": "string"
               }
             },
             "required": false,
-            "description": "Filter by coupon ID."
+            "description": "If provided, only return subscribers with the given coupon ID(s)."
           },
           {
             "in": "query",
             "name": "date",
             "schema": {
               "title": "Date",
-              "description": "Filter by creation date.",
-              "proxy": "creation_date",
+              "description": "If provided, only return subscribers created on or after the given date.",
               "type": "array",
               "items": {
                 "type": "string"
               }
             },
             "required": false,
-            "description": "Filter by creation date."
+            "description": "If provided, only return subscribers created on or after the given date."
           },
           {
             "in": "query",
@@ -4117,7 +4123,6 @@
             "name": "version",
             "schema": {
               "title": "Version",
-              "proxy": "headers__x-api-version__endswith",
               "type": "array",
               "items": {
                 "enum": [
@@ -9696,7 +9701,7 @@
   },
   "servers": [
     {
-      "url": "api.buttondown.com"
+      "url": "https://api.buttondown.com"
     }
   ]
 }
