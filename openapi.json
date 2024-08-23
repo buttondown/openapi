@@ -9289,11 +9289,15 @@
             "title": "Url",
             "description": "The URL to which the webhook will send POST requests.",
             "example": "https://my.api/webhook",
+            "minLength": 1,
+            "maxLength": 65536,
+            "format": "uri",
             "type": "string"
           },
           "description": {
             "title": "Description",
             "description": "An optional description of the webhook, for reference.",
+            "default": "",
             "example": "Trigger when an email is created to notify in Slack.",
             "type": "string"
           }
@@ -9322,11 +9326,15 @@
             "title": "Url",
             "description": "The URL to which the webhook will send POST requests.",
             "example": "https://my.api/webhook",
+            "minLength": 1,
+            "maxLength": 65536,
+            "format": "uri",
             "type": "string"
           },
           "description": {
             "title": "Description",
             "description": "An optional description of the webhook, for reference.",
+            "default": "",
             "example": "Trigger when an email is created to notify in Slack.",
             "type": "string"
           }
