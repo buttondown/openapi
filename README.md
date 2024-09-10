@@ -1,4 +1,4 @@
-This repository contains [OpenAPI specifications](https://www.openapis.org/) for [Buttondown](https://buttondown.email)'s API. You can find a more detailed API reference on Buttondown's [documentation site](https://docs.buttondown.email/api-reference/introduction).
+This repository contains [OpenAPI specifications](https://www.openapis.org/) for [Buttondown](https://buttondown.com)'s API. You can find a more detailed API reference on Buttondown's [documentation site](https://docs.buttondown.com/api-reference/introduction).
 
 In addition to the core OpenAPI spec, this repository contains two supplementary files meant to improve the experience of writing against Buttondown's API:
 
