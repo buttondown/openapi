@@ -6340,7 +6340,18 @@
             "$ref": "#/components/schemas/FilterGroup"
           },
           "template": {
-            "$ref": "#/components/schemas/NewsletterEmailTemplate"
+            "title": "Template",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/NewsletterEmailTemplate"
+              },
+              {
+                "enum": [
+                  "none"
+                ],
+                "type": "string"
+              }
+            ]
           }
         }
       },
