@@ -6325,6 +6325,7 @@
           },
           "subject": {
             "title": "Subject",
+            "maxLength": 1000,
             "example": "The subject line for the email",
             "type": "string"
           },
