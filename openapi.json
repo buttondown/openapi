@@ -9478,14 +9478,16 @@
               }
             ]
           },
-          "event_type": {
-            "description": "The type of event for which the webhook will be triggered.",
-            "example": "email.created",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ExternalEventType"
-              }
-            ]
+          "event_types": {
+            "description": "The types of event for which the webhook will be triggered.",
+            "example": [
+              "email.created",
+              "email.sent"
+            ],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExternalEventType"
+            }
           },
           "url": {
             "title": "Url",
@@ -9507,7 +9509,7 @@
         "required": [
           "id",
           "creation_date",
-          "event_type",
+          "event_types",
           "url"
         ]
       },
@@ -9525,14 +9527,16 @@
               }
             ]
           },
-          "event_type": {
-            "description": "The type of event for which the webhook will be triggered.",
-            "example": "email.created",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ExternalEventType"
-              }
-            ]
+          "event_types": {
+            "description": "The types of event for which the webhook will be triggered.",
+            "example": [
+              "email.created",
+              "email.sent"
+            ],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExternalEventType"
+            }
           },
           "url": {
             "title": "Url",
@@ -9552,7 +9556,7 @@
           }
         },
         "required": [
-          "event_type",
+          "event_types",
           "url"
         ]
       },
