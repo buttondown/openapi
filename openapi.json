@@ -516,6 +516,33 @@
         ]
       }
     },
+    "/accounts/me": {
+      "get": {
+        "operationId": "get_account",
+        "summary": "Get Account",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Account"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        },
+        "security": [
+          {
+            "GlobalAuth": []
+          }
+        ]
+      }
+    },
     "/images": {
       "post": {
         "operationId": "create_image",
@@ -5710,6 +5737,24 @@
         "title": "Empty",
         "type": "object",
         "properties": {}
+      },
+      "Account": {
+        "title": "Account",
+        "type": "object",
+        "properties": {
+          "username": {
+            "title": "Username",
+            "type": "string"
+          },
+          "email_address": {
+            "title": "Email Address",
+            "type": "string"
+          }
+        },
+        "required": [
+          "username",
+          "email_address"
+        ]
       },
       "Image": {
         "title": "Image",
