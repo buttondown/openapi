@@ -8829,17 +8829,6 @@
           "permissions"
         ]
       },
-      "Cadence": {
-        "title": "Cadence",
-        "description": "An enumeration.",
-        "enum": [
-          "year",
-          "month",
-          "one-time",
-          "email"
-        ],
-        "type": "string"
-      },
       "Product": {
         "title": "Product",
         "type": "object",
@@ -8860,27 +8849,24 @@
           "creation_date": {
             "title": "Creation Date",
             "type": "string"
+          },
+          "active": {
+            "title": "Active",
+            "type": "boolean"
           }
         },
         "required": [
           "id",
           "product_id",
           "name",
-          "creation_date"
+          "creation_date",
+          "active"
         ]
       },
       "Price": {
         "title": "Price",
         "type": "object",
         "properties": {
-          "id": {
-            "title": "Id",
-            "type": "string"
-          },
-          "amount": {
-            "title": "Amount",
-            "type": "integer"
-          },
           "style": {
             "title": "Style",
             "enum": [
@@ -8890,12 +8876,27 @@
             ],
             "type": "string"
           },
+          "amount": {
+            "title": "Amount",
+            "type": "integer"
+          },
           "currency": {
             "title": "Currency",
             "type": "string"
           },
           "cadence": {
-            "$ref": "#/components/schemas/Cadence"
+            "title": "Cadence",
+            "enum": [
+              "year",
+              "month",
+              "one-time",
+              "email"
+            ],
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
           },
           "product_id": {
             "title": "Product Id",
@@ -8906,10 +8907,10 @@
           }
         },
         "required": [
-          "id",
           "style",
           "currency",
           "cadence",
+          "id",
           "product_id"
         ]
       },
@@ -9031,7 +9032,14 @@
             "type": "string"
           },
           "cadence": {
-            "$ref": "#/components/schemas/Cadence"
+            "title": "Cadence",
+            "enum": [
+              "year",
+              "month",
+              "one-time",
+              "email"
+            ],
+            "type": "string"
           }
         },
         "required": [
