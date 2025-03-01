@@ -149,7 +149,8 @@
         "url": "https://example.com/feed",
         "subject": "New post: {{ item.title }}",
         "body": "I just published a new post: {{ item.url }}",
-        "label": "Basic external feed"
+        "label": "Basic external feed",
+        "metadata": {}
       }
     }
   ],
@@ -919,7 +920,7 @@
     {
       "description": "Basic product",
       "object": {
-        "id": "1420fb7a-5904-4e43-adcb-1f6b64ad435a",
+        "id": "b177b913-6bc5-47ca-944d-e675c3bd537e",
         "product_id": "prod_123",
         "name": "Basic",
         "creation_date": "2020-09-30",
