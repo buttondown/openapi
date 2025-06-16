@@ -6167,18 +6167,24 @@
             "name": "model_type",
             "schema": {
               "title": "Model Type",
+              "description": "Filter notes by the type of object they are attached to.",
+              "example": "email",
               "type": "string"
             },
-            "required": false
+            "required": false,
+            "description": "Filter notes by the type of object they are attached to."
           },
           {
             "in": "query",
             "name": "model_id",
             "schema": {
               "title": "Model Id",
+              "description": "Filter notes by the ID of the object they are attached to.",
+              "example": "123",
               "type": "string"
             },
-            "required": false
+            "required": false,
+            "description": "Filter notes by the ID of the object they are attached to."
           },
           {
             "in": "query",
