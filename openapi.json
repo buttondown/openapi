@@ -5155,6 +5155,75 @@
         ]
       }
     },
+    "/advertising_units/slots/{id}": {
+      "patch": {
+        "operationId": "update_advertising_slot",
+        "summary": "Update Advertising Slot",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "title": "Id",
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdvertisingSlot"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        },
+        "description": "Update an advertising slot's sponsor content",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdvertisingSlotUpdateInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "PermissionAuthenticationRequirement": []
+          }
+        ]
+      }
+    },
     "/webhooks": {
       "post": {
         "operationId": "create_webhook",
@@ -10631,12 +10700,17 @@
           "invoice_url": {
             "title": "Invoice Url",
             "type": "string"
+          },
+          "content": {
+            "title": "Content",
+            "type": "string"
           }
         },
         "required": [
           "id",
           "date",
-          "status"
+          "status",
+          "content"
         ]
       },
       "AdvertisingUnit": {
@@ -10787,6 +10861,16 @@
         "required": [
           "dates"
         ]
+      },
+      "AdvertisingSlotUpdateInput": {
+        "title": "AdvertisingSlotUpdateInput",
+        "type": "object",
+        "properties": {
+          "content": {
+            "title": "Content",
+            "type": "string"
+          }
+        }
       },
       "WebhookStatus": {
         "title": "WebhookStatus",
