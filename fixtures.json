@@ -150,7 +150,8 @@
         "subject": "New post: {{ item.title }}",
         "body": "I just published a new post: {{ item.url }}",
         "label": "Basic external feed",
-        "metadata": {}
+        "metadata": {},
+        "skip_old_items": true
       }
     },
     {
@@ -178,7 +179,8 @@
         "subject": "New post: {{ item.title }}",
         "body": "I just published a new post: {{ item.url }}",
         "label": "Basic external feed",
-        "metadata": {}
+        "metadata": {},
+        "skip_old_items": true
       }
     }
   ],

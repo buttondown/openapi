@@ -9171,6 +9171,11 @@
             "additionalProperties": {
               "type": "string"
             }
+          },
+          "skip_old_items": {
+            "title": "Skip Old Items",
+            "description": "Skip items with publish date older than one day from when they're discovered",
+            "type": "boolean"
           }
         },
         "required": [
@@ -9184,7 +9189,8 @@
           "url",
           "subject",
           "body",
-          "label"
+          "label",
+          "skip_old_items"
         ]
       },
       "ExternalFeedInput": {
@@ -9245,6 +9251,12 @@
             "additionalProperties": {
               "type": "string"
             }
+          },
+          "skip_old_items": {
+            "title": "Skip Old Items",
+            "description": "Skip items with publish date older than one day from when they're discovered",
+            "default": false,
+            "type": "boolean"
           }
         },
         "required": [
@@ -9341,6 +9353,11 @@
             "additionalProperties": {
               "type": "string"
             }
+          },
+          "skip_old_items": {
+            "title": "Skip Old Items",
+            "description": "Skip items with publish date older than one day from when they're discovered",
+            "type": "boolean"
           }
         }
       },
