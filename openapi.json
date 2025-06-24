@@ -8544,7 +8544,7 @@
         ]
       },
       "StripeSubscriptionPage": {
-        "title": "Page[StripeSubscription]",
+        "title": "Page[UnexpandableStripeSubscription]",
         "type": "object",
         "properties": {
           "results": {
