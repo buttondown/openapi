@@ -7983,6 +7983,7 @@
           "email_address": {
             "title": "Email Address",
             "description": "The email address of the subscriber.",
+            "maxLength": 254,
             "example": "telemachus@buttondown.email",
             "type": "string"
           },
@@ -8181,6 +8182,7 @@
         "properties": {
           "email_address": {
             "title": "Email Address",
+            "maxLength": 254,
             "example": "telemachus@buttondown.email",
             "type": "string"
           },
@@ -8359,6 +8361,7 @@
         "properties": {
           "email_address": {
             "title": "Email Address",
+            "maxLength": 254,
             "example": "telemachus@buttondown.email",
             "type": "string"
           },
@@ -8530,6 +8533,11 @@
               "substack",
               "buttondown"
             ],
+            "type": "string"
+          },
+          "product": {
+            "title": "Product",
+            "description": "The name of the product which the subscriber is subscribed to. (You can override this by setting the `buttondown_template_facing_id` metadata on the product in Stripe.)",
             "type": "string"
           }
         },

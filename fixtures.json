@@ -1075,7 +1075,8 @@
         "cadence": "month",
         "status": "active",
         "application_fee_percent": 0.1,
-        "source": "substack"
+        "source": "substack",
+        "product": null
       }
     }
   ],
