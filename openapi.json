@@ -8991,7 +8991,8 @@
           "delete_survey_responses",
           "replay_events",
           "delete_comments",
-          "update_survey_statuses"
+          "update_survey_statuses",
+          "modify_stripe_subscriptions"
         ],
         "type": "string"
       },

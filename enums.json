@@ -898,6 +898,11 @@
       "name": "Update status types",
       "description": "Update the status types for multiple surveys in bulk."
     },
+    "modify_stripe_subscriptions": {
+      "variant": "info",
+      "name": "Modify Stripe subscriptions",
+      "description": "Modify the Stripe subscriptions for multiple subscribers in bulk."
+    },
     "update_commenting_modes": {
       "variant": "info",
       "name": "Update commenting modes",
