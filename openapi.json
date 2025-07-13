@@ -7982,6 +7982,7 @@
         "enum": [
           "email_blocked",
           "ip_blocked",
+          "ip_undeliverable",
           "out_of_storage",
           "disabled",
           "unreachable",
