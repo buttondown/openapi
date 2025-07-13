@@ -1227,6 +1227,11 @@
       "name": "IP blocked",
       "description": "The subscriber's IP address is blocked."
     },
+    "ip_undeliverable": {
+      "variant": "error",
+      "name": "IP undeliverable",
+      "description": "The subscriber's IP address is undeliverable."
+    },
     "domain_blocked": {
       "variant": "error",
       "name": "Domain blocked",
