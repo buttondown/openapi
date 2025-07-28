@@ -1361,9 +1361,12 @@
             "name": "page",
             "schema": {
               "title": "Page",
+              "description": "The page number of the paginated response.",
+              "example": 1,
               "type": "integer"
             },
-            "required": false
+            "required": false,
+            "description": "The page number of the paginated response."
           },
           {
             "in": "query",
@@ -6504,15 +6507,22 @@
           },
           "url": {
             "title": "Url",
+            "description": "The URL of the export file. This is only available after the export has completed.",
             "type": "string"
           },
           "completion_date": {
             "title": "Completion Date",
+            "description": "The date and time the export completed.",
             "type": "string",
             "format": "date-time"
           },
           "status": {
-            "$ref": "#/components/schemas/ExportStatus"
+            "description": "The status of the export.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ExportStatus"
+              }
+            ]
           }
         },
         "required": [
@@ -7284,7 +7294,7 @@
           },
           "metadata": {
             "title": "Metadata",
-            "description": "A structured key-value blob that you can use to store arbitrary data on the object.",
+            "description": "A structured key-value blob that you can use to store arbitrary data on the object. (You can [read more about metadata.](https://docs.buttondown.com/metadata))",
             "default": {},
             "type": "object",
             "additionalProperties": {
@@ -7481,7 +7491,7 @@
           },
           "metadata": {
             "title": "Metadata",
-            "description": "A structured key-value blob that you can use to store arbitrary data on the object.",
+            "description": "A structured key-value blob that you can use to store arbitrary data on the object. (You can [read more about metadata.](https://docs.buttondown.com/metadata))",
             "default": {},
             "type": "object",
             "additionalProperties": {
@@ -7666,7 +7676,7 @@
           },
           "metadata": {
             "title": "Metadata",
-            "description": "A structured key-value blob that you can use to store arbitrary data on the object.",
+            "description": "A structured key-value blob that you can use to store arbitrary data on the object. (You can [read more about metadata.](https://docs.buttondown.com/metadata))",
             "type": "object",
             "additionalProperties": {
               "type": "string"
@@ -7953,13 +7963,10 @@
           "churned",
           "unactivated",
           "unsubscribed",
-          "malformed",
           "complained",
           "undeliverable",
-          "spammy",
           "removed",
           "trialed",
-          "disabled",
           "paused",
           "disposable",
           "blocked"
@@ -8023,6 +8030,7 @@
           "on_esp_denylist",
           "domain_blocked",
           "spf_failed",
+          "malformed",
           "other"
         ],
         "type": "string"
@@ -8077,7 +8085,7 @@
           },
           "metadata": {
             "title": "Metadata",
-            "description": "A structured key-value blob that you can use to store arbitrary data on the object.",
+            "description": "A structured key-value blob that you can use to store arbitrary data on the object. (You can [read more about metadata.](https://docs.buttondown.com/metadata))",
             "default": {},
             "type": "object",
             "additionalProperties": {
@@ -8276,7 +8284,7 @@
           },
           "metadata": {
             "title": "Metadata",
-            "description": "A structured key-value blob that you can use to store arbitrary data on the object.",
+            "description": "A structured key-value blob that you can use to store arbitrary data on the object. (You can [read more about metadata.](https://docs.buttondown.com/metadata))",
             "default": {},
             "type": "object",
             "additionalProperties": {
@@ -9291,10 +9299,12 @@
         "properties": {
           "url": {
             "title": "Url",
+            "description": "The URL of the RSS feed to poll for new items.",
             "example": "http://lorem-rss.herokuapp.com/feed",
             "type": "string"
           },
           "behavior": {
+            "description": "The [behavior](https://docs.buttondown.com/api-external-feed-behavior) of the external feed.",
             "example": "draft",
             "allOf": [
               {
@@ -11424,6 +11434,7 @@
           "activation_reminder_clicked",
           "activation_reminder_delivered",
           "activation_reminder_opened",
+          "attempted",
           "bounced",
           "complained",
           "clicked",
@@ -11540,14 +11551,17 @@
           },
           "body": {
             "title": "Body",
+            "description": "The text content of the note.",
             "type": "string"
           },
           "model_type": {
             "title": "Model Type",
+            "description": "The type of object this note is attached to (e.g., 'email', 'subscriber').",
             "type": "string"
           },
           "model_id": {
             "title": "Model Id",
+            "description": "The ID of the object this note is attached to.",
             "type": "string"
           },
           "metadata": {
@@ -11594,7 +11608,7 @@
           },
           "metadata": {
             "title": "Metadata",
-            "description": "Arbitrary metadata as key-value pairs.",
+            "description": "A structured key-value blob that you can use to store arbitrary data on the object. (You can [read more about metadata.](https://docs.buttondown.com/metadata))",
             "type": "object"
           }
         },
