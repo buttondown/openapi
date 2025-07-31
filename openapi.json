@@ -10687,16 +10687,16 @@
             ],
             "type": "string"
           },
+          "ip_address": {
+            "title": "Ip Address",
+            "type": "string"
+          },
           "request_data": {
             "title": "Request Data",
             "type": "string"
           },
           "response_data": {
             "title": "Response Data",
-            "type": "string"
-          },
-          "ip_address": {
-            "title": "Ip Address",
             "type": "string"
           }
         },
@@ -10708,9 +10708,9 @@
           "method",
           "source",
           "version",
+          "ip_address",
           "request_data",
-          "response_data",
-          "ip_address"
+          "response_data"
         ]
       },
       "APIRequest": {
@@ -10758,6 +10758,10 @@
               "2025-06-01"
             ],
             "type": "string"
+          },
+          "ip_address": {
+            "title": "Ip Address",
+            "type": "string"
           }
         },
         "required": [
@@ -10767,7 +10771,8 @@
           "path",
           "method",
           "source",
-          "version"
+          "version",
+          "ip_address"
         ]
       },
       "APIRequestList": {
