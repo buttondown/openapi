@@ -7968,7 +7968,6 @@
           "removed",
           "trialed",
           "paused",
-          "disposable",
           "blocked"
         ],
         "type": "string"
