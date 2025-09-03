@@ -7033,7 +7033,17 @@
           "imported",
           "throttled",
           "resending",
-          "transactional"
+          "transactional",
+          "suppressed"
+        ],
+        "type": "string"
+      },
+      "EmailSuppressionReason": {
+        "title": "SuppressionReason",
+        "description": "Represents the reason an email was suppressed.",
+        "enum": [
+          "law_enforcement",
+          "internal_auditing"
         ],
         "type": "string"
       },
@@ -7295,6 +7305,14 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/EmailStatus"
+              }
+            ]
+          },
+          "suppression_reason": {
+            "description": "Reason for suppression, if email is suppressed.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EmailSuppressionReason"
               }
             ]
           },
@@ -7728,6 +7746,9 @@
           },
           "status": {
             "$ref": "#/components/schemas/EmailStatus"
+          },
+          "suppression_reason": {
+            "$ref": "#/components/schemas/EmailSuppressionReason"
           },
           "metadata": {
             "title": "Metadata",
