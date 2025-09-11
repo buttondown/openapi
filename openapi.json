@@ -10198,6 +10198,10 @@
           "active": {
             "title": "Active",
             "type": "boolean"
+          },
+          "default_price": {
+            "title": "Default Price",
+            "type": "string"
           }
         },
         "required": [
