@@ -7279,7 +7279,6 @@
         "enum": [
           "classic",
           "modern",
-          "airy",
           "plaintext",
           "naked"
         ],
