@@ -30,7 +30,7 @@
           {
             "field": "subscriber.tags",
             "operator": "contains",
-            "value": "tgs-cast-member"
+            "value": "12345678-9012-3456-7890-123456789012"
           }
         ],
         "groups": [],
@@ -44,7 +44,7 @@
           {
             "field": "subscriber.tags",
             "operator": "contains",
-            "value": "tgs-cast-member"
+            "value": "12345678-9012-3456-7890-123456789012"
           }
         ],
         "groups": [
@@ -53,12 +53,18 @@
               {
                 "field": "subscriber.tags",
                 "operator": "contains",
-                "value": "executive"
-              },
+                "value": "12345678-9012-3456-7890-123456789012"
+              }
+            ],
+            "groups": [],
+            "predicate": "and"
+          },
+          {
+            "filters": [
               {
                 "field": "subscriber.tags",
                 "operator": "contains",
-                "value": "general-electric"
+                "value": "12345678-9012-3456-7890-123456789013"
               }
             ],
             "groups": [],
@@ -758,7 +764,7 @@
           {
             "type": "send_email",
             "metadata": {
-              "email_id": "eml_1234"
+              "email_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3"
             }
           }
         ],
@@ -790,7 +796,7 @@
           {
             "type": "send_email",
             "metadata": {
-              "email_id": "eml_1234"
+              "email_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3"
             }
           }
         ],
@@ -847,7 +853,7 @@
           {
             "type": "send_email",
             "metadata": {
-              "email_id": "eml_1234"
+              "email_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3"
             }
           }
         ],
@@ -876,7 +882,7 @@
           {
             "type": "send_email",
             "metadata": {
-              "email_id": "eml_1234"
+              "email_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3"
             }
           }
         ],
@@ -1303,6 +1309,16 @@
         },
         "status": "declined",
         "last_logged_in": null
+      }
+    }
+  ],
+  "Filter": [
+    {
+      "description": "Basic filter",
+      "object": {
+        "field": "subscriber.tags",
+        "operator": "contains",
+        "value": "12345678-9012-3456-7890-123456789012"
       }
     }
   ]
