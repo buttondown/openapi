@@ -8991,6 +8991,23 @@
                 "$ref": "#/components/schemas/NewsletterAuditingMode"
               }
             ]
+          },
+          "custom_churn_email_subject": {
+            "title": "Custom Churn Email Subject",
+            "description": "Custom subject line for churn emails",
+            "default": "",
+            "type": "string"
+          },
+          "custom_churn_email_body": {
+            "title": "Custom Churn Email Body",
+            "description": "Custom body content for churn emails",
+            "default": "",
+            "type": "string"
+          },
+          "custom_churn_email_template": {
+            "title": "Custom Churn Email Template",
+            "description": "Custom template for churn emails",
+            "type": "string"
           }
         },
         "required": [
@@ -9248,6 +9265,23 @@
             "title": "Image",
             "description": "URL to your newsletter's header or branding image.",
             "example": "https://example.com/header.jpg",
+            "type": "string"
+          },
+          "custom_churn_email_subject": {
+            "title": "Custom Churn Email Subject",
+            "description": "Custom subject line for churn emails.",
+            "example": "You've canceled your premium subscription to {{ newsletter.name }}",
+            "type": "string"
+          },
+          "custom_churn_email_body": {
+            "title": "Custom Churn Email Body",
+            "description": "Custom body content for churn emails.",
+            "example": "Hi {{ subscriber.email }},\n\nWe're sorry to see you go!",
+            "type": "string"
+          },
+          "custom_churn_email_template": {
+            "title": "Custom Churn Email Template",
+            "description": "Custom template for churn emails.",
             "type": "string"
           }
         }
