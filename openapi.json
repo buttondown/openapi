@@ -10996,6 +10996,13 @@
           "response_data": {
             "title": "Response Data",
             "type": "string"
+          },
+          "headers": {
+            "title": "Headers",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         },
         "required": [
@@ -11008,7 +11015,8 @@
           "version",
           "ip_address",
           "request_data",
-          "response_data"
+          "response_data",
+          "headers"
         ]
       },
       "APIRequest": {
@@ -11752,9 +11760,14 @@
           "activation_clicked",
           "activation_delivered",
           "activation_opened",
+          "activation_bounced",
+          "activation_rejected",
+          "activation_complained",
           "activation_reminder_clicked",
           "activation_reminder_delivered",
           "activation_reminder_opened",
+          "activation_reminder_bounced",
+          "activation_reminder_rejected",
           "attempted",
           "bounced",
           "complained",
