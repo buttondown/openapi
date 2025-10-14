@@ -9311,6 +9311,7 @@
         "title": "Type",
         "description": "Represents the action being performed on a bulk of objects.\n\n(Not to be coy, but these names should be self-explanatory.)",
         "enum": [
+          "add_notes",
           "apply_tags",
           "apply_metadata",
           "ban_subscribers",
@@ -10018,7 +10019,8 @@
           "create_bluesky_post",
           "create_arena_post",
           "create_export",
-          "send_post_request"
+          "send_post_request",
+          "send_confirmation_reminder"
         ],
         "type": "string"
       },
@@ -11794,6 +11796,12 @@
           "activation_reminder_bounced",
           "activation_reminder_complained",
           "activation_reminder_rejected",
+          "subscription_confirmed_clicked",
+          "subscription_confirmed_delivered",
+          "subscription_confirmed_opened",
+          "subscription_confirmed_bounced",
+          "subscription_confirmed_rejected",
+          "subscription_confirmed_complained",
           "attempted",
           "bounced",
           "complained",
