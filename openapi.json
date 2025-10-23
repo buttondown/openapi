@@ -1863,13 +1863,13 @@
               "anyOf": [
                 {
                   "type": "string",
-                  "pattern": "^[a-zA-Z0-9._%+\\-!]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$"
+                  "pattern": "^[a-zA-Z0-9.'_%+\\-!]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$"
                 },
                 {
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "pattern": "^[a-zA-Z0-9._%+\\-!]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$"
+                    "pattern": "^[a-zA-Z0-9.'_%+\\-!]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$"
                   }
                 }
               ]
@@ -7116,13 +7116,20 @@
             "description": "The URL of the attachment file.",
             "example": "https://buttondown.s3.amazonaws.com/attachments/newsletter-guide.pdf",
             "type": "string"
+          },
+          "size": {
+            "title": "Size",
+            "description": "The size of the attachment in bytes.",
+            "example": 1000,
+            "type": "integer"
           }
         },
         "required": [
           "id",
           "creation_date",
           "name",
-          "file"
+          "file",
+          "size"
         ]
       },
       "AttachmentPage": {
@@ -8308,7 +8315,7 @@
             "title": "Email Address",
             "description": "The email address of the subscriber.",
             "maxLength": 254,
-            "pattern": "^[a-zA-Z0-9._%+\\-!]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$",
+            "pattern": "^[a-zA-Z0-9.'_%+\\-!]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$",
             "example": "telemachus@buttondown.email",
             "type": "string"
           },
@@ -8516,7 +8523,7 @@
             "title": "Email Address",
             "description": "The email address of the subscriber.",
             "maxLength": 254,
-            "pattern": "^[a-zA-Z0-9._%+\\-!]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$",
+            "pattern": "^[a-zA-Z0-9.'_%+\\-!]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$",
             "example": "telemachus@buttondown.email",
             "type": "string"
           },
@@ -8698,7 +8705,7 @@
             "title": "Email Address",
             "description": "The email address of the subscriber.",
             "maxLength": 254,
-            "pattern": "^[a-zA-Z0-9._%+\\-!]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$",
+            "pattern": "^[a-zA-Z0-9.'_%+\\-!]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$",
             "example": "telemachus@buttondown.email",
             "type": "string"
           },
