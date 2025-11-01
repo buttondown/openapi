@@ -9334,7 +9334,6 @@
         },
         "required": [
           "description",
-          "email_address",
           "name",
           "username"
         ]
