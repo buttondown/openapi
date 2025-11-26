@@ -4759,8 +4759,7 @@
             "name": "id",
             "schema": {
               "title": "Id",
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             },
             "required": true
           }
@@ -4816,8 +4815,7 @@
             "name": "id",
             "schema": {
               "title": "Id",
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             },
             "required": true
           }
@@ -4883,8 +4881,7 @@
             "name": "id",
             "schema": {
               "title": "Id",
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             },
             "required": true
           }
@@ -5597,8 +5594,7 @@
             "name": "id",
             "schema": {
               "title": "Id",
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             },
             "required": true
           }
@@ -5664,8 +5660,7 @@
             "name": "id",
             "schema": {
               "title": "Id",
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             },
             "required": true
           }
@@ -5716,8 +5711,7 @@
             "name": "id",
             "schema": {
               "title": "Id",
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             },
             "required": true
           }
@@ -6557,8 +6551,7 @@
             "schema": {
               "title": "Email Id",
               "description": "If provided, only return responses made to the given email.",
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             },
             "required": false,
             "description": "If provided, only return responses made to the given email."
@@ -6569,8 +6562,7 @@
             "schema": {
               "title": "Subscriber Id",
               "description": "If provided, only return responses made by the given subscriber.",
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             },
             "required": false,
             "description": "If provided, only return responses made by the given subscriber."
@@ -6583,8 +6575,7 @@
               "description": "If provided, only return responses made to the given survey(s).",
               "type": "array",
               "items": {
-                "type": "string",
-                "format": "uuid"
+                "type": "string"
               }
             },
             "required": false,
@@ -6747,8 +6738,7 @@
             "name": "id",
             "schema": {
               "title": "Id",
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             },
             "required": true
           }
@@ -11468,13 +11458,12 @@
         "properties": {
           "id": {
             "title": "Id",
-            "description": "A unique UUID associated with the object.",
-            "type": "string",
-            "format": "uuid"
+            "description": "A unique TypeID associated with the object.",
+            "type": "string"
           },
           "creation_date": {
             "title": "Creation Date",
-            "description": "The date and time at which the object was created.",
+            "description": "The date and time at which the object was first created.",
             "type": "string",
             "format": "date-time"
           },
@@ -12167,8 +12156,7 @@
         "properties": {
           "id": {
             "title": "Id",
-            "type": "string",
-            "format": "uuid"
+            "type": "string"
           },
           "date": {
             "title": "Date",
@@ -12200,8 +12188,8 @@
         "properties": {
           "id": {
             "title": "Id",
-            "type": "string",
-            "format": "uuid"
+            "description": "A unique TypeID associated with the object.",
+            "type": "string"
           },
           "creation_date": {
             "title": "Creation Date",
@@ -12715,13 +12703,12 @@
         "properties": {
           "id": {
             "title": "Id",
-            "description": "A unique UUID associated with the object.",
-            "type": "string",
-            "format": "uuid"
+            "description": "A unique TypeID associated with the object.",
+            "type": "string"
           },
           "creation_date": {
             "title": "Creation Date",
-            "description": "The date and time at which the object was created.",
+            "description": "The date and time at which the object was first created.",
             "type": "string",
             "format": "date-time"
           },
@@ -12737,23 +12724,19 @@
           },
           "survey_id": {
             "title": "Survey Id",
-            "type": "string",
-            "format": "uuid"
+            "type": "string"
           },
           "subscriber_id": {
             "title": "Subscriber Id",
-            "type": "string",
-            "format": "uuid"
+            "type": "string"
           },
           "email_id": {
             "title": "Email Id",
-            "type": "string",
-            "format": "uuid"
+            "type": "string"
           },
           "automation_id": {
             "title": "Automation Id",
-            "type": "string",
-            "format": "uuid"
+            "type": "string"
           },
           "subscriber": {
             "$ref": "#/components/schemas/Subscriber"
@@ -12812,13 +12795,11 @@
         "properties": {
           "subscriber_id": {
             "title": "Subscriber Id",
-            "type": "string",
-            "format": "uuid"
+            "type": "string"
           },
           "survey_id": {
             "title": "Survey Id",
-            "type": "string",
-            "format": "uuid"
+            "type": "string"
           },
           "email_id": {
             "title": "Email Id",
