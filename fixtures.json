@@ -15,6 +15,16 @@
       }
     }
   ],
+  "Filter": [
+    {
+      "description": "Basic filter",
+      "object": {
+        "field": "subscriber.tags",
+        "operator": "contains",
+        "value": "12345678-9012-3456-7890-123456789012"
+      }
+    }
+  ],
   "FilterGroup": [
     {
       "description": "Empty filters",
@@ -713,6 +723,25 @@
           ]
         }
       }
+    },
+    {
+      "description": "Bulk action to rename metadata",
+      "object": {
+        "creation_date": "2019-08-24T14:15:22Z",
+        "completion_date": "2019-08-24T14:17:22Z",
+        "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "status": "completed",
+        "type": "rename_metadata",
+        "metadata": {
+          "rename_mapping": {
+            "first_name": "firstname",
+            "pet": "animal"
+          },
+          "ids": [
+            "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+          ]
+        }
+      }
     }
   ],
   "ErrorMessage": [
@@ -1171,85 +1200,6 @@
       }
     }
   ],
-  "Product": [
-    {
-      "description": "Basic product",
-      "object": {
-        "id": "str_pd_0k28edc3fw896bp4mrhc535z5k",
-        "product_id": "prod_123",
-        "name": "Basic",
-        "creation_date": "2020-09-30",
-        "active": true,
-        "default_price": null
-      }
-    }
-  ],
-  "Attachment": [
-    {
-      "description": "PDF",
-      "object": {
-        "id": "att_1234567890",
-        "creation_date": "2000-01-01T00:00:00",
-        "name": "newsletter-guide.pdf",
-        "file": "https://buttondown.s3.amazonaws.com/attachments/newsletter-guide.pdf",
-        "size": 1000
-      }
-    },
-    {
-      "description": "Image",
-      "object": {
-        "id": "att_876543210987",
-        "creation_date": "2000-01-02T00:00:00",
-        "name": "screenshot.png",
-        "file": "https://buttondown.s3.amazonaws.com/attachments/screenshot.png",
-        "size": 10000
-      }
-    },
-    {
-      "description": "Document",
-      "object": {
-        "id": "att_111111112222",
-        "creation_date": "2000-01-03T00:00:00",
-        "name": "report.docx",
-        "file": "https://buttondown.s3.amazonaws.com/attachments/report.docx",
-        "size": 100
-      }
-    }
-  ],
-  "Note": [
-    {
-      "description": "Basic note",
-      "object": {
-        "id": "note_29fxqcmrkp969vzttksexvmvr8",
-        "creation_date": "2000-01-01T00:00:00+00:00",
-        "body": "This person rocks :)",
-        "model_type": "subscriber",
-        "model_id": "sub_0k28edc3fw896bp4mrhc535z5k",
-        "metadata": {},
-        "source": "user",
-        "user_id": "acc_6d9ps3y19d89d8wpvkwme1s6w5",
-        "user": null
-      }
-    },
-    {
-      "description": "Note with structured data",
-      "object": {
-        "id": "note_29fxqcmrkp969vzttksexvmvr8",
-        "creation_date": "2000-01-01T00:00:00+00:00",
-        "body": "New purchase",
-        "model_type": "subscriber",
-        "model_id": "sub_0k28edc3fw896bp4mrhc535z5k",
-        "metadata": {
-          "order_id": "1234567890",
-          "order_date": "2021-01-01",
-          "order_total": 2900
-        },
-        "source": "user",
-        "user_id": "acc_6d9ps3y19d89d8wpvkwme1s6w5",
-        "user": null
-      }
-    }
-  ],
   "Permissions": [
     {
       "description": "Full access permissions",
@@ -1297,6 +1247,51 @@
         "administrivia": "none",
         "automations": "none",
         "surveys": "none"
+      }
+    }
+  ],
+  "Product": [
+    {
+      "description": "Basic product",
+      "object": {
+        "id": "str_pd_0k28edc3fw896bp4mrhc535z5k",
+        "product_id": "prod_123",
+        "name": "Basic",
+        "creation_date": "2020-09-30",
+        "active": true,
+        "default_price": null
+      }
+    }
+  ],
+  "Attachment": [
+    {
+      "description": "PDF",
+      "object": {
+        "id": "att_1234567890",
+        "creation_date": "2000-01-01T00:00:00",
+        "name": "newsletter-guide.pdf",
+        "file": "https://buttondown.s3.amazonaws.com/attachments/newsletter-guide.pdf",
+        "size": 1000
+      }
+    },
+    {
+      "description": "Image",
+      "object": {
+        "id": "att_876543210987",
+        "creation_date": "2000-01-02T00:00:00",
+        "name": "screenshot.png",
+        "file": "https://buttondown.s3.amazonaws.com/attachments/screenshot.png",
+        "size": 10000
+      }
+    },
+    {
+      "description": "Document",
+      "object": {
+        "id": "att_111111112222",
+        "creation_date": "2000-01-03T00:00:00",
+        "name": "report.docx",
+        "file": "https://buttondown.s3.amazonaws.com/attachments/report.docx",
+        "size": 100
       }
     }
   ],
@@ -1374,69 +1369,21 @@
       }
     }
   ],
-  "Filter": [
+  "ExternalFeedItem": [
     {
-      "description": "Basic filter",
-      "object": {
-        "field": "subscriber.tags",
-        "operator": "contains",
-        "value": "12345678-9012-3456-7890-123456789012"
-      }
-    }
-  ],
-  "AutomationForSubscriber": [
-    {
-      "description": "Processed automation",
+      "description": "Basic external feed item",
       "object": {
         "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
-        "name": "Welcome email",
+        "creation_date": "2020-09-29T00:00:00+00:00",
         "status": "processed",
-        "automation_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
-        "execution_date": "2020-09-29T00:00:00+00:00",
-        "actions": [
-          {
-            "type": "send_email",
-            "metadata": {
-              "email_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "description": "Pending automation",
-      "object": {
-        "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb4",
-        "name": "Welcome email",
-        "status": "pending",
-        "automation_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
-        "execution_date": "2020-09-30T00:00:00+00:00",
-        "actions": [
-          {
-            "type": "send_email",
-            "metadata": {
-              "email_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "description": "Failed automation",
-      "object": {
-        "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb5",
-        "name": "Welcome email",
-        "status": "failed",
-        "automation_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
-        "execution_date": "2020-09-28T00:00:00+00:00",
-        "actions": [
-          {
-            "type": "send_email",
-            "metadata": {
-              "email_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3"
-            }
-          }
-        ]
+        "url": "https://example.com/blog/post-1",
+        "publish_date": "2020-09-29T00:00:00+00:00",
+        "title": "Example Blog Post",
+        "description": "This is an example blog post description.",
+        "content": "<p>This is the full content of the blog post.</p>",
+        "author": "John Doe",
+        "email_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "email": null
       }
     }
   ],
@@ -1527,21 +1474,37 @@
       }
     }
   ],
-  "ExternalFeedItem": [
+  "Note": [
     {
-      "description": "Basic external feed item",
+      "description": "Basic note",
       "object": {
-        "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
-        "creation_date": "2020-09-29T00:00:00+00:00",
-        "status": "processed",
-        "url": "https://example.com/blog/post-1",
-        "publish_date": "2020-09-29T00:00:00+00:00",
-        "title": "Example Blog Post",
-        "description": "This is an example blog post description.",
-        "content": "<p>This is the full content of the blog post.</p>",
-        "author": "John Doe",
-        "email_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
-        "email": null
+        "id": "note_29fxqcmrkp969vzttksexvmvr8",
+        "creation_date": "2000-01-01T00:00:00+00:00",
+        "body": "This person rocks :)",
+        "model_type": "subscriber",
+        "model_id": "sub_0k28edc3fw896bp4mrhc535z5k",
+        "metadata": {},
+        "source": "user",
+        "user_id": "acc_6d9ps3y19d89d8wpvkwme1s6w5",
+        "user": null
+      }
+    },
+    {
+      "description": "Note with structured data",
+      "object": {
+        "id": "note_29fxqcmrkp969vzttksexvmvr8",
+        "creation_date": "2000-01-01T00:00:00+00:00",
+        "body": "New purchase",
+        "model_type": "subscriber",
+        "model_id": "sub_0k28edc3fw896bp4mrhc535z5k",
+        "metadata": {
+          "order_id": "1234567890",
+          "order_date": "2021-01-01",
+          "order_total": 2900
+        },
+        "source": "user",
+        "user_id": "acc_6d9ps3y19d89d8wpvkwme1s6w5",
+        "user": null
       }
     }
   ]
