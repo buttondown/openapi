@@ -1,4 +1,24 @@
 {
+    "AutomationForSubscriber": [
+        {
+            "description": "Failed automation",
+            "object": {
+                "actions": [
+                    {
+                        "metadata": {
+                            "email_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3"
+                        },
+                        "type": "send_email"
+                    }
+                ],
+                "automation_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+                "execution_date": "2020-09-28T00:00:00+00:00",
+                "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb5",
+                "name": "Welcome email",
+                "status": "failed"
+            }
+        }
+    ],
     "Webhook": [
         {
             "description": "Basic webhook",
