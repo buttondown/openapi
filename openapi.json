@@ -10771,6 +10771,7 @@
           "mark_subscribers_as_not_spammy",
           "resubscribe_subscribers",
           "send_emails",
+          "unban_subscribers",
           "send_reminders",
           "unsubscribe_subscribers",
           "delete_emails",
