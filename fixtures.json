@@ -1,4 +1,48 @@
 {
+  "AdvertisingSlot": [
+    {
+      "description": "Open advertising slot",
+      "object": {
+        "id": "adslot_0k28edc3fw896bp4mrhc535z5k",
+        "creation_date": "2024-01-01T00:00:00+00:00",
+        "date": "2024-12-01",
+        "status": "open",
+        "invoice_url": null,
+        "sku_id": "adsku_0k28edc3fw896bp4mrhc535z5k",
+        "sponsor_company": "",
+        "sponsor_email": "",
+        "sponsor_name": "",
+        "content": "",
+        "content_image_id": null,
+        "content_url": "",
+        "content_approved_at": null,
+        "content_rejected_at": null,
+        "content_rejection_reason": "",
+        "content_submitted_at": null
+      }
+    },
+    {
+      "description": "Sold advertising slot with content",
+      "object": {
+        "id": "adslot_1k28edc3fw896bp4mrhc535z5k",
+        "creation_date": "2024-01-01T00:00:00+00:00",
+        "date": "2024-11-15",
+        "status": "sold",
+        "invoice_url": "https://example.com/invoice.pdf",
+        "sku_id": "adsku_0k28edc3fw896bp4mrhc535z5k",
+        "sponsor_company": "Acme Corp",
+        "sponsor_email": "sponsor@acme.com",
+        "sponsor_name": "John Doe",
+        "content": "Check out our amazing product!",
+        "content_image_id": null,
+        "content_url": "https://acme.com/product",
+        "content_approved_at": "2024-11-10T00:00:00+00:00",
+        "content_rejected_at": null,
+        "content_rejection_reason": "",
+        "content_submitted_at": "2024-11-08T00:00:00+00:00"
+      }
+    }
+  ],
   "AutomationForSubscriber": [
     {
       "description": "Failed automation",
