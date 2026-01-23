@@ -11809,6 +11809,11 @@
           "metadata": {
             "title": "Metadata",
             "type": "object"
+          },
+          "should_evaluate_filter_after_delay": {
+            "title": "Should Evaluate Filter After Delay",
+            "description": "If true, filters are re-evaluated after the delay has passed.",
+            "type": "boolean"
           }
         },
         "required": [
@@ -11820,7 +11825,8 @@
           "timing",
           "actions",
           "filters",
-          "metadata"
+          "metadata",
+          "should_evaluate_filter_after_delay"
         ]
       },
       "AutomationPage": {
@@ -11922,6 +11928,12 @@
             "additionalProperties": {
               "type": "string"
             }
+          },
+          "should_evaluate_filter_after_delay": {
+            "title": "Should Evaluate Filter After Delay",
+            "description": "If true, filters are re-evaluated after the delay has passed.",
+            "default": false,
+            "type": "boolean"
           }
         },
         "required": [
@@ -11963,6 +11975,11 @@
           "metadata": {
             "title": "Metadata",
             "type": "object"
+          },
+          "should_evaluate_filter_after_delay": {
+            "title": "Should Evaluate Filter After Delay",
+            "description": "If true, filters are re-evaluated after the delay has passed.",
+            "type": "boolean"
           }
         }
       },
