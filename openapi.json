@@ -5839,6 +5839,19 @@
         "parameters": [
           {
             "in": "query",
+            "name": "api_key_id",
+            "schema": {
+              "title": "Api Key Id",
+              "default": [],
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "required": false
+          },
+          {
+            "in": "query",
             "name": "status_code",
             "schema": {
               "title": "Status Code",
@@ -12985,6 +12998,14 @@
             "title": "Ip Address",
             "type": "string"
           },
+          "api_key_id": {
+            "title": "Api Key Id",
+            "type": "string"
+          },
+          "api_key_label": {
+            "title": "Api Key Label",
+            "type": "string"
+          },
           "request_data": {
             "title": "Request Data",
             "type": "string"
@@ -13063,6 +13084,14 @@
           },
           "ip_address": {
             "title": "Ip Address",
+            "type": "string"
+          },
+          "api_key_id": {
+            "title": "Api Key Id",
+            "type": "string"
+          },
+          "api_key_label": {
+            "title": "Api Key Label",
             "type": "string"
           }
         },
