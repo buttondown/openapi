@@ -2419,6 +2419,21 @@
           },
           {
             "in": "query",
+            "name": "form",
+            "schema": {
+              "title": "Form",
+              "description": "If provided, only return subscribers that came through the given form(s).",
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "required": false,
+            "description": "If provided, only return subscribers that came through the given form(s)."
+          },
+          {
+            "in": "query",
             "name": "ids",
             "schema": {
               "title": "Ids",
@@ -3628,8 +3643,7 @@
             "name": "id",
             "schema": {
               "title": "Id",
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             },
             "required": true
           }
@@ -3705,8 +3719,7 @@
             "name": "id",
             "schema": {
               "title": "Id",
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             },
             "required": true
           }
@@ -10291,6 +10304,11 @@
               "$ref": "#/components/schemas/EmailTransition"
             }
           },
+          "form_id": {
+            "title": "Form Id",
+            "type": "string",
+            "format": "uuid"
+          },
           "firewall_reasons": {
             "title": "Firewall Reasons",
             "description": "Information collected by Buttondown's firewall about this subscriber. See [the firewall](https://docs.buttondown.com/firewall) for more information.",
@@ -10884,6 +10902,17 @@
         "description": "You will likely not need to interact with your newsletter settings\nprogrammatically, but if you do, this is the endpoint for you. You can\ncreate, update, and list newsletters via the API; this is ideal for\nintegrating with Buttondown as a headless email or newsletter provider\n(e.g. for a SaaS product.)",
         "type": "object",
         "properties": {
+          "id": {
+            "title": "Id",
+            "description": "A unique TypeID associated with the object.",
+            "type": "string"
+          },
+          "creation_date": {
+            "title": "Creation Date",
+            "description": "The date and time at which the object was first created.",
+            "type": "string",
+            "format": "date-time"
+          },
           "api_key": {
             "title": "Api Key",
             "description": "The API key for this newsletter, used for authenticating API requests.",
@@ -10902,12 +10931,6 @@
                 "$ref": "#/components/schemas/NewsletterAuditingMode"
               }
             ]
-          },
-          "creation_date": {
-            "title": "Creation Date",
-            "description": "The date and time at which the object was first created.",
-            "type": "string",
-            "format": "date-time"
           },
           "css": {
             "title": "Css",
@@ -11001,12 +11024,6 @@
             "description": "URL to your newsletter's icon image, used as a favicon and in various UI contexts.",
             "type": "string"
           },
-          "id": {
-            "title": "Id",
-            "description": "The unique identifier for this newsletter.",
-            "type": "string",
-            "format": "uuid"
-          },
           "image": {
             "title": "Image",
             "description": "URL to your newsletter's header or branding image, displayed on archive pages and in social previews.",
@@ -11054,10 +11071,10 @@
           }
         },
         "required": [
-          "api_key",
-          "creation_date",
-          "description",
           "id",
+          "creation_date",
+          "api_key",
+          "description",
           "name",
           "username"
         ]
