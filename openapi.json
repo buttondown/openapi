@@ -14857,6 +14857,16 @@
           "count"
         ]
       },
+      "SnippetMode": {
+        "title": "Mode",
+        "description": "An enumeration.",
+        "enum": [
+          "fancy",
+          "naked",
+          "plaintext"
+        ],
+        "type": "string"
+      },
       "Snippet": {
         "title": "Snippet",
         "type": "object",
@@ -14884,6 +14894,9 @@
             "title": "Content",
             "type": "string"
           },
+          "mode": {
+            "$ref": "#/components/schemas/SnippetMode"
+          },
           "reference_count": {
             "title": "Reference Count",
             "default": 0,
@@ -14895,7 +14908,8 @@
           "creation_date",
           "identifier",
           "name",
-          "content"
+          "content",
+          "mode"
         ]
       },
       "SnippetInput": {
@@ -14919,6 +14933,15 @@
             "default": "",
             "example": "Thanks for reading!",
             "type": "string"
+          },
+          "mode": {
+            "description": "The editor mode for the snippet.",
+            "default": "fancy",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SnippetMode"
+              }
+            ]
           }
         },
         "required": [
@@ -14975,6 +14998,9 @@
             "title": "Content",
             "example": "Thanks for reading!",
             "type": "string"
+          },
+          "mode": {
+            "$ref": "#/components/schemas/SnippetMode"
           }
         }
       },
