@@ -388,6 +388,11 @@
     }
   },
   "EmailCreationErrorCode": {
+    "body_contains_frontmatter": {
+      "description": "The email body starts with YAML frontmatter (a `---` delimiter followed by key-value pairs). This is almost always a sign of a bug in your integration rather than intentional email content.",
+      "name": "Body contains frontmatter",
+      "variant": "error"
+    },
     "body_invalid": {
       "description": "The email body provided is invalid or cannot be parsed.",
       "name": "Body invalid",
