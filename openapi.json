@@ -8854,6 +8854,12 @@
             "title": "Isbn",
             "description": "The ISBN of the book.",
             "type": "string"
+          },
+          "shared": {
+            "title": "Shared",
+            "default": true,
+            "description": "Whether the book is displayed publicly on the archive.",
+            "type": "boolean"
           }
         },
         "required": [
@@ -8895,6 +8901,12 @@
             "title": "Isbn",
             "description": "The ISBN of the book.",
             "type": "string"
+          },
+          "shared": {
+            "title": "Shared",
+            "default": true,
+            "description": "Whether the book is displayed publicly on the archive.",
+            "type": "boolean"
           }
         },
         "required": [
@@ -8963,6 +8975,11 @@
             "title": "Isbn",
             "description": "The ISBN of the book.",
             "type": "string"
+          },
+          "shared": {
+            "title": "Shared",
+            "description": "Whether the book is displayed publicly on the archive.",
+            "type": "boolean"
           }
         }
       },
