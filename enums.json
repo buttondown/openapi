@@ -245,6 +245,11 @@
       "name": "Change tags colors",
       "variant": "info"
     },
+    "delete_attachments": {
+      "description": "Delete multiple uploaded attachments in bulk.",
+      "name": "Delete attachments",
+      "variant": "info"
+    },
     "delete_comments": {
       "description": "Delete multiple comments in bulk.",
       "name": "Delete comments",
@@ -253,6 +258,11 @@
     "delete_emails": {
       "description": "Delete multiple emails in bulk.",
       "name": "Delete emails",
+      "variant": "info"
+    },
+    "delete_images": {
+      "description": "Delete multiple uploaded images in bulk.",
+      "name": "Delete images",
       "variant": "info"
     },
     "delete_inbox_items": {
@@ -465,9 +475,19 @@
       "name": "Duplicate email",
       "variant": "error"
     },
+    "email_not_confirmed": {
+      "description": "The newsletter has not yet confirmed its email address. Drafts cannot be created until the confirmation link in the welcome email is clicked.",
+      "name": "Email not confirmed",
+      "variant": "error"
+    },
     "email_invalid": {
       "description": "The email is invalid.",
       "name": "Invalid email",
+      "variant": "error"
+    },
+    "email_not_confirmed": {
+      "description": "The newsletter owner must confirm their email address before creating emails via the API.",
+      "name": "Email not confirmed",
       "variant": "error"
     },
     "publish_date_invalid": {
@@ -1672,14 +1692,29 @@
       "variant": "error"
     }
   },
-  "UpdateTagErrorCode": {
+  "TagErrorCode": {
+    "feature_disabled": {
+      "description": "Tags require a Basic plan or higher - please upgrade your account.",
+      "name": "Feature disabled",
+      "variant": "error"
+    },
     "name_already_exists": {
       "description": "The name of the tag already exists.",
       "name": "Name already exists",
       "variant": "error"
     },
+    "name_blank": {
+      "description": "Tags cannot be blank.",
+      "name": "Name blank",
+      "variant": "error"
+    },
+    "name_invalid": {
+      "description": "Tags must contain at least one letter or number.",
+      "name": "Name invalid",
+      "variant": "error"
+    },
     "name_too_long": {
-      "description": "The name of the tag is too long.",
+      "description": "Tags cannot be longer than 100 characters.",
       "name": "Name too long",
       "variant": "error"
     }
@@ -1830,6 +1865,11 @@
       "name": "Nepali",
       "variant": "info"
     },
+    "nb-NO": {
+      "description": "Norwegian.",
+      "name": "Norwegian",
+      "variant": "info"
+    },
     "pl-PL": {
       "description": "Polish (Poland).",
       "name": "Polish",
@@ -1838,6 +1878,11 @@
     "pt-BR": {
       "description": "Portuguese (Brazil).",
       "name": "Portuguese (Brazil)",
+      "variant": "info"
+    },
+    "pt-PT": {
+      "description": "Portuguese (Portugal).",
+      "name": "Portuguese (Portugal)",
       "variant": "info"
     },
     "ru": {

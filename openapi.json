@@ -1508,6 +1508,16 @@
               }
             }
           },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -1520,6 +1530,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Create a new book",
@@ -1553,6 +1573,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/BookPage"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
                 }
               }
             }
@@ -1618,6 +1648,16 @@
                 "operationId": "delete_book",
                 "parameters": {
                   "path.id": "$response.body#/id"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
                 }
               }
             }
@@ -1705,6 +1745,26 @@
               }
             }
           },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -1717,6 +1777,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Update a book's properties",
@@ -1756,6 +1826,16 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           },
           "403": {
             "description": "Forbidden",
@@ -3555,9 +3635,11 @@
             "in": "query",
             "name": "event_type",
             "schema": {
+              "description": "If provided, only return events of the given type (e.g. `delivered`, `opened`, `clicked`).",
               "$ref": "#/components/schemas/EmailEventType"
             },
-            "required": false
+            "required": false,
+            "description": "If provided, only return events of the given type (e.g. `delivered`, `opened`, `clicked`)."
           },
           {
             "in": "query",
@@ -5756,6 +5838,26 @@
               }
             }
           },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "409": {
             "description": "Conflict"
           }
@@ -5845,6 +5947,26 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all notes",
@@ -5876,6 +5998,16 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           },
           "403": {
             "description": "Forbidden",
@@ -6571,6 +6703,44 @@
         "operationId": "list_subscribers",
         "summary": "List Subscribers",
         "parameters": [
+          {
+            "in": "query",
+            "name": "bounce_date__end",
+            "schema": {
+              "description": "If provided, only return subscribers who last bounced on or before the given date.",
+              "title": "Bounce Date  End",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "type": "string"
+            },
+            "required": false,
+            "description": "If provided, only return subscribers who last bounced on or before the given date."
+          },
+          {
+            "in": "query",
+            "name": "bounce_date__start",
+            "schema": {
+              "description": "If provided, only return subscribers who last bounced on or after the given date.",
+              "title": "Bounce Date  Start",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "type": "string"
+            },
+            "required": false,
+            "description": "If provided, only return subscribers who last bounced on or after the given date."
+          },
+          {
+            "in": "query",
+            "name": "bounce_reason",
+            "schema": {
+              "description": "If provided, only return subscribers with the given bounce reason(s).",
+              "title": "Bounce Reason",
+              "items": {
+                "$ref": "#/components/schemas/SubscriberUndeliverabilityReason"
+              },
+              "type": "array"
+            },
+            "required": false,
+            "description": "If provided, only return subscribers with the given bounce reason(s)."
+          },
           {
             "in": "query",
             "name": "churn_date__end",
@@ -7951,37 +8121,51 @@
             "in": "query",
             "name": "email_id",
             "schema": {
-              "description": "If provided, only return responses made to the given [email](https://docs.buttondown.com/api-emails-introduction).",
-              "example": "email_abc123",
+              "description": "If provided, only return responses made to the given [email(s)](https://docs.buttondown.com/api-emails-introduction).",
+              "example": [
+                "email_abc123"
+              ],
               "title": "Email Id",
-              "type": "string"
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
             },
             "required": false,
-            "description": "If provided, only return responses made to the given [email](https://docs.buttondown.com/api-emails-introduction).",
-            "example": "email_abc123"
+            "description": "If provided, only return responses made to the given [email(s)](https://docs.buttondown.com/api-emails-introduction).",
+            "example": [
+              "email_abc123"
+            ]
           },
           {
             "in": "query",
             "name": "subscriber_id",
             "schema": {
-              "description": "If provided, only return responses made by the given [subscriber](https://docs.buttondown.com/api-subscribers-introduction).",
-              "example": "sub_abc123",
+              "description": "If provided, only return responses made by the given [subscriber(s)](https://docs.buttondown.com/api-subscribers-introduction).",
+              "example": [
+                "sub_abc123"
+              ],
               "title": "Subscriber Id",
-              "type": "string"
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
             },
             "required": false,
-            "description": "If provided, only return responses made by the given [subscriber](https://docs.buttondown.com/api-subscribers-introduction).",
-            "example": "sub_abc123"
+            "description": "If provided, only return responses made by the given [subscriber(s)](https://docs.buttondown.com/api-subscribers-introduction).",
+            "example": [
+              "sub_abc123"
+            ]
           },
           {
             "in": "query",
-            "name": "survey",
+            "name": "survey_id",
             "schema": {
               "description": "If provided, only return responses made to the given [survey(s)](https://docs.buttondown.com/api-surveys-introduction).",
               "example": [
                 "survey_abc123"
               ],
-              "title": "Survey",
+              "title": "Survey Id",
               "items": {
                 "type": "string"
               },
@@ -8692,6 +8876,16 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage_TagErrorCode_"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
                   "$ref": "#/components/schemas/ErrorMessage"
                 }
               }
@@ -8709,6 +8903,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Create a new tag",
@@ -8781,6 +8985,16 @@
               }
             }
           },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -8793,6 +9007,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all tags",
@@ -8842,6 +9066,16 @@
                 "operationId": "delete_tag",
                 "parameters": {
                   "path.id": "$response.body#/id"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
                 }
               }
             }
@@ -8924,13 +9158,30 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage_UpdateTagErrorCode_"
+                  "$ref": "#/components/schemas/ErrorMessage_TagErrorCode_"
                 }
               }
             }
           },
-          "409": {
-            "description": "Conflict"
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           },
           "404": {
             "description": "Not Found",
@@ -8938,6 +9189,19 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
                 }
               }
             }
@@ -8980,6 +9244,16 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           },
           "403": {
             "description": "Forbidden",
@@ -9042,8 +9316,28 @@
               }
             }
           },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -9055,8 +9349,8 @@
           "409": {
             "description": "Conflict"
           },
-          "404": {
-            "description": "Not Found",
+          "429": {
+            "description": "Too Many Requests",
             "content": {
               "application/json": {
                 "schema": {
@@ -9510,7 +9804,16 @@
       "get": {
         "operationId": "list_webhooks",
         "summary": "List Webhooks",
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "status",
+            "schema": {
+              "$ref": "#/components/schemas/WebhookStatus"
+            },
+            "required": false
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -9770,6 +10073,14 @@
               "type": "string"
             },
             "required": true
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "schema": {
+              "$ref": "#/components/schemas/WebhookAttemptStatus"
+            },
+            "required": false
           }
         ],
         "responses": {
@@ -9886,10 +10197,12 @@
       "Account": {
         "properties": {
           "username": {
+            "description": "The username associated with the account.",
             "title": "Username",
             "type": "string"
           },
           "email_address": {
+            "description": "The email address associated with the account.",
             "title": "Email Address",
             "type": "string"
           }
@@ -10525,21 +10838,26 @@
             "type": "string"
           },
           "status_code": {
+            "description": "The HTTP status code the API returned.",
             "title": "Status Code",
             "type": "integer"
           },
           "path": {
+            "description": "The request path (e.g. `/v1/subscribers`).",
             "title": "Path",
             "type": "string"
           },
           "method": {
+            "description": "The HTTP method used (e.g. `GET`, `POST`).",
             "title": "Method",
             "type": "string"
           },
           "source": {
-            "$ref": "#/components/schemas/APIRequestSource"
+            "$ref": "#/components/schemas/APIRequestSource",
+            "description": "Where the request originated (e.g. `api`, `dashboard`)."
           },
           "version": {
+            "description": "The API version the request was made against.",
             "enum": [
               "2024-07-01",
               "2024-08-01",
@@ -10556,6 +10874,7 @@
             "type": "string"
           },
           "ip_address": {
+            "description": "The IP address the request was made from.",
             "title": "Ip Address",
             "type": "string"
           },
@@ -10568,6 +10887,7 @@
                 "type": "null"
               }
             ],
+            "description": "The ID of the API key used, if authenticated via API key.",
             "title": "Api Key Id"
           },
           "api_key_label": {
@@ -10579,20 +10899,31 @@
                 "type": "null"
               }
             ],
+            "description": "The human-readable label of the API key used, if any.",
             "title": "Api Key Label"
           },
           "request_data": {
+            "description": "The raw request body, JSON-encoded as a string.",
             "title": "Request Data",
             "type": "string"
           },
           "response_data": {
-            "title": "Response Data",
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The raw response body, JSON-encoded as a string, if retained.",
+            "title": "Response Data"
           },
           "headers": {
             "additionalProperties": {
               "type": "string"
             },
+            "description": "The request headers. UUIDs within header values are redacted.",
             "title": "Headers",
             "type": "object"
           }
@@ -10607,7 +10938,6 @@
           "version",
           "ip_address",
           "request_data",
-          "response_data",
           "headers"
         ],
         "title": "APIRequestDetail",
@@ -10628,21 +10958,26 @@
             "type": "string"
           },
           "status_code": {
+            "description": "The HTTP status code the API returned.",
             "title": "Status Code",
             "type": "integer"
           },
           "path": {
+            "description": "The request path (e.g. `/v1/subscribers`).",
             "title": "Path",
             "type": "string"
           },
           "method": {
+            "description": "The HTTP method used (e.g. `GET`, `POST`).",
             "title": "Method",
             "type": "string"
           },
           "source": {
-            "$ref": "#/components/schemas/APIRequestSource"
+            "$ref": "#/components/schemas/APIRequestSource",
+            "description": "Where the request originated (e.g. `api`, `dashboard`)."
           },
           "version": {
+            "description": "The API version the request was made against.",
             "enum": [
               "2024-07-01",
               "2024-08-01",
@@ -10659,6 +10994,7 @@
             "type": "string"
           },
           "ip_address": {
+            "description": "The IP address the request was made from.",
             "title": "Ip Address",
             "type": "string"
           },
@@ -10671,6 +11007,7 @@
                 "type": "null"
               }
             ],
+            "description": "The ID of the API key used, if authenticated via API key.",
             "title": "Api Key Id"
           },
           "api_key_label": {
@@ -10682,6 +11019,7 @@
                 "type": "null"
               }
             ],
+            "description": "The human-readable label of the API key used, if any.",
             "title": "Api Key Label"
           }
         },
@@ -10701,6 +11039,7 @@
       "APIRequestList": {
         "properties": {
           "results": {
+            "description": "The list of API requests on this page.",
             "items": {
               "$ref": "#/components/schemas/APIRequest"
             },
@@ -10716,6 +11055,7 @@
                 "type": "null"
               }
             ],
+            "description": "An opaque cursor to pass back to fetch the next page, or null if this is the last page.",
             "title": "Cursor"
           }
         },
@@ -11216,96 +11556,114 @@
         "properties": {
           "recipients": {
             "default": 0,
+            "description": "The number of subscribers the email was dispatched to.",
             "title": "Recipients",
             "type": "integer"
           },
           "deliveries": {
             "default": 0,
+            "description": "The number of successful deliveries (recipients minus failures).",
             "title": "Deliveries",
             "type": "integer"
           },
           "opens": {
             "default": 0,
+            "description": "The number of unique opens recorded.",
             "title": "Opens",
             "type": "integer"
           },
           "clicks": {
             "default": 0,
+            "description": "The number of unique link clicks recorded.",
             "title": "Clicks",
             "type": "integer"
           },
           "temporary_failures": {
             "default": 0,
+            "description": "The number of temporary delivery failures (e.g. soft bounces).",
             "title": "Temporary Failures",
             "type": "integer"
           },
           "permanent_failures": {
             "default": 0,
+            "description": "The number of permanent delivery failures (e.g. hard bounces).",
             "title": "Permanent Failures",
             "type": "integer"
           },
           "unsubscriptions": {
             "default": 0,
+            "description": "The number of subscribers who unsubscribed after receiving this email.",
             "title": "Unsubscriptions",
             "type": "integer"
           },
           "complaints": {
             "default": 0,
+            "description": "The number of spam complaints recorded against this email.",
             "title": "Complaints",
             "type": "integer"
           },
           "survey_responses": {
             "default": 0,
+            "description": "The number of survey responses submitted from this email.",
             "title": "Survey Responses",
             "type": "integer"
           },
           "webmentions": {
             "default": 0,
+            "description": "The number of inbound webmentions received for this email.",
             "title": "Webmentions",
             "type": "integer"
           },
           "page_views_lifetime": {
             "default": 0,
+            "description": "The total number of archive page views for this email since publication.",
             "title": "Page Views Lifetime",
             "type": "integer"
           },
           "page_views_30": {
             "default": 0,
+            "description": "The number of archive page views in the last 30 days.",
             "title": "Page Views 30",
             "type": "integer"
           },
           "page_views_7": {
             "default": 0,
+            "description": "The number of archive page views in the last 7 days.",
             "title": "Page Views 7",
             "type": "integer"
           },
           "subscriptions": {
             "default": 0,
+            "description": "The number of new subscribers attributed to this email.",
             "title": "Subscriptions",
             "type": "integer"
           },
           "paid_subscriptions": {
             "default": 0,
+            "description": "The number of new paid subscribers attributed to this email.",
             "title": "Paid Subscriptions",
             "type": "integer"
           },
           "replies": {
             "default": 0,
+            "description": "The number of reply emails received from subscribers.",
             "title": "Replies",
             "type": "integer"
           },
           "comments": {
             "default": 0,
+            "description": "The number of comments posted on this email.",
             "title": "Comments",
             "type": "integer"
           },
           "social_mentions": {
             "default": 0,
+            "description": "The number of social media mentions of this email.",
             "title": "Social Mentions",
             "type": "integer"
           },
           "temporary_failure_breakdown": {
-            "description": "Breakdown of temporary failures, sorted by count descending",
+            "description": "Breakdown of temporary failures by reason code, sorted by count descending.",
             "items": {
               "$ref": "#/components/schemas/FailureBreakdownItem"
             },
@@ -11313,7 +11671,7 @@
             "type": "array"
           },
           "permanent_failure_breakdown": {
-            "description": "Breakdown of permanent failures, sorted by count descending",
+            "description": "Breakdown of permanent failures by reason code, sorted by count descending.",
             "items": {
               "$ref": "#/components/schemas/FailureBreakdownItem"
             },
@@ -11360,48 +11718,35 @@
           },
           "title": {
             "description": "The title of the book.",
+            "maxLength": 500,
             "title": "Title",
             "type": "string"
           },
           "url": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "default": "",
             "description": "The URL where the book can be purchased or viewed.",
-            "title": "Url"
+            "maxLength": 2000,
+            "title": "Url",
+            "type": "string"
           },
           "image_url": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "default": "",
             "description": "The URL of the book's cover image.",
-            "title": "Image Url"
+            "maxLength": 2000,
+            "title": "Image Url",
+            "type": "string"
           },
           "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "default": "",
             "description": "A description of the book.",
-            "title": "Description"
+            "title": "Description",
+            "type": "string"
           },
           "year": {
             "anyOf": [
               {
+                "maximum": 2147483647,
+                "minimum": -2147483648,
                 "type": "integer"
               },
               {
@@ -11412,16 +11757,11 @@
             "title": "Year"
           },
           "isbn": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "default": "",
             "description": "The ISBN of the book.",
-            "title": "Isbn"
+            "maxLength": 20,
+            "title": "Isbn",
+            "type": "string"
           },
           "shared": {
             "default": true,
@@ -11438,52 +11778,94 @@
         "title": "Book",
         "type": "object"
       },
+      "ValidationErrorDetail": {
+        "properties": {
+          "type": {
+            "description": "The type of validation error.",
+            "title": "Type",
+            "type": "string"
+          },
+          "loc": {
+            "description": "The location of the error in the request.",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "title": "Loc",
+            "type": "array"
+          },
+          "msg": {
+            "description": "A human-readable error message.",
+            "title": "Msg",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "loc",
+          "msg"
+        ],
+        "title": "ValidationErrorDetail",
+        "type": "object"
+      },
+      "ValidationErrorMessage": {
+        "properties": {
+          "detail": {
+            "description": "A list of validation errors.",
+            "items": {
+              "$ref": "#/components/schemas/ValidationErrorDetail"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "required": [
+          "detail"
+        ],
+        "title": "ValidationErrorMessage",
+        "type": "object"
+      },
       "BookInput": {
+        "additionalProperties": false,
         "properties": {
           "title": {
             "description": "The title of the book.",
+            "maxLength": 500,
+            "minLength": 1,
             "title": "Title",
             "type": "string"
           },
           "url": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "default": "",
             "description": "The URL where the book can be purchased or viewed.",
-            "title": "Url"
+            "maxLength": 2000,
+            "title": "Url",
+            "type": "string"
           },
           "image_url": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "default": "",
             "description": "The URL of the book's cover image.",
-            "title": "Image Url"
+            "maxLength": 2000,
+            "title": "Image Url",
+            "type": "string"
           },
           "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "default": "",
             "description": "A description of the book.",
-            "title": "Description"
+            "title": "Description",
+            "type": "string"
           },
           "year": {
             "anyOf": [
               {
+                "maximum": 2147483647,
+                "minimum": -2147483648,
                 "type": "integer"
               },
               {
@@ -11494,16 +11876,11 @@
             "title": "Year"
           },
           "isbn": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "default": "",
             "description": "The ISBN of the book.",
-            "title": "Isbn"
+            "maxLength": 20,
+            "title": "Isbn",
+            "type": "string"
           },
           "shared": {
             "default": true,
@@ -11519,10 +11896,12 @@
         "type": "object"
       },
       "BookUpdateInput": {
+        "additionalProperties": false,
         "properties": {
           "title": {
             "anyOf": [
               {
+                "maxLength": 500,
                 "type": "string"
               },
               {
@@ -11535,6 +11914,7 @@
           "url": {
             "anyOf": [
               {
+                "maxLength": 2000,
                 "type": "string"
               },
               {
@@ -11547,6 +11927,7 @@
           "image_url": {
             "anyOf": [
               {
+                "maxLength": 2000,
                 "type": "string"
               },
               {
@@ -11571,6 +11952,8 @@
           "year": {
             "anyOf": [
               {
+                "maximum": 2147483647,
+                "minimum": -2147483648,
                 "type": "integer"
               },
               {
@@ -11583,6 +11966,7 @@
           "isbn": {
             "anyOf": [
               {
+                "maxLength": 20,
                 "type": "string"
               },
               {
@@ -11634,6 +12018,7 @@
                 }
               ]
             },
+            "description": "Parameters for the bulk action. The exact shape depends on `type` \u2014 typically an `ids` list of object IDs to act on.",
             "example": {
               "ids": [
                 "611c8825-6f21-4544-bb47-9f50453e9cb0",
@@ -11655,7 +12040,8 @@
             "type": "string"
           },
           "status": {
-            "$ref": "#/components/schemas/BulkActionStatus"
+            "$ref": "#/components/schemas/BulkActionStatus",
+            "description": "The current processing status of the bulk action."
           },
           "completion_date": {
             "anyOf": [
@@ -11706,6 +12092,7 @@
                 }
               ]
             },
+            "description": "Parameters for the bulk action. The exact shape depends on `type` \u2014 typically an `ids` list of object IDs to act on.",
             "example": {
               "ids": [
                 "611c8825-6f21-4544-bb47-9f50453e9cb0",
@@ -11749,6 +12136,7 @@
             "type": "string"
           },
           "email_id": {
+            "description": "The ID of the email this comment is attached to.",
             "title": "Email Id",
             "type": "string"
           },
@@ -11761,6 +12149,7 @@
                 "type": "null"
               }
             ],
+            "description": "The ID of the subscriber who posted the comment, or null if posted by the newsletter author.",
             "title": "Subscriber Id"
           },
           "parent_id": {
@@ -11776,11 +12165,13 @@
             "title": "Parent Id"
           },
           "text": {
+            "description": "The text content of the comment.",
             "title": "Text",
             "type": "string"
           },
           "status": {
-            "$ref": "#/components/schemas/CommentStatus"
+            "$ref": "#/components/schemas/CommentStatus",
+            "description": "The moderation status of the comment (e.g. `active`, `spammy`)."
           },
           "subscriber": {
             "anyOf": [
@@ -11828,6 +12219,7 @@
             "type": "string"
           },
           "absolute_url": {
+            "description": "The canonical web URL of the email on the newsletter's archive.",
             "title": "Absolute Url",
             "type": "string"
           },
@@ -11839,7 +12231,8 @@
               {
                 "type": "null"
               }
-            ]
+            ],
+            "description": "Aggregate analytics for the email. Null until the email has been sent."
           },
           "attachments": {
             "anyOf": [
@@ -11867,7 +12260,8 @@
             "type": "string"
           },
           "commenting_mode": {
-            "$ref": "#/components/schemas/EmailCommentingMode"
+            "$ref": "#/components/schemas/EmailCommentingMode",
+            "description": "Controls whether subscribers can comment on this email."
           },
           "review_mode": {
             "allOf": [
@@ -11895,7 +12289,7 @@
             ],
             "default": "public",
             "deprecated": true,
-            "description": "The type of email."
+            "description": "The type of email. Defaults to `PUBLIC`."
           },
           "featured": {
             "description": "Designated whether or not this email should be highlighted within the archives.",
@@ -11903,10 +12297,11 @@
             "type": "boolean"
           },
           "filters": {
-            "$ref": "#/components/schemas/FilterGroup"
+            "$ref": "#/components/schemas/FilterGroup",
+            "description": "Tag-based filter rules determining which subscribers receive this email."
           },
           "image": {
-            "description": "A primary image to be used when previewing the email on the web or in other contexts.",
+            "description": "A primary image URL used when previewing the email on the web or in other contexts.",
             "title": "Image",
             "type": "string"
           },
@@ -11970,7 +12365,7 @@
                 "type": "null"
               }
             ],
-            "description": "A short, human-readable identifier for the email. (Used in the URL of the email, and in the 'slug' field of the email object.)",
+            "description": "A short, human-readable identifier for the email, used in the archive URL.",
             "example": "welcome-to-the-newsletter",
             "title": "Slug"
           },
@@ -11999,7 +12394,7 @@
                 "type": "null"
               }
             ],
-            "description": "Reason for suppression, if email is suppressed."
+            "description": "If the email has been suppressed from sending, the reason why."
           },
           "template": {
             "anyOf": [
@@ -12010,7 +12405,7 @@
                 "type": "null"
               }
             ],
-            "description": "If present, this template overrides your newsletter's default template."
+            "description": "If present, this template overrides your newsletter's default email template."
           }
         },
         "required": [
@@ -12038,6 +12433,7 @@
       "EmailTransition": {
         "properties": {
           "date": {
+            "description": "When the email address change took effect.",
             "format": "date-time",
             "title": "Date",
             "type": "string"
@@ -12051,9 +12447,11 @@
                 "type": "null"
               }
             ],
+            "description": "The subscriber's previous email address, or null for the initial address.",
             "title": "Old Email Address"
           },
           "new_email_address": {
+            "description": "The subscriber's email address after the transition.",
             "title": "New Email Address",
             "type": "string"
           }
@@ -12146,6 +12544,7 @@
       "StripeCoupon": {
         "properties": {
           "coupon_id": {
+            "description": "The Stripe coupon ID (e.g. `coupon_...`).",
             "title": "Coupon Id",
             "type": "string"
           },
@@ -12158,6 +12557,7 @@
                 "type": "null"
               }
             ],
+            "description": "The percentage discount applied by the coupon, if any.",
             "title": "Percent Off"
           },
           "amount_off": {
@@ -12169,6 +12569,7 @@
                 "type": "null"
               }
             ],
+            "description": "The fixed amount discount applied by the coupon, in the smallest currency unit (e.g. cents), if any.",
             "title": "Amount Off"
           },
           "name": {
@@ -12180,6 +12581,7 @@
                 "type": "null"
               }
             ],
+            "description": "The display name of the coupon.",
             "title": "Name"
           }
         },
@@ -12212,7 +12614,32 @@
                 "type": "null"
               }
             ],
+            "description": "URL of the subscriber's avatar image (e.g. a Gravatar URL), if available.",
             "title": "Avatar Url"
+          },
+          "bounce_date": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The date of the subscriber's most recent bounce event. May be set even if the subscriber has not yet been marked as undeliverable.",
+            "title": "Bounce Date"
+          },
+          "bounce_reason": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SubscriberUndeliverabilityReason"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The reason of the subscriber's most recent bounce event. May be set even if the subscriber has not yet been marked as undeliverable."
           },
           "churn_date": {
             "anyOf": [
@@ -12224,6 +12651,7 @@
                 "type": "null"
               }
             ],
+            "description": "When the subscriber cancelled their paid subscription, if applicable.",
             "title": "Churn Date"
           },
           "commenting_disabled": {
@@ -12237,6 +12665,19 @@
             "example": "telemachus@buttondown.email",
             "title": "Email Address",
             "type": "string"
+          },
+          "gift_subscription_end_date": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "When the subscriber's gift subscription expires, if applicable.",
+            "title": "Gift Subscription End Date"
           },
           "gift_subscription_message": {
             "anyOf": [
@@ -12259,6 +12700,7 @@
                 "type": "null"
               }
             ],
+            "description": "The IP address recorded when the subscriber signed up, if available.",
             "title": "Ip Address"
           },
           "last_click_date": {
@@ -12271,6 +12713,7 @@
                 "type": "null"
               }
             ],
+            "description": "When the subscriber most recently clicked a link in an email.",
             "title": "Last Click Date"
           },
           "last_open_date": {
@@ -12283,6 +12726,7 @@
                 "type": "null"
               }
             ],
+            "description": "When the subscriber most recently opened an email.",
             "title": "Last Open Date"
           },
           "delivered_count": {
@@ -12388,11 +12832,13 @@
             "title": "Purchased Message"
           },
           "referral_code": {
+            "description": "The subscriber's unique referral code, used to attribute referred signups.",
             "title": "Referral Code",
             "type": "string"
           },
           "referrer_url": {
             "default": "",
+            "description": "The URL the subscriber was referred from (e.g. where they submitted the subscription form).",
             "title": "Referrer Url",
             "type": "string"
           },
@@ -12409,11 +12855,13 @@
             "title": "Risk Score"
           },
           "secondary_id": {
+            "description": "A human-readable sequential identifier, unique within the newsletter.",
             "title": "Secondary Id",
             "type": "integer"
           },
           "source": {
-            "$ref": "#/components/schemas/SubscriberSource"
+            "$ref": "#/components/schemas/SubscriberSource",
+            "description": "Where the subscriber signed up from (e.g. `api`, `import`, `form`)."
           },
           "stripe_coupon": {
             "anyOf": [
@@ -12423,7 +12871,8 @@
               {
                 "type": "null"
               }
-            ]
+            ],
+            "description": "The Stripe coupon applied to the subscriber's paid subscription, if any."
           },
           "stripe_customer_id": {
             "anyOf": [
@@ -12434,6 +12883,7 @@
                 "type": "null"
               }
             ],
+            "description": "The Stripe customer ID associated with the subscriber, if any.",
             "title": "Stripe Customer Id"
           },
           "subscriber_import_id": {
@@ -12445,9 +12895,11 @@
                 "type": "null"
               }
             ],
+            "description": "The ID of the [subscriber import](https://docs.buttondown.com/importing-subscribers) that created this subscriber, if any.",
             "title": "Subscriber Import Id"
           },
           "tags": {
+            "description": "A list of [tag](https://docs.buttondown.com/api-tags-introduction) names applied to the subscriber. Tags that don't already exist will be created.",
             "items": {
               "type": "string"
             },
@@ -12456,6 +12908,7 @@
           },
           "transitions": {
             "default": [],
+            "description": "The history of subscriber type transitions (e.g. `regular` \u2192 `premium`).",
             "items": {
               "$ref": "#/components/schemas/Transition"
             },
@@ -12464,6 +12917,7 @@
           },
           "email_transitions": {
             "default": [],
+            "description": "The history of email address changes for this subscriber.",
             "items": {
               "$ref": "#/components/schemas/EmailTransition"
             },
@@ -12479,6 +12933,7 @@
                 "type": "null"
               }
             ],
+            "description": "The ID of the [registration form](https://docs.buttondown.com/registration-forms) the subscriber signed up through, if any.",
             "title": "Form Id"
           },
           "firewall_reasons": {
@@ -12490,7 +12945,8 @@
             "type": "array"
           },
           "type": {
-            "$ref": "#/components/schemas/SubscriberType"
+            "$ref": "#/components/schemas/SubscriberType",
+            "description": "The subscriber's lifecycle state \u2014 e.g. `regular` (active), `premium` (paid), `unactivated` (pending confirmation), `unsubscribed`, `removed`."
           },
           "undeliverability_date": {
             "anyOf": [
@@ -12502,6 +12958,7 @@
                 "type": "null"
               }
             ],
+            "description": "When the subscriber was marked as undeliverable, if applicable.",
             "title": "Undeliverability Date"
           },
           "undeliverability_reason": {
@@ -12525,6 +12982,7 @@
                 "type": "null"
               }
             ],
+            "description": "When the subscriber unsubscribed, if applicable.",
             "title": "Unsubscription Date"
           },
           "unsubscription_reason": {
@@ -12536,6 +12994,7 @@
                 "type": "null"
               }
             ],
+            "description": "Free-text reason the subscriber unsubscribed, if provided.",
             "title": "Unsubscription Reason"
           },
           "upgrade_date": {
@@ -12548,17 +13007,21 @@
                 "type": "null"
               }
             ],
+            "description": "When the subscriber upgraded to a paid subscription, if applicable.",
             "title": "Upgrade Date"
           },
           "utm_campaign": {
+            "description": "The UTM campaign the subscriber was attributed to at signup.",
             "title": "Utm Campaign",
             "type": "string"
           },
           "utm_medium": {
+            "description": "The UTM medium the subscriber was attributed to at signup.",
             "title": "Utm Medium",
             "type": "string"
           },
           "utm_source": {
+            "description": "The UTM source the subscriber was attributed to at signup.",
             "title": "Utm Source",
             "type": "string"
           },
@@ -12594,12 +13057,14 @@
       "Transition": {
         "properties": {
           "date": {
+            "description": "When the subscriber transitioned to `type`.",
             "format": "date-time",
             "title": "Date",
             "type": "string"
           },
           "type": {
-            "$ref": "#/components/schemas/SubscriberType"
+            "$ref": "#/components/schemas/SubscriberType",
+            "description": "The subscriber type the subscriber transitioned to at `date`."
           }
         },
         "required": [
@@ -12682,6 +13147,7 @@
         "enum": [
           "body_contains_frontmatter",
           "email_duplicate",
+          "email_not_confirmed",
           "body_invalid",
           "canonical_url_invalid",
           "email_invalid",
@@ -12731,6 +13197,7 @@
         "properties": {
           "attachments": {
             "default": [],
+            "description": "A list of attachment IDs present on the email. (See [Attachments](https://docs.buttondown.com/api-attachments-introduction) for more information.)",
             "items": {
               "type": "string"
             },
@@ -12747,9 +13214,11 @@
                 "type": "null"
               }
             ],
+            "description": "The date and time at which the email should be published in the future (for scheduled emails), or the date and time at which the email was published (for sent emails).",
             "title": "Publish Date"
           },
           "subject": {
+            "description": "The subject line for the email.",
             "example": "The subject line for the email",
             "maxLength": 2000,
             "title": "Subject",
@@ -12765,21 +13234,25 @@
                 "type": "null"
               }
             ],
+            "description": "A short, human-readable identifier for the email, used in the archive URL.",
             "title": "Slug"
           },
           "description": {
             "default": "",
+            "description": "A human-readable description of the email, used for archives and SEO.",
             "title": "Description",
             "type": "string"
           },
           "canonical_url": {
             "default": "",
+            "description": "The URL of the original source of the content.",
             "maxLength": 2000,
             "title": "Canonical Url",
             "type": "string"
           },
           "image": {
             "default": "",
+            "description": "A primary image URL used when previewing the email on the web or in other contexts.",
             "title": "Image",
             "type": "string"
           },
@@ -12810,7 +13283,7 @@
             ],
             "default": "public",
             "deprecated": true,
-            "description": "The type of email to create. Defaults to `PUBLIC`."
+            "description": "The type of email. Defaults to `PUBLIC`."
           },
           "status": {
             "allOf": [
@@ -12818,7 +13291,8 @@
                 "$ref": "#/components/schemas/EmailStatus"
               }
             ],
-            "default": "about_to_send"
+            "default": "about_to_send",
+            "description": "The status of the email (e.g. `draft`, `about_to_send`, `sent`, `scheduled`)."
           },
           "metadata": {
             "additionalProperties": true,
@@ -12836,6 +13310,7 @@
                 "type": "null"
               }
             ],
+            "description": "An informal 'number' for the email, used in some templates (e.g. 'This was issue #123').",
             "title": "Secondary Id"
           },
           "filters": {
@@ -12848,7 +13323,8 @@
               "filters": [],
               "groups": [],
               "predicate": "and"
-            }
+            },
+            "description": "Tag-based filter rules determining which subscribers receive this email."
           },
           "commenting_mode": {
             "allOf": [
@@ -12856,7 +13332,8 @@
                 "$ref": "#/components/schemas/EmailCommentingMode"
               }
             ],
-            "default": "enabled"
+            "default": "enabled",
+            "description": "Controls whether subscribers can comment on this email."
           },
           "related_email_ids": {
             "anyOf": [
@@ -12871,6 +13348,7 @@
               }
             ],
             "default": [],
+            "description": "IDs of emails related to this one. Shown at the bottom of the email and archive pages.",
             "title": "Related Email Ids"
           },
           "featured": {
@@ -12963,6 +13441,7 @@
                 "type": "null"
               }
             ],
+            "description": "The date and time at which the email should be published in the future (for scheduled emails), or the date and time at which the email was published (for sent emails). Pass `\"none\"` to clear a scheduled date.",
             "title": "Publish Date"
           },
           "subject": {
@@ -13039,7 +13518,7 @@
               }
             ],
             "deprecated": true,
-            "description": "The type of email to create. Defaults to `PUBLIC`."
+            "description": "The type of email. Defaults to `PUBLIC`."
           },
           "status": {
             "anyOf": [
@@ -13049,7 +13528,8 @@
               {
                 "type": "null"
               }
-            ]
+            ],
+            "description": "The status of the email (e.g. `draft`, `about_to_send`, `sent`, `scheduled`)."
           },
           "suppression_reason": {
             "anyOf": [
@@ -13059,7 +13539,8 @@
               {
                 "type": "null"
               }
-            ]
+            ],
+            "description": "If the email has been suppressed from sending, the reason why."
           },
           "metadata": {
             "anyOf": [
@@ -13077,6 +13558,7 @@
           },
           "image": {
             "default": "",
+            "description": "A primary image URL used when previewing the email on the web or in other contexts.",
             "title": "Image",
             "type": "string"
           },
@@ -13090,6 +13572,7 @@
                 "type": "null"
               }
             ],
+            "description": "A short, human-readable identifier for the email, used in the archive URL.",
             "example": "hello-world",
             "title": "Slug"
           },
@@ -13102,6 +13585,7 @@
                 "type": "null"
               }
             ],
+            "description": "An informal 'number' for the email, used in some templates (e.g. 'This was issue #123').",
             "title": "Secondary Id"
           },
           "filters": {
@@ -13112,7 +13596,8 @@
               {
                 "type": "null"
               }
-            ]
+            ],
+            "description": "Tag-based filter rules determining which subscribers receive this email."
           },
           "template": {
             "anyOf": [
@@ -13127,6 +13612,7 @@
                 "type": "null"
               }
             ],
+            "description": "If present, this template overrides your newsletter's default email template. Pass `\"none\"` to clear an override.",
             "title": "Template"
           },
           "commenting_mode": {
@@ -13137,7 +13623,8 @@
               {
                 "type": "null"
               }
-            ]
+            ],
+            "description": "Controls whether subscribers can comment on this email."
           },
           "review_mode": {
             "allOf": [
@@ -13160,6 +13647,7 @@
                 "type": "null"
               }
             ],
+            "description": "IDs of emails related to this one. Shown at the bottom of the email and archive pages.",
             "title": "Related Email Ids"
           },
           "featured": {
@@ -13203,6 +13691,7 @@
       "History": {
         "properties": {
           "history_id": {
+            "description": "A monotonically increasing history entry ID.",
             "title": "History Id",
             "type": "integer"
           },
@@ -13213,6 +13702,7 @@
             "type": "string"
           },
           "value": {
+            "description": "The field's value at the time of this history entry.",
             "title": "Value",
             "type": "string"
           },
@@ -13225,6 +13715,7 @@
                 "type": "null"
               }
             ],
+            "description": "The ID of the user who made this change, if attributable.",
             "title": "User Id"
           },
           "user": {
@@ -13235,7 +13726,8 @@
               {
                 "type": "null"
               }
-            ]
+            ],
+            "description": "If expanded, the user who made this change."
           }
         },
         "required": [
@@ -13346,7 +13838,8 @@
             "type": "string"
           },
           "status": {
-            "$ref": "#/components/schemas/InvitationStatus"
+            "$ref": "#/components/schemas/InvitationStatus",
+            "description": "The status of the user's invitation (e.g. `pending`, `accepted`)."
           },
           "last_logged_in": {
             "anyOf": [
@@ -13490,6 +13983,7 @@
                 "type": "null"
               }
             ],
+            "description": "The ID of the subscriber the event is attributed to, if any.",
             "title": "Subscriber Id"
           },
           "email_id": {
@@ -13501,6 +13995,7 @@
                 "type": "null"
               }
             ],
+            "description": "The ID of the email the event is attributed to, if any.",
             "title": "Email Id"
           },
           "automation_id": {
@@ -13512,17 +14007,20 @@
                 "type": "null"
               }
             ],
+            "description": "The ID of the automation that sent the email, if any.",
             "title": "Automation Id"
           },
           "metadata": {
             "additionalProperties": {
               "type": "string"
             },
+            "description": "Event-type-specific metadata (e.g. clicked URL, bounce reason).",
             "title": "Metadata",
             "type": "object"
           },
           "event_type": {
-            "$ref": "#/components/schemas/EmailEventType"
+            "$ref": "#/components/schemas/EmailEventType",
+            "description": "The type of event (e.g. `delivered`, `opened`, `clicked`, `unsubscribed`)."
           },
           "subscriber": {
             "anyOf": [
@@ -13800,7 +14298,7 @@
             "additionalProperties": {
               "type": "string"
             },
-            "description": "Additional scheduling details for the selected cadence, such as weekday or time.",
+            "description": "Additional scheduling details for the selected cadence. `time` is required for `daily`/`weekly`/`monthly` cadences; `weekday` is required for `weekly`; `monthday` is required for `monthly`. See the [cadence metadata reference](https://docs.buttondown.com/api-external-feed-cadence-metadata) for allowed values.",
             "title": "Cadence Metadata",
             "type": "object"
           },
@@ -13860,6 +14358,70 @@
         "title": "ExternalFeed",
         "type": "object"
       },
+      "CadenceMetadata": {
+        "properties": {
+          "time": {
+            "anyOf": [
+              {
+                "pattern": "^([01]?[0-9]|2[0-3])$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Hour of the day (0-23, as a string) when emails should be generated.",
+            "example": "9",
+            "title": "Time"
+          },
+          "weekday": {
+            "anyOf": [
+              {
+                "enum": [
+                  "monday",
+                  "tuesday",
+                  "wednesday",
+                  "thursday",
+                  "friday",
+                  "saturday",
+                  "sunday"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Day of the week when emails should be generated. Required when cadence is `weekly`.",
+            "title": "Weekday"
+          },
+          "monthday": {
+            "anyOf": [
+              {
+                "enum": [
+                  "monday",
+                  "tuesday",
+                  "wednesday",
+                  "thursday",
+                  "friday",
+                  "saturday",
+                  "sunday",
+                  "firstday",
+                  "lastday"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Day of the month when emails should be generated. Accepts a weekday name (first such day of the month), `firstday`, or `lastday`. Required when cadence is `monthly`.",
+            "title": "Monthday"
+          }
+        },
+        "title": "CadenceMetadata",
+        "type": "object"
+      },
       "ExternalFeedInput": {
         "properties": {
           "url": {
@@ -13880,12 +14442,12 @@
             "example": "daily"
           },
           "cadence_metadata": {
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Additional scheduling details for the selected cadence, such as weekday or time.",
-            "title": "Cadence Metadata",
-            "type": "object"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CadenceMetadata"
+              }
+            ],
+            "description": "Additional scheduling details for the selected cadence. `time` is required for `daily`/`weekly`/`monthly` cadences; `weekday` is required for `weekly`; `monthday` is required for `monthly`. See the [cadence metadata reference](https://docs.buttondown.com/api-external-feed-cadence-metadata) for allowed values."
           },
           "filters": {
             "$ref": "#/components/schemas/FilterGroup",
@@ -13943,7 +14505,6 @@
           "url",
           "behavior",
           "cadence",
-          "cadence_metadata",
           "filters",
           "subject",
           "body"
@@ -13980,17 +14541,13 @@
           "cadence_metadata": {
             "anyOf": [
               {
-                "additionalProperties": {
-                  "type": "string"
-                },
-                "type": "object"
+                "$ref": "#/components/schemas/CadenceMetadata"
               },
               {
                 "type": "null"
               }
             ],
-            "description": "Additional scheduling details for the selected cadence, such as weekday or time.",
-            "title": "Cadence Metadata"
+            "description": "Additional scheduling details for the selected cadence. `time` is required for `daily`/`weekly`/`monthly` cadences; `weekday` is required for `weekly`; `monthday` is required for `monthly`. See the [cadence metadata reference](https://docs.buttondown.com/api-external-feed-cadence-metadata) for allowed values."
           },
           "filters": {
             "anyOf": [
@@ -14190,26 +14747,32 @@
             "type": "string"
           },
           "title": {
+            "description": "The human-readable title of the form, shown in the UI and on the hosted form page.",
             "title": "Title",
             "type": "string"
           },
           "slug": {
+            "description": "A URL-safe identifier used in the form's hosted URL (e.g. `/forms/{slug}`). Must be unique per newsletter.",
             "title": "Slug",
             "type": "string"
           },
           "body": {
+            "description": "Markdown body rendered above the subscribe fields on the hosted form page.",
             "title": "Body",
             "type": "string"
           },
           "css": {
+            "description": "Custom CSS applied to the hosted form page.",
             "title": "Css",
             "type": "string"
           },
           "success_body": {
+            "description": "Markdown shown to the subscriber after a successful submission.",
             "title": "Success Body",
             "type": "string"
           },
           "surveys": {
+            "description": "IDs of surveys to attach to this form. Responses are associated with the submitting subscriber.",
             "items": {
               "type": "string"
             },
@@ -14217,11 +14780,13 @@
             "type": "array"
           },
           "admin": {
+            "description": "If true, the form acts as an admin-only signup form \u2014 it skips confirmation and can accept additional subscriber fields.",
             "title": "Admin",
             "type": "boolean"
           },
           "status": {
-            "$ref": "#/components/schemas/FormStatus"
+            "$ref": "#/components/schemas/FormStatus",
+            "description": "The status of the form. Only `active` forms accept submissions."
           },
           "subscriber_count": {
             "description": "The number of subscribers who signed up through this form.",
@@ -14299,12 +14864,14 @@
       "FormInput": {
         "properties": {
           "title": {
+            "description": "The human-readable title of the form, shown in the UI and on the hosted form page.",
             "maxLength": 255,
             "title": "Title",
             "type": "string",
             "example": "Contact Form"
           },
           "slug": {
+            "description": "A URL-safe identifier used in the form's hosted URL (e.g. `/forms/{slug}`). Must be unique per newsletter.",
             "maxLength": 100,
             "title": "Slug",
             "type": "string",
@@ -14312,23 +14879,27 @@
           },
           "body": {
             "default": "",
+            "description": "Markdown body rendered above the subscribe fields on the hosted form page.",
             "title": "Body",
             "type": "string",
             "example": ""
           },
           "css": {
             "default": "",
+            "description": "Custom CSS applied to the hosted form page.",
             "title": "Css",
             "type": "string",
             "example": ""
           },
           "success_body": {
             "default": "",
+            "description": "Markdown shown to the subscriber after a successful submission.",
             "title": "Success Body",
             "type": "string",
             "example": "Thank you for your submission!"
           },
           "surveys": {
+            "description": "IDs of surveys to attach to this form. Responses are associated with the submitting subscriber.",
             "items": {
               "type": "string"
             },
@@ -14338,6 +14909,7 @@
           },
           "admin": {
             "default": false,
+            "description": "If true, the form acts as an admin-only signup form \u2014 it skips confirmation and can accept additional subscriber fields.",
             "title": "Admin",
             "type": "boolean",
             "example": false
@@ -14349,6 +14921,7 @@
               }
             ],
             "default": "active",
+            "description": "The status of the form. Only `active` forms accept submissions.",
             "example": "active"
           }
         },
@@ -14371,6 +14944,7 @@
                 "type": "null"
               }
             ],
+            "description": "The human-readable title of the form, shown in the UI and on the hosted form page.",
             "title": "Title"
           },
           "slug": {
@@ -14383,6 +14957,7 @@
                 "type": "null"
               }
             ],
+            "description": "A URL-safe identifier used in the form's hosted URL (e.g. `/forms/{slug}`). Must be unique per newsletter.",
             "title": "Slug"
           },
           "body": {
@@ -14394,6 +14969,7 @@
                 "type": "null"
               }
             ],
+            "description": "Markdown body rendered above the subscribe fields on the hosted form page.",
             "title": "Body"
           },
           "css": {
@@ -14405,6 +14981,7 @@
                 "type": "null"
               }
             ],
+            "description": "Custom CSS applied to the hosted form page.",
             "title": "Css"
           },
           "success_body": {
@@ -14416,6 +14993,7 @@
                 "type": "null"
               }
             ],
+            "description": "Markdown shown to the subscriber after a successful submission.",
             "title": "Success Body"
           },
           "surveys": {
@@ -14430,6 +15008,7 @@
                 "type": "null"
               }
             ],
+            "description": "IDs of surveys to attach to this form. Responses are associated with the submitting subscriber.",
             "title": "Surveys"
           },
           "admin": {
@@ -14441,6 +15020,7 @@
                 "type": "null"
               }
             ],
+            "description": "If true, the form acts as an admin-only signup form \u2014 it skips confirmation and can accept additional subscriber fields.",
             "title": "Admin"
           },
           "status": {
@@ -14451,7 +15031,8 @@
               {
                 "type": "null"
               }
-            ]
+            ],
+            "description": "The status of the form. Only `active` forms accept submissions."
           }
         },
         "title": "FormUpdateInput",
@@ -15095,6 +15676,12 @@
             "description": "URL to your newsletter's icon image, used as a favicon and in various UI contexts.",
             "title": "Icon"
           },
+          "icon_alt_text": {
+            "default": "",
+            "description": "Alt text for the newsletter icon, used by screen readers and shown when the image cannot load.",
+            "title": "Icon Alt Text",
+            "type": "string"
+          },
           "image": {
             "anyOf": [
               {
@@ -15493,6 +16080,12 @@
             "description": "URL to your newsletter's icon image, used as a favicon and in various UI contexts.",
             "example": "https://example.com/icon.png",
             "title": "Icon",
+            "type": "string"
+          },
+          "icon_alt_text": {
+            "default": "",
+            "description": "Alt text for the newsletter icon, used by screen readers and shown when the image cannot load.",
+            "title": "Icon Alt Text",
             "type": "string"
           },
           "image": {
@@ -16150,6 +16743,18 @@
             "description": "URL to your newsletter's icon image, used as a favicon and in various UI contexts.",
             "example": "https://example.com/icon.png",
             "title": "Icon"
+          },
+          "icon_alt_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Alt text for the newsletter icon, used by screen readers and shown when the image cannot load.",
+            "title": "Icon Alt Text"
           },
           "image": {
             "anyOf": [
@@ -16953,22 +17558,27 @@
             "type": "string"
           },
           "identifier": {
+            "description": "A unique, newsletter-scoped slug used to reference the snippet inside email content (e.g. `{{ snippets.footer }}`). Must be unique per newsletter.",
             "title": "Identifier",
             "type": "string"
           },
           "name": {
+            "description": "A human-readable name for the snippet, shown in the Buttondown UI.",
             "title": "Name",
             "type": "string"
           },
           "content": {
+            "description": "The body of the snippet, substituted wherever the snippet is referenced. Interpreted according to `mode`.",
             "title": "Content",
             "type": "string"
           },
           "mode": {
-            "$ref": "#/components/schemas/SnippetMode"
+            "$ref": "#/components/schemas/SnippetMode",
+            "description": "The editor mode for the snippet, which controls how `content` is rendered: `fancy` (Markdown), `plaintext`, or `naked` (raw HTML with no processing)."
           },
           "reference_count": {
             "default": 0,
+            "description": "The number of emails that currently reference this snippet.",
             "title": "Reference Count",
             "type": "integer"
           }
@@ -16987,12 +17597,14 @@
       "SnippetInput": {
         "properties": {
           "identifier": {
+            "description": "A unique, newsletter-scoped slug used to reference the snippet inside email content (e.g. `{{ snippets.footer }}`). Must be unique per newsletter.",
             "maxLength": 100,
             "title": "Identifier",
             "type": "string",
             "example": "footer"
           },
           "name": {
+            "description": "A human-readable name for the snippet, shown in the Buttondown UI.",
             "maxLength": 255,
             "title": "Name",
             "type": "string",
@@ -17000,6 +17612,7 @@
           },
           "content": {
             "default": "",
+            "description": "The body of the snippet, substituted wherever the snippet is referenced. Interpreted according to `mode`.",
             "title": "Content",
             "type": "string",
             "example": "Thanks for reading!"
@@ -17011,7 +17624,7 @@
               }
             ],
             "default": "fancy",
-            "description": "The editor mode for the snippet."
+            "description": "The editor mode for the snippet, which controls how `content` is rendered: `fancy` (Markdown), `plaintext`, or `naked` (raw HTML with no processing)."
           }
         },
         "required": [
@@ -17033,6 +17646,7 @@
                 "type": "null"
               }
             ],
+            "description": "A unique, newsletter-scoped slug used to reference the snippet inside email content (e.g. `{{ snippets.footer }}`). Must be unique per newsletter.",
             "title": "Identifier",
             "example": "footer"
           },
@@ -17046,6 +17660,7 @@
                 "type": "null"
               }
             ],
+            "description": "A human-readable name for the snippet, shown in the Buttondown UI.",
             "title": "Name",
             "example": "Footer"
           },
@@ -17058,6 +17673,7 @@
                 "type": "null"
               }
             ],
+            "description": "The body of the snippet, substituted wherever the snippet is referenced. Interpreted according to `mode`.",
             "title": "Content",
             "example": "Thanks for reading!"
           },
@@ -17069,7 +17685,8 @@
               {
                 "type": "null"
               }
-            ]
+            ],
+            "description": "The editor mode for the snippet, which controls how `content` is rendered: `fancy` (Markdown), `plaintext`, or `naked` (raw HTML with no processing)."
           }
         },
         "title": "SnippetUpdateInput",
@@ -17143,6 +17760,7 @@
           },
           "tags": {
             "default": [],
+            "description": "A list of [tag](https://docs.buttondown.com/api-tags-introduction) names applied to the subscriber. Tags that don't already exist will be created.",
             "items": {
               "type": "string"
             },
@@ -17151,23 +17769,27 @@
           },
           "referrer_url": {
             "default": "",
+            "description": "The URL the subscriber was referred from (e.g. where they submitted the subscription form).",
             "title": "Referrer Url",
             "type": "string"
           },
           "utm_campaign": {
             "default": "",
+            "description": "The UTM campaign the subscriber was attributed to at signup.",
             "maxLength": 300,
             "title": "Utm Campaign",
             "type": "string"
           },
           "utm_medium": {
             "default": "",
+            "description": "The UTM medium the subscriber was attributed to at signup.",
             "maxLength": 300,
             "title": "Utm Medium",
             "type": "string"
           },
           "utm_source": {
             "default": "",
+            "description": "The UTM source the subscriber was attributed to at signup.",
             "maxLength": 300,
             "title": "Utm Source",
             "type": "string"
@@ -17193,6 +17815,7 @@
                 "type": "null"
               }
             ],
+            "description": "The subscriber's lifecycle state \u2014 e.g. `regular` (active), `premium` (paid), `unactivated` (pending confirmation), `unsubscribed`, `removed`.",
             "example": "regular"
           },
           "ip_address": {
@@ -17369,6 +17992,7 @@
                 "type": "null"
               }
             ],
+            "description": "A list of [tag](https://docs.buttondown.com/api-tags-introduction) names applied to the subscriber. Tags that don't already exist will be created.",
             "title": "Tags"
           },
           "referrer_url": {
@@ -17381,6 +18005,7 @@
               }
             ],
             "default": "",
+            "description": "The URL the subscriber was referred from (e.g. where they submitted the subscription form).",
             "title": "Referrer Url"
           },
           "type": {
@@ -17391,7 +18016,8 @@
               {
                 "type": "null"
               }
-            ]
+            ],
+            "description": "The subscriber's lifecycle state \u2014 e.g. `regular` (active), `premium` (paid), `unactivated` (pending confirmation), `unsubscribed`, `removed`."
           },
           "unsubscription_reason": {
             "anyOf": [
@@ -17402,6 +18028,7 @@
                 "type": "null"
               }
             ],
+            "description": "Free-text reason the subscriber unsubscribed, if provided.",
             "title": "Unsubscription Reason"
           },
           "email_which_prompted_unsubscription_id": {
@@ -17413,6 +18040,7 @@
                 "type": "null"
               }
             ],
+            "description": "The ID of the email that prompted the subscriber to unsubscribe, if any.",
             "title": "Email Which Prompted Unsubscription Id"
           }
         },
@@ -17422,26 +18050,32 @@
       "AutomationForSubscriber": {
         "properties": {
           "id": {
+            "description": "The ID of this automation attempt.",
             "title": "Id",
             "type": "string"
           },
           "name": {
+            "description": "The name of the automation that was triggered.",
             "title": "Name",
             "type": "string"
           },
           "status": {
-            "$ref": "#/components/schemas/AutomationAttemptStatus"
+            "$ref": "#/components/schemas/AutomationAttemptStatus",
+            "description": "The status of the automation attempt (e.g. `pending`, `completed`, `skipped`)."
           },
           "automation_id": {
+            "description": "The ID of the automation that was triggered.",
             "title": "Automation Id",
             "type": "string"
           },
           "execution_date": {
+            "description": "When the automation attempt is scheduled to execute (or executed).",
             "format": "date-time",
             "title": "Execution Date",
             "type": "string"
           },
           "actions": {
+            "description": "The resolved actions the automation will take for this subscriber.",
             "items": {
               "additionalProperties": true,
               "type": "object"
@@ -17635,18 +18269,22 @@
             "type": "string"
           },
           "identifier": {
+            "description": "A newsletter-scoped slug used to reference this survey when embedding it in emails.",
             "title": "Identifier",
             "type": "string"
           },
           "question": {
+            "description": "The survey question shown to subscribers.",
             "title": "Question",
             "type": "string"
           },
           "response_count": {
+            "description": "The total number of responses this survey has received.",
             "title": "Response Count",
             "type": "integer"
           },
           "answers": {
+            "description": "The list of pre-defined answer choices. Order is preserved unless `randomize_answers` is true.",
             "items": {
               "type": "string"
             },
@@ -17654,25 +18292,31 @@
             "type": "array"
           },
           "notes": {
+            "description": "Internal notes about the survey. Not shown to subscribers.",
             "title": "Notes",
             "type": "string"
           },
           "randomize_answers": {
+            "description": "If true, the order of `answers` is shuffled each time the survey is rendered.",
             "title": "Randomize Answers",
             "type": "boolean"
           },
           "response_cadence": {
-            "$ref": "#/components/schemas/SurveyResponseCadence"
+            "$ref": "#/components/schemas/SurveyResponseCadence",
+            "description": "How often a given subscriber can respond \u2014 e.g. `once` (single response per subscriber) or `unlimited`."
           },
           "status": {
-            "$ref": "#/components/schemas/SurveyStatus"
+            "$ref": "#/components/schemas/SurveyStatus",
+            "description": "The lifecycle status of the survey (e.g. `active`, `archived`)."
           },
           "is_freeform_response_enabled": {
+            "description": "If true, subscribers can provide a freeform text response in addition to (or instead of) picking from `answers`.",
             "title": "Is Freeform Response Enabled",
             "type": "boolean"
           },
           "input_type": {
-            "$ref": "#/components/schemas/SurveyInputType"
+            "$ref": "#/components/schemas/SurveyInputType",
+            "description": "The UI control used to collect responses (e.g. `radio`, `checkbox`)."
           }
         },
         "required": [
@@ -17781,18 +18425,21 @@
       "SurveyInput": {
         "properties": {
           "identifier": {
+            "description": "A newsletter-scoped slug used to reference this survey when embedding it in emails.",
             "maxLength": 100,
             "title": "Identifier",
             "type": "string",
             "example": "color"
           },
           "question": {
+            "description": "The survey question shown to subscribers.",
             "maxLength": 500,
             "title": "Question",
             "type": "string",
             "example": "What's your favorite color?"
           },
           "answers": {
+            "description": "The list of pre-defined answer choices. Order is preserved unless `randomize_answers` is true.",
             "items": {
               "type": "string"
             },
@@ -17806,6 +18453,7 @@
           },
           "notes": {
             "default": "",
+            "description": "Internal notes about the survey. Not shown to subscribers.",
             "title": "Notes",
             "type": "string",
             "example": ""
@@ -17817,10 +18465,12 @@
               }
             ],
             "default": "once",
+            "description": "How often a given subscriber can respond \u2014 e.g. `once` (single response per subscriber) or `unlimited`.",
             "example": "once"
           },
           "is_freeform_response_enabled": {
             "default": false,
+            "description": "If true, subscribers can provide a freeform text response in addition to (or instead of) picking from `answers`.",
             "title": "Is Freeform Response Enabled",
             "type": "boolean",
             "example": false
@@ -17832,10 +18482,12 @@
               }
             ],
             "default": "radio",
+            "description": "The UI control used to collect responses (e.g. `radio`, `checkbox`).",
             "example": "radio"
           },
           "randomize_answers": {
             "default": false,
+            "description": "If true, the order of `answers` is shuffled each time the survey is rendered.",
             "title": "Randomize Answers",
             "type": "boolean",
             "example": false
@@ -17901,6 +18553,7 @@
                 "type": "null"
               }
             ],
+            "description": "Internal notes about the survey. Not shown to subscribers.",
             "title": "Notes"
           },
           "answers": {
@@ -17915,6 +18568,7 @@
                 "type": "null"
               }
             ],
+            "description": "The list of pre-defined answer choices. Order is preserved unless `randomize_answers` is true.",
             "title": "Answers",
             "example": [
               "Red",
@@ -17931,6 +18585,7 @@
                 "type": "null"
               }
             ],
+            "description": "How often a given subscriber can respond \u2014 e.g. `once` (single response per subscriber) or `unlimited`.",
             "example": "once"
           },
           "status": {
@@ -17941,7 +18596,8 @@
               {
                 "type": "null"
               }
-            ]
+            ],
+            "description": "The lifecycle status of the survey (e.g. `active`, `archived`)."
           },
           "is_freeform_response_enabled": {
             "anyOf": [
@@ -17953,6 +18609,7 @@
               }
             ],
             "default": false,
+            "description": "If true, subscribers can provide a freeform text response in addition to (or instead of) picking from `answers`.",
             "title": "Is Freeform Response Enabled"
           },
           "input_type": {
@@ -17963,7 +18620,8 @@
               {
                 "type": "null"
               }
-            ]
+            ],
+            "description": "The UI control used to collect responses (e.g. `radio`, `checkbox`)."
           },
           "randomize_answers": {
             "anyOf": [
@@ -17974,6 +18632,7 @@
                 "type": "null"
               }
             ],
+            "description": "If true, the order of `answers` is shuffled each time the survey is rendered.",
             "title": "Randomize Answers"
           }
         },
@@ -17983,51 +18642,6 @@
       "Tag": {
         "description": "Tags are a way to organize your subscribers. You can create, update, and\ndelete tags via the API. You can also list all tags for a given newsletter.\n\nTags don't have any strict functionality on their own, but you can send emails\nto subscribers with a given tag (or to all subscribers _without_ a given tag.)",
         "properties": {
-          "name": {
-            "description": "The name of the tag.",
-            "example": "VIP",
-            "maxLength": 100,
-            "title": "Name",
-            "type": "string"
-          },
-          "color": {
-            "description": "The hex color code associated with the tag.",
-            "example": "#FFD700",
-            "maxLength": 10,
-            "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
-            "title": "Color",
-            "type": "string"
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "An internal description of the tag, only visible to the newsletter author.",
-            "title": "Description"
-          },
-          "public_description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "A public-facing description of the tag, visible to subscribers in the subscriber portal.",
-            "title": "Public Description"
-          },
-          "subscriber_editable": {
-            "default": false,
-            "description": "If true, subscribers can add or remove this tag from their own profile via the subscriber portal.",
-            "title": "Subscriber Editable",
-            "type": "boolean"
-          },
           "id": {
             "description": "A unique TypeID associated with the object.",
             "title": "Id",
@@ -18039,37 +18653,13 @@
             "title": "Creation Date",
             "type": "string"
           },
-          "secondary_id": {
-            "description": "The secondary ID of the tag, used as a human-readable numeric identifier.",
-            "title": "Secondary Id",
-            "type": "integer"
-          }
-        },
-        "required": [
-          "name",
-          "color",
-          "id",
-          "creation_date",
-          "secondary_id"
-        ],
-        "title": "Tag",
-        "type": "object"
-      },
-      "TagInput": {
-        "description": "Input schema for creating a new tag.",
-        "properties": {
           "name": {
             "description": "The name of the tag.",
-            "example": "VIP",
-            "maxLength": 100,
             "title": "Name",
             "type": "string"
           },
           "color": {
             "description": "The hex color code associated with the tag.",
-            "example": "#FFD700",
-            "maxLength": 10,
-            "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
             "title": "Color",
             "type": "string"
           },
@@ -18098,25 +18688,35 @@
             "title": "Public Description"
           },
           "subscriber_editable": {
-            "default": false,
             "description": "If true, subscribers can add or remove this tag from their own profile via the subscriber portal.",
             "title": "Subscriber Editable",
             "type": "boolean"
+          },
+          "secondary_id": {
+            "description": "The secondary ID of the tag, used as a human-readable numeric identifier.",
+            "maximum": 2147483647,
+            "minimum": 1,
+            "title": "Secondary Id",
+            "type": "integer"
           }
         },
         "required": [
+          "id",
+          "creation_date",
           "name",
-          "color"
+          "color",
+          "subscriber_editable",
+          "secondary_id"
         ],
-        "title": "TagInput",
+        "title": "Tag",
         "type": "object"
       },
-      "ErrorMessage_UpdateTagErrorCode_": {
+      "ErrorMessage_TagErrorCode_": {
         "properties": {
           "code": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/UpdateTagErrorCode"
+                "$ref": "#/components/schemas/TagErrorCode"
               }
             ],
             "description": "The error code."
@@ -18139,25 +18739,92 @@
         "required": [
           "detail"
         ],
-        "title": "ErrorMessage[UpdateTagErrorCode]",
+        "title": "ErrorMessage[TagErrorCode]",
         "type": "object"
       },
-      "UpdateTagErrorCode": {
-        "description": "A potential error code that can be returned when updating a tag.",
+      "TagErrorCode": {
+        "description": "Error codes returned when creating or updating a tag fails.",
         "enum": [
+          "feature_disabled",
           "name_already_exists",
+          "name_blank",
+          "name_invalid",
           "name_too_long"
         ],
-        "title": "UpdateTagErrorCode",
+        "title": "TagErrorCode",
         "type": "string"
       },
+      "TagInput": {
+        "additionalProperties": false,
+        "description": "Input schema for creating a new tag.",
+        "properties": {
+          "name": {
+            "description": "The name of the tag.",
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[ -~]*[A-Za-z0-9][ -~]*$",
+            "title": "Name",
+            "type": "string",
+            "example": "VIP"
+          },
+          "color": {
+            "description": "The hex color code associated with the tag.",
+            "maxLength": 7,
+            "minLength": 4,
+            "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+            "title": "Color",
+            "type": "string",
+            "example": "#FFD700"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "An internal description of the tag, only visible to the newsletter author.",
+            "title": "Description"
+          },
+          "public_description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "A public-facing description of the tag, visible to subscribers in the subscriber portal.",
+            "title": "Public Description"
+          },
+          "subscriber_editable": {
+            "default": false,
+            "description": "If true, subscribers can add or remove this tag from their own profile via the subscriber portal.",
+            "title": "Subscriber Editable",
+            "type": "boolean",
+            "example": false
+          }
+        },
+        "required": [
+          "name",
+          "color"
+        ],
+        "title": "TagInput",
+        "type": "object"
+      },
       "TagUpdateInput": {
+        "additionalProperties": false,
         "description": "Input schema for updating an existing tag. All fields are optional.",
         "properties": {
           "name": {
             "anyOf": [
               {
                 "maxLength": 100,
+                "minLength": 1,
+                "pattern": "^[ -~]*[A-Za-z0-9][ -~]*$",
                 "type": "string"
               },
               {
@@ -18165,13 +18832,14 @@
               }
             ],
             "description": "The name of the tag.",
-            "example": "VIP",
-            "title": "Name"
+            "title": "Name",
+            "example": "VIP"
           },
           "color": {
             "anyOf": [
               {
-                "maxLength": 10,
+                "maxLength": 7,
+                "minLength": 4,
                 "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
                 "type": "string"
               },
@@ -18180,8 +18848,8 @@
               }
             ],
             "description": "The hex color code associated with the tag.",
-            "example": "#FFD700",
-            "title": "Color"
+            "title": "Color",
+            "example": "#FFD700"
           },
           "description": {
             "anyOf": [
@@ -18210,6 +18878,8 @@
           "secondary_id": {
             "anyOf": [
               {
+                "maximum": 2147483647,
+                "minimum": 1,
                 "type": "integer"
               },
               {
@@ -18240,6 +18910,7 @@
         "properties": {
           "created_subscribers": {
             "description": "The number of subscribers who have been created with this tag.",
+            "minimum": 0,
             "title": "Created Subscribers",
             "type": "integer"
           },
@@ -18322,12 +18993,7 @@
       "UserUpdateInput": {
         "properties": {
           "permissions": {
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "A mapping of permission names to access levels.",
-            "title": "Permissions",
-            "type": "object"
+            "$ref": "#/components/schemas/Permissions"
           }
         },
         "required": [
@@ -18495,6 +19161,16 @@
         "title": "WebhookInput",
         "type": "object"
       },
+      "WebhookAttemptStatus": {
+        "enum": [
+          "unattempted",
+          "successful",
+          "failed"
+        ],
+        "title": "WebhookAttemptStatus",
+        "type": "string",
+        "description": "An enumeration."
+      },
       "WebhookAttemptOutput": {
         "properties": {
           "id": {
@@ -18513,6 +19189,65 @@
             "example": "successful",
             "title": "Status",
             "type": "string"
+          },
+          "event_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The type of the event that triggered the attempt.",
+            "example": "subscriber.created",
+            "title": "Event Type"
+          },
+          "error_message": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The failure reason, if the attempt failed. Includes the response status code and a snippet of the response body when the endpoint returned a non-2xx response.",
+            "example": "WebhookFailedError: Webhook returned 401: invalid signature",
+            "title": "Error Message"
+          },
+          "attempt_count": {
+            "default": 0,
+            "description": "The number of times this attempt has been retried.",
+            "example": 1,
+            "title": "Attempt Count",
+            "type": "integer"
+          },
+          "completion_date": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "When the attempt finished, if it has.",
+            "example": "2026-04-27T05:25:19.819Z",
+            "title": "Completion Date"
+          },
+          "duration_ms": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "How long the HTTP request took, in milliseconds.",
+            "example": 412,
+            "title": "Duration Ms"
           }
         },
         "required": [
@@ -18924,8 +19659,10 @@
           "fr",
           "de",
           "ne",
+          "nb-NO",
           "pl-PL",
           "pt-BR",
+          "pt-PT",
           "ru",
           "es",
           "tr",
@@ -20403,10 +21140,12 @@
       "StripeSubscription": {
         "properties": {
           "subscription_id": {
+            "description": "The Stripe subscription ID (e.g. `sub_...`).",
             "title": "Subscription Id",
             "type": "string"
           },
           "url": {
+            "description": "A deep link to the subscription in the Stripe dashboard.",
             "title": "Url",
             "type": "string"
           },
@@ -20426,21 +21165,33 @@
                 "type": "null"
               }
             ],
+            "description": "When the subscription ended, or null if still active.",
             "title": "Ending Date"
           },
           "amount": {
-            "title": "Amount",
-            "type": "integer"
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The subscription amount in the smallest currency unit (e.g. cents). Null for tiered-pricing plans.",
+            "title": "Amount"
           },
           "currency": {
+            "description": "The three-letter ISO currency code (e.g. `usd`).",
             "title": "Currency",
             "type": "string"
           },
           "cadence": {
+            "description": "The billing cadence (e.g. `month`, `year`).",
             "title": "Cadence",
             "type": "string"
           },
           "status": {
+            "description": "The Stripe subscription status (e.g. `active`, `canceled`, `past_due`).",
             "title": "Status",
             "type": "string"
           },
@@ -20489,7 +21240,6 @@
           "subscription_id",
           "url",
           "creation_date",
-          "amount",
           "currency",
           "cadence",
           "status"
@@ -20572,7 +21322,9 @@
           "unban_subscribers",
           "send_reminders",
           "unsubscribe_subscribers",
+          "delete_attachments",
           "delete_emails",
+          "delete_images",
           "update_email_types",
           "update_archival_modes",
           "update_commenting_modes",

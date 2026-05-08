@@ -281,9 +281,12 @@
         "id": "sub_0k28edc3fw896bp4mrhc535z5k",
         "creation_date": "2020-09-29T00:00:00+00:00",
         "avatar_url": "",
+        "bounce_date": null,
+        "bounce_reason": null,
         "churn_date": null,
         "commenting_disabled": false,
         "email_address": "telemachus@buttondown.email",
+        "gift_subscription_end_date": null,
         "gift_subscription_message": "",
         "ip_address": null,
         "last_click_date": null,
@@ -330,9 +333,12 @@
         "id": "sub_0k28edc3fw896bp4mrhc535z5k",
         "creation_date": "2020-09-29T00:00:00+00:00",
         "avatar_url": "",
+        "bounce_date": null,
+        "bounce_reason": null,
         "churn_date": null,
         "commenting_disabled": false,
         "email_address": "telemachus@buttondown.email",
+        "gift_subscription_end_date": null,
         "gift_subscription_message": "",
         "ip_address": null,
         "last_click_date": null,
@@ -379,9 +385,12 @@
         "id": "sub_0k28edc3fw896bp4mrhc535z5k",
         "creation_date": "2020-09-29T00:00:00+00:00",
         "avatar_url": "",
+        "bounce_date": null,
+        "bounce_reason": null,
         "churn_date": null,
         "commenting_disabled": false,
         "email_address": "telemachus@buttondown.email",
+        "gift_subscription_end_date": null,
         "gift_subscription_message": "",
         "ip_address": null,
         "last_click_date": null,
@@ -693,9 +702,12 @@
           "id": "sub_0k28edc3fw896bp4mrhc535z5k",
           "creation_date": "2020-09-29T00:00:00+00:00",
           "avatar_url": "",
+          "bounce_date": null,
+          "bounce_reason": null,
           "churn_date": null,
           "commenting_disabled": false,
           "email_address": "telemachus@buttondown.email",
+          "gift_subscription_end_date": null,
           "gift_subscription_message": "",
           "ip_address": null,
           "last_click_date": null,
@@ -789,13 +801,13 @@
     {
       "description": "Tag",
       "object": {
+        "id": "sub_tag_0k28edc3fw896bp4mrhc535z5k",
+        "creation_date": "2020-09-29T00:00:00+00:00",
         "name": "VIP",
         "color": "#FFD700",
         "description": "VIP subscribers",
         "public_description": null,
         "subscriber_editable": false,
-        "id": "sub_tag_0k28edc3fw896bp4mrhc535z5k",
-        "creation_date": "2020-09-29T00:00:00+00:00",
         "secondary_id": 1
       }
     }
@@ -1090,7 +1102,12 @@
       "object": {
         "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
         "creation_date": "2020-09-29T00:00:00Z",
-        "status": "successful"
+        "status": "successful",
+        "event_type": null,
+        "error_message": null,
+        "attempt_count": 0,
+        "completion_date": null,
+        "duration_ms": null
       }
     },
     {
@@ -1098,7 +1115,12 @@
       "object": {
         "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb4",
         "creation_date": "2020-09-29T00:00:00Z",
-        "status": "failed"
+        "status": "failed",
+        "event_type": null,
+        "error_message": null,
+        "attempt_count": 0,
+        "completion_date": null,
+        "duration_ms": null
       }
     },
     {
@@ -1106,7 +1128,12 @@
       "object": {
         "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb5",
         "creation_date": "2020-09-29T00:00:00Z",
-        "status": "unattempted"
+        "status": "unattempted",
+        "event_type": null,
+        "error_message": null,
+        "attempt_count": 0,
+        "completion_date": null,
+        "duration_ms": null
       }
     }
   ],
@@ -1289,7 +1316,9 @@
             "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
             "url": "https://example.com",
             "status": "successful",
-            "webhook_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3"
+            "webhook_id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+            "creation_date": "2020-09-29T00:00:00+00:00",
+            "error_message": null
           }
         ],
         "automation_attempts": [
@@ -1311,8 +1340,8 @@
       "object": {
         "subscription_id": "sub_whatever",
         "url": "https://dashboard.stripe.com/subscriptions/sub_whatever",
-        "creation_date": "2023-01-01T06:00:00",
-        "ending_date": "2023-01-01T06:00:00",
+        "creation_date": "2023-01-01T00:00:00",
+        "ending_date": "2023-01-01T00:00:00",
         "amount": 1000,
         "currency": "usd",
         "cadence": "month",
@@ -1564,7 +1593,7 @@
         "api_key_id": null,
         "api_key_label": null,
         "request_data": "{\"email\": \"test@example.com\"}",
-        "response_data": "null",
+        "response_data": null,
         "headers": {
           "X-Api-Version": "2024-08-01"
         }
@@ -1719,6 +1748,28 @@
           "reason_to_bad_subscribers": {},
           "new_tags": null
         }
+      }
+    }
+  ],
+  "CadenceMetadata": [
+    {
+      "description": "Daily at 9am",
+      "object": {
+        "time": "9"
+      }
+    },
+    {
+      "description": "Weekly on Monday at 1pm",
+      "object": {
+        "time": "13",
+        "weekday": "monday"
+      }
+    },
+    {
+      "description": "Monthly on the first day at 6pm",
+      "object": {
+        "time": "18",
+        "monthday": "firstday"
       }
     }
   ]
