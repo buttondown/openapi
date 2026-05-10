@@ -13314,6 +13314,8 @@
           "secondary_id": {
             "anyOf": [
               {
+                "maximum": 1000000000,
+                "minimum": 1,
                 "type": "integer"
               },
               {
@@ -13589,6 +13591,8 @@
           "secondary_id": {
             "anyOf": [
               {
+                "maximum": 1000000000,
+                "minimum": 1,
                 "type": "integer"
               },
               {
@@ -18704,7 +18708,7 @@
           },
           "secondary_id": {
             "description": "The secondary ID of the tag, used as a human-readable numeric identifier.",
-            "maximum": 2147483646,
+            "maximum": 1000000000,
             "minimum": 1,
             "title": "Secondary Id",
             "type": "integer"
@@ -18888,7 +18892,7 @@
           "secondary_id": {
             "anyOf": [
               {
-                "maximum": 2147483646,
+                "maximum": 1000000000,
                 "minimum": 1,
                 "type": "integer"
               },
