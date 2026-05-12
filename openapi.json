@@ -13203,6 +13203,87 @@
         "title": "ErrorMessage[EmailCreationErrorCode]",
         "type": "object"
       },
+      "EmailFilter": {
+        "properties": {
+          "field": {
+            "anyOf": [
+              {
+                "enum": [
+                  "subscriber.churn_date",
+                  "subscriber.click_rate",
+                  "subscriber.last_click_date",
+                  "subscriber.last_open_date",
+                  "subscriber.open_rate",
+                  "subscriber.price",
+                  "subscriber.source",
+                  "subscriber.status",
+                  "subscriber.subscription_date",
+                  "subscriber.tags",
+                  "subscriber.upgrade_date"
+                ],
+                "type": "string"
+              },
+              {
+                "pattern": "^subscriber\\.metadata\\..+$",
+                "type": "string"
+              }
+            ],
+            "description": "The subscriber attribute to evaluate. Must be a recognized field or a `subscriber.metadata.*` path.",
+            "title": "Field"
+          },
+          "operator": {
+            "$ref": "#/components/schemas/Operator"
+          },
+          "value": {
+            "description": "The value to compare the field against.",
+            "title": "Value",
+            "type": "string"
+          }
+        },
+        "required": [
+          "field",
+          "operator",
+          "value"
+        ],
+        "title": "EmailFilter",
+        "type": "object"
+      },
+      "EmailFilterGroup": {
+        "properties": {
+          "filters": {
+            "description": "The leaf-level filters to apply to the audience.",
+            "items": {
+              "$ref": "#/components/schemas/EmailFilter"
+            },
+            "title": "Filters",
+            "type": "array"
+          },
+          "groups": {
+            "description": "The nested groups to apply to the audience.",
+            "items": {
+              "$ref": "#/components/schemas/EmailFilterGroup"
+            },
+            "title": "Groups",
+            "type": "array"
+          },
+          "predicate": {
+            "description": "The logical operator to use when combining filters.",
+            "enum": [
+              "and",
+              "or"
+            ],
+            "title": "Predicate",
+            "type": "string"
+          }
+        },
+        "required": [
+          "filters",
+          "groups",
+          "predicate"
+        ],
+        "title": "EmailFilterGroup",
+        "type": "object"
+      },
       "EmailInput": {
         "properties": {
           "attachments": {
@@ -13328,7 +13409,7 @@
           "filters": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/FilterGroup"
+                "$ref": "#/components/schemas/EmailFilterGroup"
               }
             ],
             "default": {
@@ -13605,7 +13686,7 @@
           "filters": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/FilterGroup"
+                "$ref": "#/components/schemas/EmailFilterGroup"
               },
               {
                 "type": "null"
