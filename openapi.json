@@ -28,6 +28,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve the account associated with the current API key",
@@ -79,6 +89,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all advertising units",
@@ -142,6 +162,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Create a new advertising unit",
@@ -221,6 +251,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Update an advertising unit's properties",
@@ -283,6 +323,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Delete an advertising unit",
@@ -334,6 +384,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all advertising slots",
@@ -396,6 +456,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Update an advertising slot's sponsor content",
@@ -468,6 +538,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve a specific API request by its ID",
@@ -705,6 +785,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all API requests",
@@ -773,6 +863,16 @@
           },
           "422": {
             "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -866,6 +966,16 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all attachments",
@@ -932,6 +1042,16 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve an attachment",
@@ -984,6 +1104,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Delete an attachment",
@@ -1035,6 +1165,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all automations",
@@ -1104,6 +1244,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Create a new automation",
@@ -1189,6 +1339,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve a specific automation by its ID",
@@ -1272,6 +1432,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Update an automation's properties",
@@ -1334,6 +1504,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Delete an automation",
@@ -1398,6 +1578,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Manually trigger an automation",
@@ -1459,6 +1649,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve analytics data for an automation",
@@ -1928,6 +2128,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Create a new bulk action",
@@ -2000,6 +2210,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve the status of a bulk action",
@@ -2081,6 +2301,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Create a new comment or reply to an existing comment. If subscriber_id is provided, the comment is attributed to that subscriber; otherwise it is attributed to the newsletter author.",
@@ -2222,6 +2452,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all comments",
@@ -2297,6 +2537,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve a specific comment by its ID",
@@ -2367,6 +2617,16 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Update a comment's status. Only the newsletter owner can call this.",
@@ -2426,6 +2686,16 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Delete a comment. Only the comment owner (subscriber) or the newsletter author can delete a comment.",
@@ -2477,6 +2747,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all Stripe coupons",
@@ -2548,6 +2828,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Create a new email",
@@ -2958,6 +3248,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all emails",
@@ -3043,6 +3343,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Update an email's properties",
@@ -3126,6 +3436,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve a specific email by its ID",
@@ -3178,6 +3498,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Delete an email",
@@ -3317,6 +3647,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve the edit history for a specific email",
@@ -3402,6 +3742,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve a specific historical version of an email's body",
@@ -3463,6 +3813,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve analytics for a specific email",
@@ -3549,6 +3909,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve rendered HTML for a specific email",
@@ -3613,6 +3983,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Send a draft email to specific recipients",
@@ -3757,6 +4137,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all events",
@@ -3835,6 +4225,16 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve a specific event by its ID",
@@ -3891,6 +4291,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorMessage_CreateExportErrorCode_"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
                 }
               }
             }
@@ -3953,6 +4363,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all exports",
@@ -4015,6 +4435,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve a specific export by its ID",
@@ -4086,6 +4516,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Create a new external feed",
@@ -4135,6 +4575,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all external feeds",
@@ -4220,6 +4670,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Update an external feed's properties",
@@ -4282,6 +4742,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Delete an external feed",
@@ -4355,6 +4825,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve a specific external feed by its ID",
@@ -4416,6 +4896,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Poll for new items in an external feed",
@@ -4500,6 +4990,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve items from an external feed",
@@ -4571,6 +5071,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Create a new form",
@@ -4700,6 +5210,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all forms",
@@ -4775,6 +5295,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve a specific form by its ID",
@@ -4848,6 +5378,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Update a form's properties",
@@ -4910,6 +5450,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Delete a form",
@@ -4975,6 +5525,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Upload an image",
@@ -5025,6 +5585,16 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -5101,6 +5671,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Update an image's metadata",
@@ -5163,6 +5743,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Delete an uploaded image",
@@ -5214,6 +5804,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all imports",
@@ -5273,6 +5873,16 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -5384,6 +5994,16 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve a specific import by its ID",
@@ -5467,6 +6087,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Update an import's properties",
@@ -5526,6 +6156,16 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Delete an import",
@@ -5577,6 +6217,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all newsletters",
@@ -5640,6 +6290,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Create a new newsletter",
@@ -5729,6 +6389,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Update a newsletter's settings",
@@ -5791,6 +6461,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Delete a newsletter",
@@ -6078,11 +6758,7 @@
         "tags": [
           "Ping"
         ],
-        "security": [
-          {
-            "ApiKeyAuth": []
-          }
-        ]
+        "security": []
       }
     },
     "/prices": {
@@ -6139,6 +6815,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all prices",
@@ -6188,6 +6874,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Create a new price",
@@ -6268,11 +6964,7 @@
         "tags": [
           "public"
         ],
-        "security": [
-          {
-            "ApiKeyAuth": []
-          }
-        ]
+        "security": []
       }
     },
     "/snippets": {
@@ -6333,6 +7025,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Create a new snippet",
@@ -6382,6 +7084,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all snippets",
@@ -6467,6 +7179,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve a single snippet.",
@@ -6540,6 +7262,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Update a snippet.",
@@ -6602,6 +7334,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Delete a snippet.",
@@ -6680,6 +7422,16 @@
           },
           "429": {
             "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -7442,6 +8194,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all subscribers",
@@ -7517,6 +8279,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve a specific subscriber by their ID or email address",
@@ -7569,6 +8341,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Delete a subscriber",
@@ -7638,6 +8420,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Update a subscriber's properties",
@@ -7702,6 +8494,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Send a confirmation reminder email to an unactivated subscriber",
@@ -7756,6 +8558,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Send a magic link email to a subscriber",
@@ -7836,6 +8648,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Send a specific email to a specific subscriber",
@@ -7897,6 +8719,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List subscribers referred by a specific subscriber",
@@ -7958,6 +8790,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List automation attempts for a specific subscriber",
@@ -8038,6 +8880,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Update the status of an automation attempt for a subscriber",
@@ -8109,6 +8961,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List Stripe subscriptions for a specific subscriber",
@@ -8255,6 +9117,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all survey responses",
@@ -8322,6 +9194,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Create a new survey response",
@@ -8394,6 +9276,16 @@
           },
           "404": {
             "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -8482,6 +9374,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Create a new survey",
@@ -8602,6 +9504,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all surveys",
@@ -8687,6 +9599,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve a specific survey by its ID",
@@ -8760,6 +9682,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Update a survey's properties",
@@ -8832,6 +9764,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Delete a survey",
@@ -9287,6 +10229,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Delete a tag",
@@ -9449,6 +10401,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Invite a new user to the newsletter",
@@ -9498,6 +10460,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all users",
@@ -9573,6 +10545,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve a specific user by its ID",
@@ -9625,6 +10607,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Delete a user",
@@ -9708,6 +10700,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Update a user's properties",
@@ -9789,6 +10791,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Create a new webhook",
@@ -9847,6 +10859,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "List all webhooks",
@@ -9922,6 +10944,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve a specific webhook by its ID",
@@ -9995,6 +11027,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Update a webhook's properties",
@@ -10057,6 +11099,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Delete a webhook",
@@ -10126,6 +11178,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Retrieve webhook attempts for a specific webhook",
@@ -10188,6 +11250,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
           }
         },
         "description": "Send a test event to a webhook",
