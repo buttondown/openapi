@@ -13742,6 +13742,19 @@
             "title": "Commenting Disabled",
             "type": "boolean"
           },
+          "country": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The ISO 3166-1 alpha-2 country code inferred from the subscriber's IP address at signup, if available.",
+            "example": "US",
+            "title": "Country"
+          },
           "email_address": {
             "description": "The email address of the subscriber.",
             "example": "telemachus@buttondown.email",
