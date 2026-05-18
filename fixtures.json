@@ -386,7 +386,8 @@
         "utm_campaign": "",
         "utm_medium": "",
         "utm_source": "",
-        "stripe_customer": null
+        "stripe_customer": null,
+        "stripe_subscription": null
       }
     },
     {
@@ -439,7 +440,8 @@
         "utm_campaign": "",
         "utm_medium": "",
         "utm_source": "",
-        "stripe_customer": null
+        "stripe_customer": null,
+        "stripe_subscription": null
       }
     },
     {
@@ -497,7 +499,8 @@
         "utm_campaign": "",
         "utm_medium": "",
         "utm_source": "",
-        "stripe_customer": null
+        "stripe_customer": null,
+        "stripe_subscription": null
       }
     }
   ],
@@ -810,7 +813,8 @@
           "utm_campaign": "",
           "utm_medium": "",
           "utm_source": "",
-          "stripe_customer": null
+          "stripe_customer": null,
+          "stripe_subscription": null
         },
         "survey": null,
         "email": null,

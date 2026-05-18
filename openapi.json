@@ -7624,16 +7624,19 @@
             "in": "query",
             "name": "expand",
             "schema": {
-              "description": "If provided, expand the given field. (Only supported fields: 'stripe_customer')",
+              "description": "If provided, expand the given field. (Supported: 'stripe_customer', 'stripe_subscription'.)",
               "items": {
-                "const": "stripe_customer",
+                "enum": [
+                  "stripe_customer",
+                  "stripe_subscription"
+                ],
                 "type": "string"
               },
               "title": "Expand",
               "type": "array"
             },
             "required": false,
-            "description": "If provided, expand the given field. (Only supported fields: 'stripe_customer')"
+            "description": "If provided, expand the given field. (Supported: 'stripe_customer', 'stripe_subscription'.)"
           },
           {
             "in": "query",
@@ -8237,7 +8240,10 @@
             "schema": {
               "default": [],
               "items": {
-                "const": "stripe_customer",
+                "enum": [
+                  "stripe_customer",
+                  "stripe_subscription"
+                ],
                 "type": "string"
               },
               "title": "Expand",
@@ -14130,7 +14136,21 @@
                 "type": "null"
               }
             ],
+            "description": "If expanded, the Stripe customer associated with this subscriber.",
             "title": "Stripe Customer"
+          },
+          "stripe_subscription": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "If expanded, the Stripe subscription backing this subscriber's paid subscription.",
+            "title": "Stripe Subscription"
           }
         },
         "required": [
