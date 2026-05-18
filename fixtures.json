@@ -229,7 +229,7 @@
         "creation_date": "2020-09-29T00:00:00+00:00",
         "identifier": "color",
         "question": "What's your favorite color?",
-        "response_count": 0,
+        "response_count": 11,
         "answers": [
           "Red",
           "Green",
@@ -250,7 +250,7 @@
         "creation_date": "2020-09-29T00:00:00+00:00",
         "identifier": "feedback",
         "question": "How can we improve?",
-        "response_count": 0,
+        "response_count": 11,
         "answers": [
           "More content",
           "Better content",
@@ -1227,6 +1227,7 @@
         "results": {
           "new_subscribers": 100,
           "updated_subscribers": null,
+          "updated_subscriber_emails": [],
           "existing_subscribers": 20,
           "reason_to_bad_subscribers": {
             "That email address is invalid.": [
@@ -1274,6 +1275,7 @@
         "results": {
           "new_subscribers": 100,
           "updated_subscribers": null,
+          "updated_subscriber_emails": [],
           "existing_subscribers": 20,
           "reason_to_bad_subscribers": {
             "That email address is invalid.": [
