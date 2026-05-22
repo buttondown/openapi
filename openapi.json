@@ -6582,6 +6582,19 @@
             "schema": {
               "description": "Filter notes by the type of object they are attached to.",
               "title": "Model Type",
+              "enum": [
+                "automation",
+                "comment",
+                "conversation",
+                "email",
+                "external_feed",
+                "socialmention",
+                "stripe_customer",
+                "subscriber",
+                "survey",
+                "tag",
+                "webmention"
+              ],
               "type": "string"
             },
             "required": false,
@@ -6591,12 +6604,14 @@
             "in": "query",
             "name": "model_id",
             "schema": {
-              "description": "Filter notes by the ID of the object they are attached to.",
+              "description": "Filter notes by the UUID or TypeID of the object they are attached to.",
               "title": "Model Id",
+              "maxLength": 50,
+              "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:permission|unsub_req|auth_tok|rec_code|webauthn|api_req|aut_att|ext_evt|str_cus|str_sub|sub_imp|sub_tag|adslot|em_dom|em_evt|em_imp|le_evt|str_pd|adsku|socmn|webmn|book|bulk|cnvs|edrc|form|hook|inbx|news|note|resp|rssi|snip|snpr|acc|att|aut|com|edr|exp|img|inv|mes|rss|smp|srv|sub|dr|em)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
               "type": "string"
             },
             "required": false,
-            "description": "Filter notes by the ID of the object they are attached to."
+            "description": "Filter notes by the UUID or TypeID of the object they are attached to."
           },
           {
             "in": "query",
@@ -6625,6 +6640,26 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -6637,16 +6672,6 @@
           },
           "409": {
             "description": "Conflict"
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
           },
           "422": {
             "description": "Unprocessable Entity",
@@ -18205,31 +18230,35 @@
           "body": {
             "description": "The text content of the note.",
             "example": "This subscriber upgraded to a paid plan.",
+            "minLength": 1,
+            "pattern": "[\\s\\S]*\\S[\\s\\S]*",
             "title": "Body",
             "type": "string"
           },
           "model_type": {
             "description": "The type of object this note is attached to (e.g., 'email', 'subscriber').",
             "enum": [
-              "email",
-              "subscriber",
-              "external_feed",
               "automation",
-              "survey",
-              "stripe_customer",
-              "tag",
               "comment",
               "conversation",
-              "webmention",
-              "socialmention"
+              "email",
+              "external_feed",
+              "socialmention",
+              "stripe_customer",
+              "subscriber",
+              "survey",
+              "tag",
+              "webmention"
             ],
             "example": "email",
             "title": "Model Type",
             "type": "string"
           },
           "model_id": {
-            "description": "The ID of the object this note is attached to.",
+            "description": "The UUID or TypeID of the object this note is attached to.",
             "example": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+            "maxLength": 50,
+            "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:permission|unsub_req|auth_tok|rec_code|webauthn|api_req|aut_att|ext_evt|str_cus|str_sub|sub_imp|sub_tag|adslot|em_dom|em_evt|em_imp|le_evt|str_pd|adsku|socmn|webmn|book|bulk|cnvs|edrc|form|hook|inbx|news|note|resp|rssi|snip|snpr|acc|att|aut|com|edr|exp|img|inv|mes|rss|smp|srv|sub|dr|em)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
             "title": "Model Id",
             "type": "string"
           },
@@ -18287,31 +18316,35 @@
           "body": {
             "description": "The text content of the note.",
             "example": "This subscriber upgraded to a paid plan.",
+            "minLength": 1,
+            "pattern": "[\\s\\S]*\\S[\\s\\S]*",
             "title": "Body",
             "type": "string"
           },
           "model_type": {
             "description": "The type of object this note is attached to (e.g., 'email', 'subscriber').",
             "enum": [
-              "email",
-              "subscriber",
-              "external_feed",
               "automation",
-              "survey",
-              "stripe_customer",
-              "tag",
               "comment",
               "conversation",
-              "webmention",
-              "socialmention"
+              "email",
+              "external_feed",
+              "socialmention",
+              "stripe_customer",
+              "subscriber",
+              "survey",
+              "tag",
+              "webmention"
             ],
             "example": "email",
             "title": "Model Type",
             "type": "string"
           },
           "model_id": {
-            "description": "The ID of the object this note is attached to.",
+            "description": "The UUID or TypeID of the object this note is attached to.",
             "example": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+            "maxLength": 50,
+            "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:permission|unsub_req|auth_tok|rec_code|webauthn|api_req|aut_att|ext_evt|str_cus|str_sub|sub_imp|sub_tag|adslot|em_dom|em_evt|em_imp|le_evt|str_pd|adsku|socmn|webmn|book|bulk|cnvs|edrc|form|hook|inbx|news|note|resp|rssi|snip|snpr|acc|att|aut|com|edr|exp|img|inv|mes|rss|smp|srv|sub|dr|em)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
             "title": "Model Id",
             "type": "string"
           },
