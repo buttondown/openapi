@@ -9406,6 +9406,16 @@
           "409": {
             "description": "Conflict"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -9467,7 +9477,7 @@
             "schema": {
               "description": "If provided, only return surveys without the given status.",
               "example": [
-                "disabled"
+                "inactive"
               ],
               "items": {
                 "$ref": "#/components/schemas/SurveyStatus"
@@ -9478,7 +9488,7 @@
             "required": false,
             "description": "If provided, only return surveys without the given status.",
             "example": [
-              "disabled"
+              "inactive"
             ]
           },
           {
@@ -9523,6 +9533,16 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -9535,6 +9555,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -9713,6 +9743,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -19519,22 +19559,27 @@
           },
           "identifier": {
             "description": "A newsletter-scoped slug used to reference this survey when embedding it in emails.",
+            "maxLength": 100,
             "title": "Identifier",
             "type": "string"
           },
           "question": {
             "description": "The survey question shown to subscribers.",
+            "maxLength": 500,
             "title": "Question",
             "type": "string"
           },
           "response_count": {
             "description": "The total number of responses this survey has received.",
+            "minimum": 0,
             "title": "Response Count",
             "type": "integer"
           },
           "answers": {
             "description": "The list of pre-defined answer choices. Order is preserved unless `randomize_answers` is true.",
             "items": {
+              "maxLength": 500,
+              "pattern": "^\\s*[A-Za-z0-9.,'!?()\\-]*[A-Za-z0-9][A-Za-z0-9 .,'!?()\\-]*\\s*$",
               "type": "string"
             },
             "title": "Answers",
@@ -19634,8 +19679,7 @@
       "CreateSurveyErrorCode": {
         "description": "Represents the type of error that occurred when creating a survey.\n\nHuman-readable error messages are provided in the `detail` field of the response;\nthese values are meant to be parseable by code or client logic.",
         "enum": [
-          "identifier_already_exists",
-          "not_enough_answers"
+          "identifier_already_exists"
         ],
         "title": "CreateSurveyErrorCode",
         "type": "string"
@@ -19672,10 +19716,13 @@
         "type": "object"
       },
       "SurveyInput": {
+        "additionalProperties": false,
         "properties": {
           "identifier": {
             "description": "A newsletter-scoped slug used to reference this survey when embedding it in emails.",
             "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9]+$",
             "title": "Identifier",
             "type": "string",
             "example": "color"
@@ -19683,6 +19730,7 @@
           "question": {
             "description": "The survey question shown to subscribers.",
             "maxLength": 500,
+            "pattern": "^\\s*[A-Za-z0-9.,'!?()\\-]*[A-Za-z0-9][A-Za-z0-9 .,'!?()\\-]*\\s*$",
             "title": "Question",
             "type": "string",
             "example": "What's your favorite color?"
@@ -19690,8 +19738,11 @@
           "answers": {
             "description": "The list of pre-defined answer choices. Order is preserved unless `randomize_answers` is true.",
             "items": {
+              "maxLength": 500,
+              "pattern": "^\\s*[A-Za-z0-9.,'!?()\\-]*[A-Za-z0-9][A-Za-z0-9 .,'!?()\\-]*\\s*$",
               "type": "string"
             },
+            "minItems": 2,
             "title": "Answers",
             "type": "array",
             "example": [
@@ -19783,8 +19834,6 @@
       },
       "UpdateSurveyErrorCode": {
         "enum": [
-          "answers_empty",
-          "not_enough_answers",
           "survey_has_responses"
         ],
         "title": "UpdateSurveyErrorCode",
@@ -19792,6 +19841,7 @@
         "description": "An enumeration."
       },
       "SurveyUpdateInput": {
+        "additionalProperties": false,
         "properties": {
           "notes": {
             "anyOf": [
@@ -19809,8 +19859,11 @@
             "anyOf": [
               {
                 "items": {
+                  "maxLength": 500,
+                  "pattern": "^\\s*[A-Za-z0-9.,'!?()\\-]*[A-Za-z0-9][A-Za-z0-9 .,'!?()\\-]*\\s*$",
                   "type": "string"
                 },
+                "minItems": 2,
                 "type": "array"
               },
               {
