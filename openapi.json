@@ -11649,16 +11649,10 @@
       "AdvertisingUnitInput": {
         "properties": {
           "title": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
             "description": "The title of the advertising unit.",
-            "title": "Title"
+            "maxLength": 100,
+            "title": "Title",
+            "type": "string"
           },
           "description": {
             "anyOf": [
@@ -11727,6 +11721,9 @@
             "type": "integer"
           }
         },
+        "required": [
+          "title"
+        ],
         "title": "AdvertisingUnitInput",
         "type": "object"
       },
