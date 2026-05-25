@@ -11655,16 +11655,10 @@
             "type": "string"
           },
           "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "default": "",
             "description": "A description of the advertising unit.",
-            "title": "Description"
+            "title": "Description",
+            "type": "string"
           },
           "behavior": {
             "default": "",
@@ -14547,12 +14541,9 @@
             "description": "Controls who can view this email in the archive."
           },
           "email_type": {
-            "anyOf": [
+            "allOf": [
               {
                 "$ref": "#/components/schemas/EmailType"
-              },
-              {
-                "type": "null"
               }
             ],
             "default": "public",
@@ -14612,20 +14603,12 @@
             "description": "Controls whether subscribers can comment on this email."
           },
           "related_email_ids": {
-            "anyOf": [
-              {
-                "items": {
-                  "type": "string"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "default": [],
             "description": "IDs of emails related to this one. Shown at the bottom of the email and archive pages.",
-            "title": "Related Email Ids"
+            "items": {
+              "type": "string"
+            },
+            "title": "Related Email Ids",
+            "type": "array"
           },
           "featured": {
             "default": false,
@@ -15743,34 +15726,20 @@
             "type": "string"
           },
           "label": {
-            "anyOf": [
-              {
-                "maxLength": 255,
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
             "default": "",
             "description": "An optional internal label for this feed.",
-            "title": "Label"
+            "maxLength": 255,
+            "title": "Label",
+            "type": "string"
           },
           "metadata": {
-            "anyOf": [
-              {
-                "additionalProperties": true,
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "additionalProperties": true,
             "description": "Metadata to be passed to emails rendered by this RSS feed.",
             "example": {
               "foo": "bar"
             },
-            "title": "Metadata"
+            "title": "Metadata",
+            "type": "object"
           },
           "skip_old_items": {
             "default": false,
@@ -20346,32 +20315,18 @@
             "type": "string"
           },
           "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
             "default": "",
             "description": "An optional description of the webhook, for reference.",
             "example": "Trigger when an email is created to notify in Slack.",
-            "title": "Description"
+            "title": "Description",
+            "type": "string"
           },
           "signing_key": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
             "default": "",
             "description": "Optional HMAC signing key for webhook verification. When set, webhook requests will include an X-Buttondown-Signature header with sha256=<signature>.",
             "example": "",
-            "title": "Signing Key"
+            "title": "Signing Key",
+            "type": "string"
           }
         },
         "required": [
@@ -20425,32 +20380,18 @@
             "type": "string"
           },
           "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
             "default": "",
             "description": "An optional description of the webhook, for reference.",
             "example": "Trigger when an email is created to notify in Slack.",
-            "title": "Description"
+            "title": "Description",
+            "type": "string"
           },
           "signing_key": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
             "default": "",
             "description": "Optional HMAC signing key for webhook verification. When set, webhook requests will include an X-Buttondown-Signature header with sha256=<signature>.",
             "example": "",
-            "title": "Signing Key"
+            "title": "Signing Key",
+            "type": "string"
           }
         },
         "required": [
