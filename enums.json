@@ -1235,12 +1235,12 @@
       "variant": "warning"
     },
     "processed": {
-      "description": "An email has been created for this item.",
+      "description": "Items in an RSS feed are marked as processed once Buttondown has created an email for them. Depending on the feed's behavior, the email is either saved as a draft for the author to edit or scheduled to send automatically.",
       "name": "Processed",
       "variant": "success"
     },
     "queued": {
-      "description": "Queued.",
+      "description": "Items in an RSS feed are marked as queued once Buttondown has discovered them and determined they should be turned into an email. Queued items will be converted into an email on the next scheduled run for the feed's cadence.",
       "name": "Queued",
       "variant": "info"
     },
