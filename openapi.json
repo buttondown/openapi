@@ -19545,7 +19545,6 @@
             "description": "The list of pre-defined answer choices. Order is preserved unless `randomize_answers` is true.",
             "items": {
               "maxLength": 500,
-              "pattern": "^\\s*[A-Za-z0-9.,'!?()\\-]*[A-Za-z0-9][A-Za-z0-9 .,'!?()\\-]*\\s*$",
               "type": "string"
             },
             "title": "Answers",
@@ -19696,7 +19695,7 @@
           "question": {
             "description": "The survey question shown to subscribers.",
             "maxLength": 500,
-            "pattern": "^\\s*[A-Za-z0-9.,'!?()\\-]*[A-Za-z0-9][A-Za-z0-9 .,'!?()\\-]*\\s*$",
+            "pattern": "^\\s*[A-Za-z0-9.,'!?()\\-/]*[A-Za-z0-9][A-Za-z0-9 .,'!?()\\-/]*\\s*$",
             "title": "Question",
             "type": "string",
             "example": "What's your favorite color?"
@@ -19705,7 +19704,7 @@
             "description": "The list of pre-defined answer choices. Order is preserved unless `randomize_answers` is true.",
             "items": {
               "maxLength": 500,
-              "pattern": "^\\s*[A-Za-z0-9.,'!?()\\-]*[A-Za-z0-9][A-Za-z0-9 .,'!?()\\-]*\\s*$",
+              "pattern": "^\\s*[A-Za-z0-9.,'!?()\\-/]*[A-Za-z0-9][A-Za-z0-9 .,'!?()\\-/]*\\s*$",
               "type": "string"
             },
             "minItems": 2,
@@ -19826,7 +19825,7 @@
               {
                 "items": {
                   "maxLength": 500,
-                  "pattern": "^\\s*[A-Za-z0-9.,'!?()\\-]*[A-Za-z0-9][A-Za-z0-9 .,'!?()\\-]*\\s*$",
+                  "pattern": "^\\s*[A-Za-z0-9.,'!?()\\-/]*[A-Za-z0-9][A-Za-z0-9 .,'!?()\\-/]*\\s*$",
                   "type": "string"
                 },
                 "minItems": 2,
