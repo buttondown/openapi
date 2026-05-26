@@ -9024,20 +9024,22 @@
             "in": "query",
             "name": "email_id",
             "schema": {
-              "description": "If provided, only return responses made to the given [email(s)](https://docs.buttondown.com/api-emails-introduction).",
+              "description": "If provided, only return responses made to the given email ID, automation ID, or arbitrary source string.",
               "example": [
-                "email_abc123"
+                "em_01jv2m9q8r7s6t5w4x3y2z1abc"
               ],
               "title": "Email Id",
               "items": {
+                "maxLength": 100,
+                "minLength": 1,
                 "type": "string"
               },
               "type": "array"
             },
             "required": false,
-            "description": "If provided, only return responses made to the given [email(s)](https://docs.buttondown.com/api-emails-introduction).",
+            "description": "If provided, only return responses made to the given email ID, automation ID, or arbitrary source string.",
             "example": [
-              "email_abc123"
+              "em_01jv2m9q8r7s6t5w4x3y2z1abc"
             ]
           },
           {
@@ -9046,10 +9048,12 @@
             "schema": {
               "description": "If provided, only return responses made by the given [subscriber(s)](https://docs.buttondown.com/api-subscribers-introduction).",
               "example": [
-                "sub_abc123"
+                "sub_01jv2m9q8r7s6t5w4x3y2z1abc"
               ],
               "title": "Subscriber Id",
               "items": {
+                "maxLength": 50,
+                "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:sub)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
                 "type": "string"
               },
               "type": "array"
@@ -9057,7 +9061,7 @@
             "required": false,
             "description": "If provided, only return responses made by the given [subscriber(s)](https://docs.buttondown.com/api-subscribers-introduction).",
             "example": [
-              "sub_abc123"
+              "sub_01jv2m9q8r7s6t5w4x3y2z1abc"
             ]
           },
           {
@@ -9066,10 +9070,12 @@
             "schema": {
               "description": "If provided, only return responses made to the given [survey(s)](https://docs.buttondown.com/api-surveys-introduction).",
               "example": [
-                "survey_abc123"
+                "srv_01jv2m9q8r7s6t5w4x3y2z1abc"
               ],
               "title": "Survey Id",
               "items": {
+                "maxLength": 50,
+                "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:srv)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
                 "type": "string"
               },
               "type": "array"
@@ -9077,7 +9083,7 @@
             "required": false,
             "description": "If provided, only return responses made to the given [survey(s)](https://docs.buttondown.com/api-surveys-introduction).",
             "example": [
-              "survey_abc123"
+              "srv_01jv2m9q8r7s6t5w4x3y2z1abc"
             ]
           },
           {
@@ -9086,7 +9092,7 @@
             "schema": {
               "description": "If provided, only return responses made after the given date.",
               "title": "Creation Date  Start",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -9098,7 +9104,7 @@
             "schema": {
               "description": "If provided, only return responses made before the given date.",
               "title": "Creation Date  End",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -9149,6 +9155,16 @@
           "409": {
             "description": "Conflict"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -9198,7 +9214,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
+                  "$ref": "#/components/schemas/ErrorMessage_CreateSurveyResponseErrorCode_"
                 }
               }
             }
@@ -9225,6 +9241,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -9311,6 +9337,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
                 }
               }
             }
@@ -19420,6 +19456,7 @@
           },
           "answer": {
             "description": "The answer given to the survey.",
+            "maxLength": 500,
             "title": "Answer",
             "type": "string"
           },
@@ -19595,21 +19632,80 @@
         "title": "Survey",
         "type": "object"
       },
+      "CreateSurveyResponseErrorCode": {
+        "enum": [
+          "invalid_input"
+        ],
+        "title": "CreateSurveyResponseErrorCode",
+        "type": "string",
+        "description": "An enumeration."
+      },
+      "ErrorMessage_CreateSurveyResponseErrorCode_": {
+        "properties": {
+          "code": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CreateSurveyResponseErrorCode"
+              }
+            ],
+            "description": "The error code."
+          },
+          "detail": {
+            "description": "A human-readable description of the error.",
+            "title": "Detail",
+            "type": "string"
+          },
+          "metadata": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "default": {},
+            "description": "Additional context about the error.",
+            "title": "Metadata",
+            "type": "object"
+          }
+        },
+        "required": [
+          "detail"
+        ],
+        "title": "ErrorMessage[CreateSurveyResponseErrorCode]",
+        "type": "object"
+      },
       "ResponseInput": {
+        "additionalProperties": false,
         "properties": {
           "subscriber_id": {
+            "description": "The subscriber who submitted the response.",
+            "example": [
+              "sub_01jv2m9q8r7s6t5w4x3y2z1abc"
+            ],
+            "maxLength": 50,
+            "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:sub)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
             "title": "Subscriber Id",
             "type": "string"
           },
           "survey_id": {
+            "description": "The survey being answered.",
+            "example": [
+              "srv_01jv2m9q8r7s6t5w4x3y2z1abc"
+            ],
+            "maxLength": 50,
+            "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:srv)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
             "title": "Survey Id",
             "type": "string"
           },
           "email_id": {
+            "description": "The email ID, automation ID, or arbitrary source string where the survey was answered.",
+            "example": "em_01jv2m9q8r7s6t5w4x3y2z1abc",
+            "maxLength": 100,
+            "minLength": 1,
             "title": "Email Id",
             "type": "string"
           },
           "answer": {
+            "description": "The 1-based index of the selected answer in the survey's `answers` list.",
+            "example": 1,
+            "minimum": 1,
             "title": "Answer",
             "type": "integer"
           }
@@ -19624,6 +19720,7 @@
         "type": "object"
       },
       "ResponseUpdateInput": {
+        "additionalProperties": false,
         "properties": {
           "text": {
             "anyOf": [
