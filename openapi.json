@@ -812,17 +812,7 @@
       "post": {
         "operationId": "create_attachment",
         "summary": "Create Attachment",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "name",
-            "schema": {
-              "title": "Name",
-              "type": "string"
-            },
-            "required": false
-          }
-        ],
+        "parameters": [],
         "responses": {
           "201": {
             "description": "Created",
@@ -866,7 +856,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
                 }
               }
             }
@@ -895,12 +885,23 @@
                     "format": "binary",
                     "title": "File",
                     "type": "string"
+                  },
+                  "name": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "title": "Name"
                   }
                 },
                 "required": [
                   "file"
                 ],
-                "title": "FileParams",
+                "title": "MultiPartBodyParams",
                 "type": "object"
               }
             }
@@ -922,14 +923,22 @@
             "name": "ids",
             "schema": {
               "description": "If provided, only return attachments matching the given IDs.",
+              "example": [
+                "att_01h8xg4j3k2m1n0p9q8r7s6t5v"
+              ],
               "title": "Ids",
               "items": {
+                "maxLength": 50,
+                "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:att)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
                 "type": "string"
               },
               "type": "array"
             },
             "required": false,
-            "description": "If provided, only return attachments matching the given IDs."
+            "description": "If provided, only return attachments matching the given IDs.",
+            "example": [
+              "att_01h8xg4j3k2m1n0p9q8r7s6t5v"
+            ]
           },
           {
             "in": "query",
@@ -963,6 +972,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
                 }
               }
             }
@@ -12262,6 +12281,7 @@
           "name": {
             "description": "The name of the attachment.",
             "example": "newsletter-guide.pdf",
+            "maxLength": 255,
             "title": "Name",
             "type": "string"
           },
@@ -12274,6 +12294,8 @@
           "size": {
             "description": "The size of the attachment in bytes.",
             "example": 1000,
+            "maximum": 1048576,
+            "minimum": 0,
             "title": "Size",
             "type": "integer"
           }
@@ -12286,6 +12308,59 @@
           "size"
         ],
         "title": "Attachment",
+        "type": "object"
+      },
+      "ValidationErrorDetail": {
+        "properties": {
+          "type": {
+            "description": "The type of validation error.",
+            "title": "Type",
+            "type": "string"
+          },
+          "loc": {
+            "description": "The location of the error in the request.",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "title": "Loc",
+            "type": "array"
+          },
+          "msg": {
+            "description": "A human-readable error message.",
+            "title": "Msg",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "loc",
+          "msg"
+        ],
+        "title": "ValidationErrorDetail",
+        "type": "object"
+      },
+      "ValidationErrorMessage": {
+        "properties": {
+          "detail": {
+            "description": "A list of validation errors.",
+            "items": {
+              "$ref": "#/components/schemas/ValidationErrorDetail"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "required": [
+          "detail"
+        ],
+        "title": "ValidationErrorMessage",
         "type": "object"
       },
       "Action": {
@@ -12956,59 +13031,6 @@
           "title"
         ],
         "title": "Book",
-        "type": "object"
-      },
-      "ValidationErrorDetail": {
-        "properties": {
-          "type": {
-            "description": "The type of validation error.",
-            "title": "Type",
-            "type": "string"
-          },
-          "loc": {
-            "description": "The location of the error in the request.",
-            "items": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "integer"
-                }
-              ]
-            },
-            "title": "Loc",
-            "type": "array"
-          },
-          "msg": {
-            "description": "A human-readable error message.",
-            "title": "Msg",
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "loc",
-          "msg"
-        ],
-        "title": "ValidationErrorDetail",
-        "type": "object"
-      },
-      "ValidationErrorMessage": {
-        "properties": {
-          "detail": {
-            "description": "A list of validation errors.",
-            "items": {
-              "$ref": "#/components/schemas/ValidationErrorDetail"
-            },
-            "title": "Detail",
-            "type": "array"
-          }
-        },
-        "required": [
-          "detail"
-        ],
-        "title": "ValidationErrorMessage",
         "type": "object"
       },
       "BookInput": {
