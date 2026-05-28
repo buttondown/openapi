@@ -12294,7 +12294,6 @@
           "size": {
             "description": "The size of the attachment in bytes.",
             "example": 1000,
-            "maximum": 1048576,
             "minimum": 0,
             "title": "Size",
             "type": "integer"
