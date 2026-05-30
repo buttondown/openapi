@@ -9043,22 +9043,44 @@
             "in": "query",
             "name": "email_id",
             "schema": {
-              "description": "If provided, only return responses made to the given email ID, automation ID, or arbitrary source string.",
+              "description": "If provided, only return responses submitted from the given email ID(s).",
               "example": [
                 "em_01jv2m9q8r7s6t5w4x3y2z1abc"
               ],
               "title": "Email Id",
               "items": {
-                "maxLength": 100,
-                "minLength": 1,
+                "maxLength": 50,
+                "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:em)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
                 "type": "string"
               },
               "type": "array"
             },
             "required": false,
-            "description": "If provided, only return responses made to the given email ID, automation ID, or arbitrary source string.",
+            "description": "If provided, only return responses submitted from the given email ID(s).",
             "example": [
               "em_01jv2m9q8r7s6t5w4x3y2z1abc"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "automation_id",
+            "schema": {
+              "description": "If provided, only return responses submitted from the given automation ID(s).",
+              "example": [
+                "aut_01jv2m9q8r7s6t5w4x3y2z1abc"
+              ],
+              "title": "Automation Id",
+              "items": {
+                "maxLength": 50,
+                "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:aut)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "required": false,
+            "description": "If provided, only return responses submitted from the given automation ID(s).",
+            "example": [
+              "aut_01jv2m9q8r7s6t5w4x3y2z1abc"
             ]
           },
           {
@@ -9081,6 +9103,28 @@
             "description": "If provided, only return responses made by the given [subscriber(s)](https://docs.buttondown.com/api-subscribers-introduction).",
             "example": [
               "sub_01jv2m9q8r7s6t5w4x3y2z1abc"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "source",
+            "schema": {
+              "description": "If provided, only return responses submitted from the given arbitrary source string(s).",
+              "example": [
+                "landing-page"
+              ],
+              "title": "Source",
+              "items": {
+                "maxLength": 100,
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "required": false,
+            "description": "If provided, only return responses submitted from the given arbitrary source string(s).",
+            "example": [
+              "landing-page"
             ]
           },
           {
