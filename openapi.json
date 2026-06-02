@@ -1264,6 +1264,16 @@
           "409": {
             "description": "Conflict"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -1451,6 +1461,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -12698,11 +12718,47 @@
         "title": "ErrorMessage[AutomationCreationErrorCode]",
         "type": "object"
       },
+      "ActionInput": {
+        "additionalProperties": false,
+        "description": "Request payload for an action to perform when the automation's trigger fires.",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/AutomationActionType",
+            "description": "The type of action to perform."
+          },
+          "metadata": {
+            "additionalProperties": true,
+            "description": "Configuration specific to the action type.",
+            "maxProperties": 100,
+            "title": "Metadata",
+            "type": "object"
+          },
+          "timing": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TimingInput"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "When to execute this action. Defaults to immediate if not specified."
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "title": "ActionInput",
+        "type": "object"
+      },
       "AutomationInput": {
+        "additionalProperties": false,
         "properties": {
           "name": {
             "description": "The name of the automation.",
             "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[ -~]*[A-Za-z0-9][ -~]*$",
             "title": "Name",
             "type": "string"
           },
@@ -12713,8 +12769,9 @@
           "actions": {
             "description": "The actions to perform when the trigger fires.",
             "items": {
-              "$ref": "#/components/schemas/Action"
+              "$ref": "#/components/schemas/ActionInput"
             },
+            "maxItems": 25,
             "title": "Actions",
             "type": "array"
           },
@@ -12723,11 +12780,12 @@
             "description": "Conditions that must be met for the automation to run."
           },
           "metadata": {
-            "additionalProperties": {
-              "type": "string"
-            },
-            "default": {},
+            "additionalProperties": true,
             "description": "Additional metadata for the automation.",
+            "maxProperties": 100,
+            "propertyNames": {
+              "maxLength": 100
+            },
             "title": "Metadata",
             "type": "object"
           },
@@ -12747,12 +12805,93 @@
         "title": "AutomationInput",
         "type": "object"
       },
+      "DelayInput": {
+        "additionalProperties": false,
+        "description": "Request payload configuration for delaying an automation action.",
+        "properties": {
+          "value": {
+            "description": "The number of time units to delay.",
+            "maxLength": 16,
+            "minLength": 1,
+            "title": "Value",
+            "type": "string"
+          },
+          "unit": {
+            "description": "The unit of time for the delay.",
+            "enum": [
+              "minutes",
+              "hours",
+              "days",
+              "weeks"
+            ],
+            "title": "Unit",
+            "type": "string"
+          },
+          "time_of_day": {
+            "anyOf": [
+              {
+                "enum": [
+                  "morning",
+                  "evening",
+                  ""
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "If set, the action will be executed at this time of day after the delay has passed.",
+            "title": "Time Of Day"
+          }
+        },
+        "required": [
+          "value",
+          "unit"
+        ],
+        "title": "DelayInput",
+        "type": "object"
+      },
+      "TimingInput": {
+        "additionalProperties": false,
+        "description": "Request payload controls for when an automation action executes.",
+        "properties": {
+          "time": {
+            "description": "Whether the action should execute immediately or after a delay.",
+            "enum": [
+              "immediate",
+              "delay"
+            ],
+            "title": "Time",
+            "type": "string"
+          },
+          "delay": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DelayInput"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The delay configuration. Required when `time` is `delay`; null when `time` is `immediate`."
+          }
+        },
+        "required": [
+          "time"
+        ],
+        "title": "TimingInput",
+        "type": "object"
+      },
       "AutomationUpdateInput": {
+        "additionalProperties": false,
         "properties": {
           "name": {
             "anyOf": [
               {
                 "maxLength": 100,
+                "minLength": 1,
+                "pattern": "^[ -~]*[A-Za-z0-9][ -~]*$",
                 "type": "string"
               },
               {
@@ -12787,7 +12926,7 @@
           "timing": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/Timing"
+                "$ref": "#/components/schemas/TimingInput"
               },
               {
                 "type": "null"
@@ -12799,8 +12938,9 @@
             "anyOf": [
               {
                 "items": {
-                  "$ref": "#/components/schemas/Action"
+                  "$ref": "#/components/schemas/ActionInput"
                 },
+                "maxItems": 25,
                 "type": "array"
               },
               {
@@ -12825,6 +12965,10 @@
             "anyOf": [
               {
                 "additionalProperties": true,
+                "maxProperties": 100,
+                "propertyNames": {
+                  "maxLength": 100
+                },
                 "type": "object"
               },
               {
