@@ -6646,7 +6646,7 @@
               "description": "Filter notes by the UUID or TypeID of the object they are attached to.",
               "title": "Model Id",
               "maxLength": 50,
-              "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:permission|unsub_req|auth_tok|rec_code|webauthn|api_req|aut_att|ext_evt|str_cus|str_sub|sub_imp|sub_tag|adslot|em_dom|em_evt|em_imp|le_evt|str_pd|adsku|socmn|webmn|book|bulk|cnvs|edrc|form|hook|inbx|news|note|resp|rssi|snip|snpr|acc|att|aut|com|edr|exp|img|inv|mes|rss|smp|srv|sub|dr|em)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
+              "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:permission|unsub_req|auth_tok|rec_code|webauthn|api_req|aut_att|ext_evt|str_cus|str_sub|sub_imp|sub_tag|adslot|em_dom|em_evt|em_imp|le_evt|str_pd|adsku|socmn|webmn|book|bulk|cnvs|form|hook|inbx|news|note|resp|rssi|snip|snpr|acc|att|aut|com|exp|img|inv|mes|rss|smp|srv|sub|dr|em)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
               "type": "string"
             },
             "required": false,
@@ -13671,15 +13671,6 @@
             "$ref": "#/components/schemas/EmailCommentingMode",
             "description": "Controls whether subscribers can comment on this email."
           },
-          "review_mode": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ReviewMode"
-              }
-            ],
-            "default": "disabled",
-            "description": "The draft review mode for the email. Use `unlisted` to allow draft comments via link, or `disabled` to turn draft comments off."
-          },
           "description": {
             "description": "A human-readable description of the email, used for archives and SEO.",
             "title": "Description",
@@ -13939,15 +13930,6 @@
         "title": "FirewallReasonCode",
         "type": "string",
         "description": "An enumeration."
-      },
-      "ReviewMode": {
-        "description": "Represents the review mode of an email.",
-        "enum": [
-          "disabled",
-          "unlisted"
-        ],
-        "title": "ReviewMode",
-        "type": "string"
       },
       "StripeCoupon": {
         "properties": {
@@ -15134,15 +15116,6 @@
               }
             ],
             "description": "Controls whether subscribers can comment on this email."
-          },
-          "review_mode": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ReviewMode"
-              }
-            ],
-            "default": "disabled",
-            "description": "The draft review mode for the email. Use `unlisted` to allow draft comments via link, or `disabled` to turn draft comments off."
           },
           "related_email_ids": {
             "anyOf": [
@@ -18512,7 +18485,7 @@
             "description": "The UUID or TypeID of the object this note is attached to.",
             "example": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
             "maxLength": 50,
-            "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:permission|unsub_req|auth_tok|rec_code|webauthn|api_req|aut_att|ext_evt|str_cus|str_sub|sub_imp|sub_tag|adslot|em_dom|em_evt|em_imp|le_evt|str_pd|adsku|socmn|webmn|book|bulk|cnvs|edrc|form|hook|inbx|news|note|resp|rssi|snip|snpr|acc|att|aut|com|edr|exp|img|inv|mes|rss|smp|srv|sub|dr|em)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
+            "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:permission|unsub_req|auth_tok|rec_code|webauthn|api_req|aut_att|ext_evt|str_cus|str_sub|sub_imp|sub_tag|adslot|em_dom|em_evt|em_imp|le_evt|str_pd|adsku|socmn|webmn|book|bulk|cnvs|form|hook|inbx|news|note|resp|rssi|snip|snpr|acc|att|aut|com|exp|img|inv|mes|rss|smp|srv|sub|dr|em)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
             "title": "Model Id",
             "type": "string"
           },
@@ -18598,7 +18571,7 @@
             "description": "The UUID or TypeID of the object this note is attached to.",
             "example": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
             "maxLength": 50,
-            "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:permission|unsub_req|auth_tok|rec_code|webauthn|api_req|aut_att|ext_evt|str_cus|str_sub|sub_imp|sub_tag|adslot|em_dom|em_evt|em_imp|le_evt|str_pd|adsku|socmn|webmn|book|bulk|cnvs|edrc|form|hook|inbx|news|note|resp|rssi|snip|snpr|acc|att|aut|com|edr|exp|img|inv|mes|rss|smp|srv|sub|dr|em)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
+            "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:permission|unsub_req|auth_tok|rec_code|webauthn|api_req|aut_att|ext_evt|str_cus|str_sub|sub_imp|sub_tag|adslot|em_dom|em_evt|em_imp|le_evt|str_pd|adsku|socmn|webmn|book|bulk|cnvs|form|hook|inbx|news|note|resp|rssi|snip|snpr|acc|att|aut|com|exp|img|inv|mes|rss|smp|srv|sub|dr|em)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
             "title": "Model Id",
             "type": "string"
           },
