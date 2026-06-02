@@ -13240,6 +13240,17 @@
       "BulkAction": {
         "description": "A bulk action represents, well, a bulk action. It is used to perform\nactions on a large number of objects at once. For example, you can\nuse it to delete a large number of emails, or to unsubscribe a large\nnumber of subscribers. The actions within a bulk action are processed\nserially by Buttondown; this should be considered an ergonomic way to\nbatch API calls across the network rather than a net-new piece of functionality\nin of itself.",
         "properties": {
+          "id": {
+            "description": "A unique TypeID associated with the object.",
+            "title": "Id",
+            "type": "string"
+          },
+          "creation_date": {
+            "description": "The date and time at which the object was first created.",
+            "format": "date-time",
+            "title": "Creation Date",
+            "type": "string"
+          },
           "type": {
             "$ref": "#/components/schemas/BulkActionType",
             "description": "The type of bulk action to perform.",
@@ -13270,19 +13281,9 @@
                 "418c701a-efe3-4e3d-a404-e635a2f28775"
               ]
             },
+            "minProperties": 1,
             "title": "Metadata",
             "type": "object"
-          },
-          "id": {
-            "description": "A unique TypeID associated with the object.",
-            "title": "Id",
-            "type": "string"
-          },
-          "creation_date": {
-            "description": "The date and time at which the object was first created.",
-            "format": "date-time",
-            "title": "Creation Date",
-            "type": "string"
           },
           "status": {
             "$ref": "#/components/schemas/BulkActionStatus",
@@ -13303,16 +13304,17 @@
           }
         },
         "required": [
-          "type",
-          "metadata",
           "id",
           "creation_date",
+          "type",
+          "metadata",
           "status"
         ],
         "title": "BulkAction",
         "type": "object"
       },
       "BulkActionInput": {
+        "additionalProperties": false,
         "properties": {
           "type": {
             "$ref": "#/components/schemas/BulkActionType",
@@ -13344,6 +13346,7 @@
                 "418c701a-efe3-4e3d-a404-e635a2f28775"
               ]
             },
+            "minProperties": 1,
             "title": "Metadata",
             "type": "object"
           }
