@@ -2341,6 +2341,16 @@
           "409": {
             "description": "Conflict"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -2381,39 +2391,54 @@
             "name": "email_id",
             "schema": {
               "description": "If provided, only return comments for the given [email](https://docs.buttondown.com/api-emails-introduction).",
-              "example": "email_abc123",
+              "example": [
+                "em_01h8xg4j3k2m1n0p9q8r7s6t5v"
+              ],
               "title": "Email Id",
+              "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:em)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
               "type": "string"
             },
             "required": false,
             "description": "If provided, only return comments for the given [email](https://docs.buttondown.com/api-emails-introduction).",
-            "example": "email_abc123"
+            "example": [
+              "em_01h8xg4j3k2m1n0p9q8r7s6t5v"
+            ]
           },
           {
             "in": "query",
             "name": "subscriber_id",
             "schema": {
               "description": "If provided, only return comments for the given [subscriber](https://docs.buttondown.com/api-subscribers-introduction).",
-              "example": "sub_abc123",
+              "example": [
+                "sub_01h8xg4j3k2m1n0p9q8r7s6t5v"
+              ],
               "title": "Subscriber Id",
+              "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:sub)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
               "type": "string"
             },
             "required": false,
             "description": "If provided, only return comments for the given [subscriber](https://docs.buttondown.com/api-subscribers-introduction).",
-            "example": "sub_abc123"
+            "example": [
+              "sub_01h8xg4j3k2m1n0p9q8r7s6t5v"
+            ]
           },
           {
             "in": "query",
             "name": "parent_id",
             "schema": {
               "description": "If provided, only return comments that are replies to the given parent comment.",
-              "example": "comment_abc123",
+              "example": [
+                "com_01h8xg4j3k2m1n0p9q8r7s6t5v"
+              ],
               "title": "Parent Id",
+              "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:com)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
               "type": "string"
             },
             "required": false,
             "description": "If provided, only return comments that are replies to the given parent comment.",
-            "example": "comment_abc123"
+            "example": [
+              "com_01h8xg4j3k2m1n0p9q8r7s6t5v"
+            ]
           },
           {
             "in": "query",
@@ -2479,6 +2504,16 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -2491,6 +2526,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -2657,6 +2702,16 @@
               }
             }
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -2722,6 +2777,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
                 }
               }
             }
@@ -14493,15 +14558,19 @@
         "type": "object"
       },
       "CommentInput": {
+        "additionalProperties": false,
         "properties": {
           "text": {
-            "description": "The text content of the comment",
+            "description": "The text content of the comment.",
+            "minLength": 1,
+            "pattern": "[\\s\\S]*\\S[\\s\\S]*",
             "title": "Text",
             "type": "string"
           },
           "parent_id": {
             "anyOf": [
               {
+                "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:com)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
                 "type": "string"
               },
               {
@@ -14514,6 +14583,7 @@
           "email_id": {
             "anyOf": [
               {
+                "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:em)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
                 "type": "string"
               },
               {
@@ -14526,6 +14596,7 @@
           "subscriber_id": {
             "anyOf": [
               {
+                "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:sub)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
                 "type": "string"
               },
               {
@@ -14543,6 +14614,7 @@
         "type": "object"
       },
       "CommentUpdateInput": {
+        "additionalProperties": false,
         "properties": {
           "status": {
             "description": "The new status for the comment. Use 'active' to approve or 'spammy' to mark as spam.",
