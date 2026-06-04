@@ -2488,9 +2488,11 @@
             "in": "query",
             "name": "status",
             "schema": {
+              "description": "If provided, only return comments with the given status. Only the newsletter owner can filter by status; subscribers always see active comments.",
               "$ref": "#/components/schemas/CommentStatus"
             },
-            "required": false
+            "required": false,
+            "description": "If provided, only return comments with the given status. Only the newsletter owner can filter by status; subscribers always see active comments."
           }
         ],
         "responses": {
@@ -8369,6 +8371,7 @@
             "name": "expand",
             "schema": {
               "default": [],
+              "description": "If provided, expand the given field.",
               "items": {
                 "enum": [
                   "stripe_customer",
@@ -8379,7 +8382,8 @@
               "title": "Expand",
               "type": "array"
             },
-            "required": false
+            "required": false,
+            "description": "If provided, expand the given field."
           }
         ],
         "responses": {
@@ -11087,9 +11091,11 @@
             "in": "query",
             "name": "status",
             "schema": {
+              "description": "If provided, only return webhooks with the given status.",
               "$ref": "#/components/schemas/WebhookStatus"
             },
-            "required": false
+            "required": false,
+            "description": "If provided, only return webhooks with the given status."
           }
         ],
         "responses": {
@@ -11396,9 +11402,11 @@
             "in": "query",
             "name": "status",
             "schema": {
+              "description": "If provided, only return webhook attempts with the given status.",
               "$ref": "#/components/schemas/WebhookAttemptStatus"
             },
-            "required": false
+            "required": false,
+            "description": "If provided, only return webhook attempts with the given status."
           }
         ],
         "responses": {
@@ -11475,9 +11483,11 @@
             "in": "query",
             "name": "event_type",
             "schema": {
+              "description": "The event type to send. Defaults to the webhook's first configured event type.",
               "$ref": "#/components/schemas/ExternalEventType"
             },
-            "required": false
+            "required": false,
+            "description": "The event type to send. Defaults to the webhook's first configured event type."
           }
         ],
         "responses": {
@@ -19726,10 +19736,12 @@
             "type": "string"
           },
           "survey_id": {
+            "description": "The ID of the survey this response was submitted to.",
             "title": "Survey Id",
             "type": "string"
           },
           "subscriber_id": {
+            "description": "The ID of the subscriber who submitted this response.",
             "title": "Subscriber Id",
             "type": "string"
           },
@@ -19742,6 +19754,7 @@
                 "type": "null"
               }
             ],
+            "description": "The ID of the email where this response was submitted, if any.",
             "title": "Email Id"
           },
           "automation_id": {
@@ -19753,6 +19766,7 @@
                 "type": "null"
               }
             ],
+            "description": "The ID of the automation where this response was submitted, if any.",
             "title": "Automation Id"
           },
           "subscriber": {
