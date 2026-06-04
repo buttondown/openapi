@@ -13993,6 +13993,7 @@
           "email_address_stopforumspam_score",
           "email_address_tied_to_account",
           "email_address_typo",
+          "embedded_form_honeypot",
           "fingerprint_missing",
           "ip_address_cleantalk_score",
           "ip_address_extant_subscriber_count",
