@@ -490,6 +490,11 @@
       "name": "Email not confirmed",
       "variant": "error"
     },
+    "pay_per_email_billing_locked": {
+      "description": "Pay-per-email billing cannot be changed after an email has begun sending.",
+      "name": "Pay-per-email billing locked",
+      "variant": "error"
+    },
     "publish_date_invalid": {
       "description": "The publish date provided is not valid or is in an incorrect format.",
       "name": "Publish date invalid",

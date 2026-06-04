@@ -14664,6 +14664,7 @@
           "email_invalid",
           "slug_invalid",
           "subject_invalid",
+          "pay_per_email_billing_locked",
           "publish_date_invalid",
           "publish_date_missing",
           "sending_requires_confirmation",
