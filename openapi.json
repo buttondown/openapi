@@ -22905,12 +22905,20 @@
         "enum": [
           "api",
           "app",
+          "axios",
           "carrd",
-          "zapier",
           "cli",
+          "curl",
+          "go",
           "make",
           "netlify",
-          "python"
+          "node",
+          "pipedream",
+          "powershell",
+          "python",
+          "ruby",
+          "wordpress",
+          "zapier"
         ],
         "title": "APIRequestSource",
         "description": "An enumeration."
