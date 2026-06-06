@@ -20862,6 +20862,7 @@
           "completion_date": {
             "anyOf": [
               {
+                "format": "date-time",
                 "type": "string"
               },
               {
