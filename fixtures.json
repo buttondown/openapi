@@ -178,6 +178,62 @@
       }
     },
     {
+      "description": "Excluding a tag",
+      "object": {
+        "filters": [
+          {
+            "field": "subscriber.tags",
+            "operator": "not_contains",
+            "value": "12345678-9012-3456-7890-123456789012"
+          }
+        ],
+        "groups": [],
+        "predicate": "and"
+      }
+    },
+    {
+      "description": "Filtering by subscriber status",
+      "object": {
+        "filters": [
+          {
+            "field": "subscriber.status",
+            "operator": "contains",
+            "value": "premium"
+          }
+        ],
+        "groups": [],
+        "predicate": "and"
+      }
+    },
+    {
+      "description": "Filtering by a custom metadata field",
+      "object": {
+        "filters": [
+          {
+            "field": "subscriber.metadata.favorite_color",
+            "operator": "contains",
+            "value": "blue"
+          }
+        ],
+        "groups": [],
+        "predicate": "and"
+      }
+    },
+    {
+      "description": "Filtering by subscription date",
+      "object": {
+        "filters": [
+          {
+            "field": "subscriber.subscription_date",
+            "operator": "greater_than",
+            "value": "2024-01-01"
+          }
+        ],
+        "groups": [],
+        "predicate": "and"
+      }
+    },
+    {
       "description": "Filtering by a complex condition",
       "object": {
         "filters": [
