@@ -14019,6 +14019,7 @@
         "description": "An enumeration."
       },
       "StripeCoupon": {
+        "description": "Coupons let you offer discounts to subscribers who pay for your newsletter.\nButtondown's coupons are backed by Stripe, so each coupon maps to a coupon\non your connected Stripe account. Use them to run promotions\u2014for example, a\npercentage off a paid subscription.",
         "properties": {
           "coupon_id": {
             "description": "The Stripe coupon ID (e.g. `coupon_...`).",
@@ -19846,6 +19847,7 @@
         "type": "object"
       },
       "Survey": {
+        "description": "Surveys let you ask your subscribers a question\u2014and personalize future\nemails based on their answers. You can attach a survey to any email and read\nback the responses via the API.",
         "properties": {
           "id": {
             "description": "A unique TypeID associated with the object.",
