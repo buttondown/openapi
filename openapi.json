@@ -22946,7 +22946,7 @@
           "failed"
         ],
         "title": "BulkActionStatus",
-        "description": "\n        Represents the status of a bulk action.\n\n        No action is required to move from one state or another; Buttondown\n        internally handles the transitions, and exposing the status is for\n        observability purposes only.\n        "
+        "description": "Represents the status of a bulk action.\n\nNo action is required to move from one state or another; Buttondown\ninternally handles the transitions, and exposing the status is for\nobservability purposes only."
       },
       "BulkActionType": {
         "type": "string",
@@ -22988,7 +22988,7 @@
           "pause_stripe_subscriptions"
         ],
         "title": "BulkActionType",
-        "description": "\n        Represents the action being performed on a bulk of objects.\n\n        (Not to be coy, but these names should be self-explanatory.)\n        "
+        "description": "Represents the action being performed on a bulk of objects.\n\n(Not to be coy, but these names should be self-explanatory.)"
       },
       "ExportStatus": {
         "type": "string",
@@ -22999,7 +22999,7 @@
           "ready"
         ],
         "title": "ExportStatus",
-        "description": "\n        Represents the status of an export.\n\n        No action is required to move from one state or another; Buttondown\n        internally handles the transitions, and exposing the status is for\n        observability purposes only.\n        "
+        "description": "Represents the status of an export.\n\nNo action is required to move from one state or another; Buttondown\ninternally handles the transitions, and exposing the status is for\nobservability purposes only."
       },
       "ExternalFeedAutomationStatus": {
         "type": "string",
