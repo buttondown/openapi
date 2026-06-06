@@ -11840,7 +11840,7 @@
               "type": "string"
             },
             "default": {},
-            "description": "Additional context about the error.",
+            "description": "Additional context about the error. When present, a `documentation_url` key links to docs explaining how to resolve it.",
             "title": "Metadata",
             "type": "object"
           }
@@ -12793,7 +12793,7 @@
               "type": "string"
             },
             "default": {},
-            "description": "Additional context about the error.",
+            "description": "Additional context about the error. When present, a `documentation_url` key links to docs explaining how to resolve it.",
             "title": "Metadata",
             "type": "object"
           }
@@ -12862,8 +12862,15 @@
             "type": "array"
           },
           "filters": {
-            "$ref": "#/components/schemas/FilterGroup",
-            "description": "Conditions that must be met for the automation to run."
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/FilterGroup"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Conditions that must be met for the automation to run. Omit or pass null for no filter."
           },
           "metadata": {
             "additionalProperties": true,
@@ -12885,8 +12892,7 @@
         "required": [
           "name",
           "trigger",
-          "actions",
-          "filters"
+          "actions"
         ],
         "title": "AutomationInput",
         "type": "object"
@@ -14696,7 +14702,7 @@
               "type": "string"
             },
             "default": {},
-            "description": "Additional context about the error.",
+            "description": "Additional context about the error. When present, a `documentation_url` key links to docs explaining how to resolve it.",
             "title": "Metadata",
             "type": "object"
           }
@@ -14985,7 +14991,7 @@
               "type": "string"
             },
             "default": {},
-            "description": "Additional context about the error.",
+            "description": "Additional context about the error. When present, a `documentation_url` key links to docs explaining how to resolve it.",
             "title": "Metadata",
             "type": "object"
           }
@@ -15769,7 +15775,7 @@
               "type": "string"
             },
             "default": {},
-            "description": "Additional context about the error.",
+            "description": "Additional context about the error. When present, a `documentation_url` key links to docs explaining how to resolve it.",
             "title": "Metadata",
             "type": "object"
           }
@@ -16415,7 +16421,7 @@
               "type": "string"
             },
             "default": {},
-            "description": "Additional context about the error.",
+            "description": "Additional context about the error. When present, a `documentation_url` key links to docs explaining how to resolve it.",
             "title": "Metadata",
             "type": "object"
           }
@@ -16857,7 +16863,7 @@
               "type": "string"
             },
             "default": {},
-            "description": "Additional context about the error.",
+            "description": "Additional context about the error. When present, a `documentation_url` key links to docs explaining how to resolve it.",
             "title": "Metadata",
             "type": "object"
           }
@@ -17470,7 +17476,7 @@
               "type": "string"
             },
             "default": {},
-            "description": "Additional context about the error.",
+            "description": "Additional context about the error. When present, a `documentation_url` key links to docs explaining how to resolve it.",
             "title": "Metadata",
             "type": "object"
           }
@@ -18886,7 +18892,7 @@
               "type": "string"
             },
             "default": {},
-            "description": "Additional context about the error.",
+            "description": "Additional context about the error. When present, a `documentation_url` key links to docs explaining how to resolve it.",
             "title": "Metadata",
             "type": "object"
           }
@@ -18938,7 +18944,7 @@
               "type": "string"
             },
             "default": {},
-            "description": "Additional context about the error.",
+            "description": "Additional context about the error. When present, a `documentation_url` key links to docs explaining how to resolve it.",
             "title": "Metadata",
             "type": "object"
           }
@@ -19298,7 +19304,7 @@
               "type": "string"
             },
             "default": {},
-            "description": "Additional context about the error.",
+            "description": "Additional context about the error. When present, a `documentation_url` key links to docs explaining how to resolve it.",
             "title": "Metadata",
             "type": "object"
           }
@@ -19434,7 +19440,7 @@
               "type": "string"
             },
             "default": {},
-            "description": "Additional context about the error.",
+            "description": "Additional context about the error. When present, a `documentation_url` key links to docs explaining how to resolve it.",
             "title": "Metadata",
             "type": "object"
           }
@@ -19475,7 +19481,7 @@
               "type": "string"
             },
             "default": {},
-            "description": "Additional context about the error.",
+            "description": "Additional context about the error. When present, a `documentation_url` key links to docs explaining how to resolve it.",
             "title": "Metadata",
             "type": "object"
           }
@@ -19690,7 +19696,7 @@
               "type": "string"
             },
             "default": {},
-            "description": "Additional context about the error.",
+            "description": "Additional context about the error. When present, a `documentation_url` key links to docs explaining how to resolve it.",
             "title": "Metadata",
             "type": "object"
           }
@@ -19961,7 +19967,7 @@
               "type": "string"
             },
             "default": {},
-            "description": "Additional context about the error.",
+            "description": "Additional context about the error. When present, a `documentation_url` key links to docs explaining how to resolve it.",
             "title": "Metadata",
             "type": "object"
           }
@@ -20067,7 +20073,7 @@
               "type": "string"
             },
             "default": {},
-            "description": "Additional context about the error.",
+            "description": "Additional context about the error. When present, a `documentation_url` key links to docs explaining how to resolve it.",
             "title": "Metadata",
             "type": "object"
           }
@@ -20184,7 +20190,7 @@
               "type": "string"
             },
             "default": {},
-            "description": "Additional context about the error.",
+            "description": "Additional context about the error. When present, a `documentation_url` key links to docs explaining how to resolve it.",
             "title": "Metadata",
             "type": "object"
           }
@@ -20396,7 +20402,7 @@
               "type": "string"
             },
             "default": {},
-            "description": "Additional context about the error.",
+            "description": "Additional context about the error. When present, a `documentation_url` key links to docs explaining how to resolve it.",
             "title": "Metadata",
             "type": "object"
           }
@@ -20618,7 +20624,7 @@
               "type": "string"
             },
             "default": {},
-            "description": "Additional context about the error.",
+            "description": "Additional context about the error. When present, a `documentation_url` key links to docs explaining how to resolve it.",
             "title": "Metadata",
             "type": "object"
           }
