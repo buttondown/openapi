@@ -5642,6 +5642,16 @@
           "409": {
             "description": "Conflict"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -5666,12 +5676,17 @@
                     "format": "binary",
                     "title": "Image",
                     "type": "string"
+                  },
+                  "metadata": {
+                    "default": "{}",
+                    "title": "Metadata",
+                    "type": "string"
                   }
                 },
                 "required": [
                   "image"
                 ],
-                "title": "FileParams",
+                "title": "MultiPartBodyParams",
                 "type": "object"
               }
             }
@@ -5687,7 +5702,44 @@
       "get": {
         "operationId": "list_images",
         "summary": "List Images",
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "ids",
+            "schema": {
+              "description": "If provided, only return images matching the given IDs.",
+              "title": "Ids",
+              "example": [
+                "img_01h8xg4j3k2m1n0p9q8r7s6t5v"
+              ],
+              "items": {
+                "maxLength": 50,
+                "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:img)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "required": false,
+            "description": "If provided, only return images matching the given IDs.",
+            "example": [
+              "img_01h8xg4j3k2m1n0p9q8r7s6t5v"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "page_size",
+            "schema": {
+              "default": 100,
+              "description": "The number of results per page.",
+              "title": "Page Size",
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            },
+            "required": false,
+            "description": "The number of results per page."
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -5705,6 +5757,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
                 }
               }
             }
@@ -5740,6 +5802,8 @@
             "in": "path",
             "name": "id",
             "schema": {
+              "maxLength": 50,
+              "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:img)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
               "title": "Id",
               "type": "string"
             },
@@ -5788,6 +5852,16 @@
           "409": {
             "description": "Conflict"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -5827,6 +5901,8 @@
             "in": "path",
             "name": "id",
             "schema": {
+              "maxLength": 50,
+              "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:img)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
               "title": "Id",
               "type": "string"
             },
@@ -5859,6 +5935,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -16625,9 +16711,9 @@
           },
           "image": {
             "description": "The URL of the image.",
-            "example": "https://placecats.com/408/287",
             "title": "Image",
-            "type": "string"
+            "type": "string",
+            "example": "https://placecats.com/408/287"
           },
           "metadata": {
             "additionalProperties": true,
@@ -16646,6 +16732,7 @@
         "type": "object"
       },
       "ImageUpdateInput": {
+        "additionalProperties": false,
         "properties": {
           "metadata": {
             "additionalProperties": true,
