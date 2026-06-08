@@ -8099,6 +8099,19 @@
           },
           {
             "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "description": "The page number to return.",
+              "title": "Page",
+              "minimum": 1,
+              "type": "integer"
+            },
+            "required": false,
+            "description": "The page number to return."
+          },
+          {
+            "in": "query",
             "name": "page_size",
             "schema": {
               "default": 100,
@@ -8110,19 +8123,6 @@
             },
             "required": false,
             "description": "The number of results per page."
-          },
-          {
-            "in": "query",
-            "name": "page",
-            "required": false,
-            "description": "The page number of the paginated response.",
-            "schema": {
-              "type": "integer",
-              "title": "Page",
-              "description": "The page number of the paginated response.",
-              "default": 1,
-              "example": 1
-            }
           }
         ],
         "responses": {
