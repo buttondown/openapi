@@ -10377,6 +10377,16 @@
           "409": {
             "description": "Conflict"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -10451,15 +10461,20 @@
           {
             "in": "query",
             "name": "page",
+            "schema": {
+              "description": "The page number of the paginated response.",
+              "example": [
+                1
+              ],
+              "title": "Page",
+              "minimum": 1,
+              "type": "integer"
+            },
             "required": false,
             "description": "The page number of the paginated response.",
-            "schema": {
-              "type": "integer",
-              "title": "Page",
-              "description": "The page number of the paginated response.",
-              "default": 1,
-              "example": 1
-            }
+            "example": [
+              1
+            ]
           }
         ],
         "responses": {
@@ -10485,6 +10500,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -10723,6 +10748,16 @@
               }
             }
           },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -10735,6 +10770,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -10821,8 +10866,8 @@
           "204": {
             "description": "No Content"
           },
-          "400": {
-            "description": "Bad Request",
+          "403": {
+            "description": "Forbidden",
             "content": {
               "application/json": {
                 "schema": {
@@ -24011,10 +24056,13 @@
         "type": "object"
       },
       "SnippetInput": {
+        "additionalProperties": false,
         "properties": {
           "identifier": {
             "description": "A unique, newsletter-scoped slug used to reference the snippet inside email content (e.g. `{{ snippets.footer }}`). Must be unique per newsletter.",
             "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_-]+$",
             "title": "Identifier",
             "type": "string",
             "example": "footer"
@@ -24022,6 +24070,7 @@
           "name": {
             "description": "A human-readable name for the snippet, shown in the Buttondown UI.",
             "maxLength": 255,
+            "minLength": 1,
             "title": "Name",
             "type": "string",
             "example": "Footer"
@@ -24040,7 +24089,8 @@
               }
             ],
             "default": "fancy",
-            "description": "The editor mode for the snippet, which controls how `content` is rendered: `fancy` (Markdown), `plaintext`, or `naked` (raw HTML with no processing)."
+            "description": "The editor mode for the snippet, which controls how `content` is rendered: `fancy` (Markdown), `plaintext`, or `naked` (raw HTML with no processing).",
+            "example": "fancy"
           }
         },
         "required": [
@@ -24051,11 +24101,14 @@
         "type": "object"
       },
       "SnippetUpdateInput": {
+        "additionalProperties": false,
         "properties": {
           "identifier": {
             "anyOf": [
               {
                 "maxLength": 100,
+                "minLength": 1,
+                "pattern": "^[a-zA-Z0-9_-]+$",
                 "type": "string"
               },
               {
@@ -24070,6 +24123,7 @@
             "anyOf": [
               {
                 "maxLength": 255,
+                "minLength": 1,
                 "type": "string"
               },
               {
@@ -24102,7 +24156,8 @@
                 "type": "null"
               }
             ],
-            "description": "The editor mode for the snippet, which controls how `content` is rendered: `fancy` (Markdown), `plaintext`, or `naked` (raw HTML with no processing)."
+            "description": "The editor mode for the snippet, which controls how `content` is rendered: `fancy` (Markdown), `plaintext`, or `naked` (raw HTML with no processing).",
+            "example": "fancy"
           }
         },
         "title": "SnippetUpdateInput",
@@ -24928,7 +24983,7 @@
             "description": "A newsletter-scoped slug used to reference this survey when embedding it in emails.",
             "maxLength": 100,
             "minLength": 1,
-            "pattern": "^[a-zA-Z0-9]+$",
+            "pattern": "^[a-zA-Z0-9_-]+$",
             "title": "Identifier",
             "type": "string",
             "example": "color"
