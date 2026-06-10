@@ -771,6 +771,11 @@
       "name": "Bare",
       "variant": "info"
     },
+    "beehiiv": {
+      "description": "A CSV exported from Beehiiv.",
+      "name": "Beehiiv",
+      "variant": "info"
+    },
     "buttondown": {
       "description": "A CSV exported from Buttondown.",
       "name": "Buttondown",
@@ -809,6 +814,11 @@
     "memberful": {
       "description": "A CSV exported from Memberful.",
       "name": "Memberful",
+      "variant": "info"
+    },
+    "pencilbooth": {
+      "description": "A CSV exported from Pencilbooth.",
+      "name": "Pencilbooth",
       "variant": "info"
     },
     "sender_dot_net": {

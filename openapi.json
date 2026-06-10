@@ -8725,6 +8725,7 @@
             "in": "path",
             "name": "id",
             "schema": {
+              "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:sub_imp)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
               "title": "Id",
               "type": "string"
             },
@@ -8841,6 +8842,7 @@
             "in": "path",
             "name": "id",
             "schema": {
+              "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:sub_imp)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
               "title": "Id",
               "type": "string"
             },
@@ -8898,6 +8900,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
                 }
               }
             }
@@ -8980,6 +8992,7 @@
             "in": "path",
             "name": "id",
             "schema": {
+              "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:sub_imp)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
               "title": "Id",
               "type": "string"
             },
@@ -21668,6 +21681,7 @@
       "ImportSource": {
         "enum": [
           "bare",
+          "beehiiv",
           "buttondown",
           "custom",
           "flodesk",
@@ -21676,6 +21690,7 @@
           "mailchimp",
           "mailerlite",
           "memberful",
+          "pencilbooth",
           "sender_dot_net",
           "sendy",
           "shopify",
@@ -21691,11 +21706,11 @@
       },
       "ImportStatus": {
         "enum": [
-          "not_started",
-          "in_progress",
-          "validating",
           "failed",
-          "succeeded"
+          "in_progress",
+          "not_started",
+          "succeeded",
+          "validating"
         ],
         "title": "ImportStatus",
         "type": "string",
@@ -21751,10 +21766,12 @@
         "type": "object"
       },
       "UpdateImportInput": {
+        "additionalProperties": false,
         "properties": {
           "label": {
             "anyOf": [
               {
+                "maxLength": 500,
                 "type": "string"
               },
               {
@@ -21762,7 +21779,8 @@
               }
             ],
             "description": "An optional label for the import.",
-            "title": "Label"
+            "title": "Label",
+            "example": "June 2025 migration"
           },
           "metadata": {
             "anyOf": [
@@ -21775,18 +21793,27 @@
               }
             ],
             "description": "Metadata about the import, such as detected column mappings.",
-            "title": "Metadata"
+            "title": "Metadata",
+            "example": {
+              "email_column": 0,
+              "metadata_columns": {
+                "name": 1
+              }
+            }
           },
           "status": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/ImportStatus"
+                "const": "in_progress",
+                "type": "string"
               },
               {
                 "type": "null"
               }
             ],
-            "description": "The status of the import. Set to 'in_progress' to begin executing the import."
+            "description": "The status of the import. Set to 'in_progress' to begin executing the import.",
+            "title": "Status",
+            "example": "in_progress"
           }
         },
         "title": "UpdateImportInput",
