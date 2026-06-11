@@ -26146,24 +26146,16 @@
             "type": "string"
           },
           "status": {
-            "description": "Whether the webhook is enabled or not.",
-            "title": "Status",
-            "type": "string"
+            "$ref": "#/components/schemas/WebhookStatus",
+            "description": "Whether the webhook is enabled or not."
           },
           "event_types": {
-            "anyOf": [
-              {
-                "items": {
-                  "type": "string"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
             "description": "The types of event for which the webhook will be triggered.",
-            "title": "Event Types"
+            "items": {
+              "$ref": "#/components/schemas/ExternalEventType"
+            },
+            "title": "Event Types",
+            "type": "array"
           },
           "url": {
             "description": "The URL to which the webhook will send POST requests.",
@@ -26192,6 +26184,15 @@
         ],
         "title": "Webhook",
         "type": "object"
+      },
+      "WebhookStatus": {
+        "description": "The status of a webhook.",
+        "enum": [
+          "enabled",
+          "disabled"
+        ],
+        "title": "WebhookStatus",
+        "type": "string"
       },
       "WebhookInput": {
         "additionalProperties": false,
@@ -26259,15 +26260,6 @@
         ],
         "title": "WebhookInput",
         "type": "object"
-      },
-      "WebhookStatus": {
-        "description": "The status of a webhook.",
-        "enum": [
-          "enabled",
-          "disabled"
-        ],
-        "title": "WebhookStatus",
-        "type": "string"
       },
       "WebhookAttemptStatus": {
         "enum": [
