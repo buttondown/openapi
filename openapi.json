@@ -15672,6 +15672,16 @@
           "409": {
             "description": "Conflict"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -15790,6 +15800,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -16031,6 +16051,16 @@
           "409": {
             "description": "Conflict"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -16269,6 +16299,16 @@
           "409": {
             "description": "Conflict"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -16378,6 +16418,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -25607,46 +25657,39 @@
             "type": "string"
           },
           "status": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/WebhookStatus"
-              }
-            ],
-            "default": "enabled",
             "description": "Whether the webhook is enabled or not.",
-            "example": "enabled"
+            "title": "Status",
+            "type": "string"
           },
           "event_types": {
-            "description": "The types of event for which the webhook will be triggered.",
-            "example": [
-              "email.created",
-              "email.sent"
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "items": {
-              "$ref": "#/components/schemas/ExternalEventType"
-            },
-            "title": "Event Types",
-            "type": "array"
+            "description": "The types of event for which the webhook will be triggered.",
+            "title": "Event Types"
           },
           "url": {
             "description": "The URL to which the webhook will send POST requests.",
-            "example": "https://my.api/webhook",
-            "format": "uri",
-            "minLength": 1,
             "title": "Url",
             "type": "string"
           },
           "description": {
             "default": "",
             "description": "An optional description of the webhook, for reference.",
-            "example": "Trigger when an email is created to notify in Slack.",
             "title": "Description",
             "type": "string"
           },
           "signing_key": {
             "default": "",
             "description": "Optional HMAC signing key for webhook verification. When set, webhook requests will include an X-Buttondown-Signature header with sha256=<signature>.",
-            "example": "",
             "title": "Signing Key",
             "type": "string"
           }
@@ -25654,22 +25697,15 @@
         "required": [
           "id",
           "creation_date",
+          "status",
           "event_types",
           "url"
         ],
         "title": "Webhook",
         "type": "object"
       },
-      "WebhookStatus": {
-        "description": "The status of a webhook.",
-        "enum": [
-          "enabled",
-          "disabled"
-        ],
-        "title": "WebhookStatus",
-        "type": "string"
-      },
       "WebhookInput": {
+        "additionalProperties": false,
         "properties": {
           "status": {
             "allOf": [
@@ -25679,13 +25715,17 @@
             ],
             "default": "enabled",
             "description": "Whether the webhook is enabled or not.",
-            "example": "enabled"
+            "example": [
+              "enabled"
+            ]
           },
           "event_types": {
             "description": "The types of event for which the webhook will be triggered.",
             "example": [
-              "email.created",
-              "email.sent"
+              [
+                "email.created",
+                "email.sent"
+              ]
             ],
             "items": {
               "$ref": "#/components/schemas/ExternalEventType"
@@ -25695,8 +25735,11 @@
           },
           "url": {
             "description": "The URL to which the webhook will send POST requests.",
-            "example": "https://my.api/webhook",
+            "example": [
+              "https://my.api/webhook"
+            ],
             "format": "uri",
+            "maxLength": 2000,
             "minLength": 1,
             "title": "Url",
             "type": "string"
@@ -25704,14 +25747,19 @@
           "description": {
             "default": "",
             "description": "An optional description of the webhook, for reference.",
-            "example": "Trigger when an email is created to notify in Slack.",
+            "example": [
+              "Trigger when an email is created to notify in Slack."
+            ],
             "title": "Description",
             "type": "string"
           },
           "signing_key": {
             "default": "",
             "description": "Optional HMAC signing key for webhook verification. When set, webhook requests will include an X-Buttondown-Signature header with sha256=<signature>.",
-            "example": "",
+            "example": [
+              ""
+            ],
+            "maxLength": 255,
             "title": "Signing Key",
             "type": "string"
           }
@@ -25722,6 +25770,15 @@
         ],
         "title": "WebhookInput",
         "type": "object"
+      },
+      "WebhookStatus": {
+        "description": "The status of a webhook.",
+        "enum": [
+          "enabled",
+          "disabled"
+        ],
+        "title": "WebhookStatus",
+        "type": "string"
       },
       "WebhookAttemptStatus": {
         "enum": [
@@ -25748,7 +25805,9 @@
           },
           "status": {
             "description": "The status of the webhook attempt.",
-            "example": "successful",
+            "example": [
+              "successful"
+            ],
             "title": "Status",
             "type": "string"
           },
@@ -25762,7 +25821,9 @@
               }
             ],
             "description": "The type of the event that triggered the attempt.",
-            "example": "subscriber.created",
+            "example": [
+              "subscriber.created"
+            ],
             "title": "Event Type"
           },
           "error_message": {
@@ -25775,13 +25836,17 @@
               }
             ],
             "description": "The failure reason, if the attempt failed. Includes the response status code and a snippet of the response body when the endpoint returned a non-2xx response.",
-            "example": "WebhookFailedError: Webhook returned 401: invalid signature",
+            "example": [
+              "WebhookFailedError: Webhook returned 401: invalid signature"
+            ],
             "title": "Error Message"
           },
           "attempt_count": {
             "default": 0,
             "description": "The number of times this attempt has been retried.",
-            "example": 1,
+            "example": [
+              1
+            ],
             "title": "Attempt Count",
             "type": "integer"
           },
@@ -25796,7 +25861,9 @@
               }
             ],
             "description": "When the attempt finished, if it has.",
-            "example": "2026-04-27T05:25:19.819Z",
+            "example": [
+              "2026-04-27T05:25:19.819Z"
+            ],
             "title": "Completion Date"
           },
           "duration_ms": {
@@ -25809,7 +25876,9 @@
               }
             ],
             "description": "How long the HTTP request took, in milliseconds.",
-            "example": 412,
+            "example": [
+              412
+            ],
             "title": "Duration Ms"
           }
         },
