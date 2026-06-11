@@ -6289,6 +6289,16 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage_CreateExportErrorCode_"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -6302,12 +6312,12 @@
           "409": {
             "description": "Conflict"
           },
-          "400": {
-            "description": "Bad Request",
+          "422": {
+            "description": "Unprocessable Entity",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage_CreateExportErrorCode_"
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
                 }
               }
             }
@@ -21097,13 +21107,27 @@
       "Export": {
         "description": "Some software applications may want programmatic access to their newsletter exports.\nThis assists with a few niche use cases, such as regular backups or data ingestion\n(into a data warehouse), or post-publishing processes that hinge on email events.\n\nIn general, you probably won't _need_ to use this endpoint unless you\n_absolutely_ need to use this endpoint.\n\nTo browse the contents of a given export collection, refer to the [Data exports](https://docs.buttondown.com/data-exports-subscriber) section\nof the documentation.",
         "properties": {
+          "id": {
+            "description": "A unique TypeID associated with the object.",
+            "title": "Id",
+            "type": "string"
+          },
+          "creation_date": {
+            "description": "The date and time at which the object was first created.",
+            "format": "date-time",
+            "title": "Creation Date",
+            "type": "string"
+          },
           "collections": {
             "description": "The [collections](https://docs.buttondown.com/api-exports-collections) of objects to export.",
             "items": {
               "$ref": "#/components/schemas/ExportCollection"
             },
             "title": "Collections",
-            "type": "array"
+            "type": "array",
+            "example": [
+              "subscribers"
+            ]
           },
           "parameters": {
             "anyOf": [
@@ -21116,7 +21140,10 @@
               }
             ],
             "description": "Parameters to pass to the exporter. These are specific to the collection and format, and constrain the export.",
-            "title": "Parameters"
+            "title": "Parameters",
+            "example": {
+              "status": "active"
+            }
           },
           "format": {
             "allOf": [
@@ -21125,7 +21152,8 @@
               }
             ],
             "default": "csv",
-            "description": "The [format](https://docs.buttondown.com/api-exports-format) of the export files."
+            "description": "The [format](https://docs.buttondown.com/api-exports-format) of the export files.",
+            "example": "csv"
           },
           "columns": {
             "anyOf": [
@@ -21140,18 +21168,11 @@
               }
             ],
             "description": "If provided, the export will only include these columns.",
-            "title": "Columns"
-          },
-          "id": {
-            "description": "A unique TypeID associated with the object.",
-            "title": "Id",
-            "type": "string"
-          },
-          "creation_date": {
-            "description": "The date and time at which the object was first created.",
-            "format": "date-time",
-            "title": "Creation Date",
-            "type": "string"
+            "title": "Columns",
+            "example": [
+              "id",
+              "email"
+            ]
           },
           "url": {
             "anyOf": [
@@ -21180,13 +21201,14 @@
           },
           "status": {
             "$ref": "#/components/schemas/ExportStatus",
-            "description": "The status of the export."
+            "description": "The status of the export.",
+            "example": "not_started"
           }
         },
         "required": [
-          "collections",
           "id",
           "creation_date",
+          "collections",
           "status"
         ],
         "title": "Export",
@@ -21234,6 +21256,7 @@
         "type": "object"
       },
       "ExportInput": {
+        "additionalProperties": false,
         "properties": {
           "collections": {
             "description": "The [collections](https://docs.buttondown.com/api-exports-collections) of objects to export.",
@@ -21241,7 +21264,10 @@
               "$ref": "#/components/schemas/ExportCollection"
             },
             "title": "Collections",
-            "type": "array"
+            "type": "array",
+            "example": [
+              "subscribers"
+            ]
           },
           "parameters": {
             "anyOf": [
@@ -21254,7 +21280,10 @@
               }
             ],
             "description": "Parameters to pass to the exporter. These are specific to the collection and format, and constrain the export.",
-            "title": "Parameters"
+            "title": "Parameters",
+            "example": {
+              "status": "active"
+            }
           },
           "format": {
             "allOf": [
@@ -21263,7 +21292,8 @@
               }
             ],
             "default": "csv",
-            "description": "The [format](https://docs.buttondown.com/api-exports-format) of the export files."
+            "description": "The [format](https://docs.buttondown.com/api-exports-format) of the export files.",
+            "example": "csv"
           },
           "columns": {
             "anyOf": [
@@ -21278,7 +21308,11 @@
               }
             ],
             "description": "If provided, the export will only include these columns.",
-            "title": "Columns"
+            "title": "Columns",
+            "example": [
+              "id",
+              "email"
+            ]
           }
         },
         "required": [
