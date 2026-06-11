@@ -409,6 +409,56 @@
     }
   },
   "CreateNewsletterErrorCode": {
+    "domain_incorrect": {
+      "description": "The domain is incorrect.",
+      "name": "Domain incorrect",
+      "variant": "error"
+    },
+    "domain_path": {
+      "description": "The domain must not include a path.",
+      "name": "Domain includes path",
+      "variant": "error"
+    },
+    "domain_protocol": {
+      "description": "The domain must not include a protocol.",
+      "name": "Domain includes protocol",
+      "variant": "error"
+    },
+    "email_domain_conflicts_with_hosting_domain": {
+      "description": "The email domain conflicts with the hosting domain.",
+      "name": "Email domain conflicts with hosting domain",
+      "variant": "error"
+    },
+    "email_domain_contains_at": {
+      "description": "The email domain must not contain an at-sign.",
+      "name": "Email domain contains at-sign",
+      "variant": "error"
+    },
+    "email_domain_incorrect": {
+      "description": "The email domain is incorrect.",
+      "name": "Email domain incorrect",
+      "variant": "error"
+    },
+    "email_domain_path": {
+      "description": "The email domain must not include a path.",
+      "name": "Email domain includes path",
+      "variant": "error"
+    },
+    "email_domain_protocol": {
+      "description": "The email domain must not include a protocol.",
+      "name": "Email domain includes protocol",
+      "variant": "error"
+    },
+    "email_domain_used_by_other_account": {
+      "description": "The email domain is already used by another account.",
+      "name": "Email domain already in use",
+      "variant": "error"
+    },
+    "invalid_metadata": {
+      "description": "The metadata contains invalid values.",
+      "name": "Invalid metadata",
+      "variant": "error"
+    },
     "username_already_exists": {
       "description": "A newsletter already exists with that username.",
       "name": "Username already exists",
@@ -417,6 +467,16 @@
     "username_malformed": {
       "description": "The username is malformed.",
       "name": "Username malformed",
+      "variant": "error"
+    },
+    "username_reserved": {
+      "description": "The username is reserved.",
+      "name": "Username reserved",
+      "variant": "error"
+    },
+    "username_too_short": {
+      "description": "The username is too short.",
+      "name": "Username too short",
       "variant": "error"
     }
   },
