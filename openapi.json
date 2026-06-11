@@ -6666,6 +6666,16 @@
           "409": {
             "description": "Conflict"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -6905,6 +6915,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -7382,6 +7402,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -18321,7 +18351,8 @@
           "filters": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/FilterGroup"
+                "$ref": "#/components/schemas/FilterGroup",
+                "description": "Tag-based filtering rules used to decide which subscribers receive feed-generated emails."
               },
               {
                 "type": "null"
@@ -18502,7 +18533,8 @@
           "filters": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/FilterGroup"
+                "$ref": "#/components/schemas/FilterGroup",
+                "description": "Tag-based filtering rules used to decide which subscribers receive feed-generated emails."
               },
               {
                 "type": "null"
@@ -21358,7 +21390,8 @@
           },
           "cadence": {
             "$ref": "#/components/schemas/ExternalFeedAutomationCadence",
-            "description": "How frequently this feed should create or draft emails."
+            "description": "How frequently this feed should create or draft emails.",
+            "example": "daily"
           },
           "cadence_metadata": {
             "additionalProperties": {
@@ -21395,11 +21428,11 @@
           "metadata": {
             "additionalProperties": true,
             "description": "Metadata to be passed to emails rendered by this RSS feed.",
+            "title": "Metadata",
+            "type": "object",
             "example": {
               "foo": "bar"
-            },
-            "title": "Metadata",
-            "type": "object"
+            }
           },
           "skip_old_items": {
             "description": "Skip items with publish date older than one day from when they're discovered",
@@ -21425,6 +21458,7 @@
         "type": "object"
       },
       "CadenceMetadata": {
+        "additionalProperties": false,
         "properties": {
           "time": {
             "anyOf": [
@@ -21437,8 +21471,8 @@
               }
             ],
             "description": "Hour of the day (0-23, as a string) when emails should be generated.",
-            "example": "9",
-            "title": "Time"
+            "title": "Time",
+            "example": "9"
           },
           "weekday": {
             "anyOf": [
@@ -21489,13 +21523,15 @@
         "type": "object"
       },
       "ExternalFeedInput": {
+        "additionalProperties": false,
         "properties": {
           "url": {
             "description": "The URL of the RSS feed to poll for new items.",
-            "example": "http://lorem-rss.herokuapp.com/feed",
             "maxLength": 2000,
+            "minLength": 1,
             "title": "Url",
-            "type": "string"
+            "type": "string",
+            "example": "http://lorem-rss.herokuapp.com/feed"
           },
           "behavior": {
             "$ref": "#/components/schemas/ExternalFeedAutomationBehavior",
@@ -21522,11 +21558,13 @@
           "subject": {
             "description": "The subject line template for emails generated from this feed.",
             "maxLength": 255,
+            "minLength": 1,
             "title": "Subject",
             "type": "string"
           },
           "body": {
             "description": "The body template for emails generated from this feed.",
+            "minLength": 1,
             "title": "Body",
             "type": "string"
           },
@@ -21540,11 +21578,11 @@
           "metadata": {
             "additionalProperties": true,
             "description": "Metadata to be passed to emails rendered by this RSS feed.",
+            "title": "Metadata",
+            "type": "object",
             "example": {
               "foo": "bar"
-            },
-            "title": "Metadata",
-            "type": "object"
+            }
           },
           "skip_old_items": {
             "default": false,
@@ -21565,30 +21603,31 @@
         "type": "object"
       },
       "ExternalFeedUpdateInput": {
+        "additionalProperties": false,
         "properties": {
           "behavior": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/ExternalFeedAutomationBehavior"
+                "$ref": "#/components/schemas/ExternalFeedAutomationBehavior",
+                "description": "The [behavior](https://docs.buttondown.com/api-external-feed-behavior) of the external feed.",
+                "example": "draft"
               },
               {
                 "type": "null"
               }
-            ],
-            "description": "The [behavior](https://docs.buttondown.com/api-external-feed-behavior) of the external feed.",
-            "example": "draft"
+            ]
           },
           "cadence": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/ExternalFeedAutomationCadence"
+                "$ref": "#/components/schemas/ExternalFeedAutomationCadence",
+                "description": "How frequently this feed should create or draft emails.",
+                "example": "daily"
               },
               {
                 "type": "null"
               }
-            ],
-            "description": "How frequently this feed should create or draft emails.",
-            "example": "daily"
+            ]
           },
           "cadence_metadata": {
             "anyOf": [
@@ -21604,37 +21643,39 @@
           "filters": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/FilterGroup"
+                "$ref": "#/components/schemas/FilterGroup",
+                "description": "Tag-based filtering rules used to decide which subscribers receive feed-generated emails."
               },
               {
                 "type": "null"
               }
-            ],
-            "description": "Tag-based filtering rules used to decide which subscribers receive feed-generated emails."
+            ]
           },
           "subject": {
             "anyOf": [
               {
+                "description": "The subject line template for emails generated from this feed.",
                 "maxLength": 255,
+                "minLength": 1,
                 "type": "string"
               },
               {
                 "type": "null"
               }
             ],
-            "description": "The subject line template for emails generated from this feed.",
             "title": "Subject"
           },
           "body": {
             "anyOf": [
               {
+                "description": "The body template for emails generated from this feed.",
+                "minLength": 1,
                 "type": "string"
               },
               {
                 "type": "null"
               }
             ],
-            "description": "The body template for emails generated from this feed.",
             "title": "Body"
           },
           "label": {
@@ -21653,13 +21694,19 @@
           "status": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/ExternalFeedAutomationStatus"
+                "enum": [
+                  "active",
+                  "failing",
+                  "inactive"
+                ],
+                "type": "string"
               },
               {
                 "type": "null"
               }
             ],
-            "description": "The current status of the external feed automation."
+            "description": "The current status of the external feed automation.",
+            "title": "Status"
           },
           "metadata": {
             "anyOf": [
@@ -21672,10 +21719,10 @@
               }
             ],
             "description": "Metadata to be passed to emails rendered by this RSS feed.",
+            "title": "Metadata",
             "example": {
               "foo": "bar"
-            },
-            "title": "Metadata"
+            }
           },
           "skip_old_items": {
             "anyOf": [
