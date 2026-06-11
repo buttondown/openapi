@@ -1681,6 +1681,41 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AutomationPage"
+                },
+                "examples": {
+                  "list_automations": {
+                    "summary": "List automations",
+                    "value": {
+                      "results": [
+                        {
+                          "id": "{{ id }}",
+                          "creation_date": "2020-01-01T00:00:00Z",
+                          "name": "Forward replies to support",
+                          "status": "inactive",
+                          "trigger": "subscriber.replied",
+                          "actions": [
+                            {
+                              "type": "forward_reply",
+                              "metadata": {
+                                "recipient": "support@example.com"
+                              },
+                              "timing": null
+                            }
+                          ],
+                          "filters": {
+                            "filters": [],
+                            "groups": [],
+                            "predicate": "and"
+                          },
+                          "metadata": {},
+                          "should_evaluate_filter_after_delay": false
+                        }
+                      ],
+                      "next": null,
+                      "previous": null,
+                      "count": 1
+                    }
+                  }
                 }
               }
             }
@@ -1776,6 +1811,60 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Automation"
+                },
+                "examples": {
+                  "create_automation": {
+                    "summary": "Create an automation",
+                    "value": {
+                      "id": "{{ id }}",
+                      "creation_date": "2020-01-01T00:00:00Z",
+                      "name": "Forward replies to support",
+                      "status": "inactive",
+                      "trigger": "subscriber.replied",
+                      "actions": [
+                        {
+                          "type": "forward_reply",
+                          "metadata": {
+                            "recipient": "support@example.com"
+                          },
+                          "timing": null
+                        }
+                      ],
+                      "filters": {
+                        "filters": [],
+                        "groups": [],
+                        "predicate": "and"
+                      },
+                      "metadata": {},
+                      "should_evaluate_filter_after_delay": false
+                    }
+                  },
+                  "create_send_email_automation": {
+                    "summary": "Create an automation that sends an existing draft",
+                    "value": {
+                      "id": "{{ id }}",
+                      "creation_date": "2020-01-01T00:00:00Z",
+                      "name": "Send welcome email on confirmation",
+                      "status": "inactive",
+                      "trigger": "subscriber.confirmed",
+                      "actions": [
+                        {
+                          "type": "send_email",
+                          "metadata": {
+                            "email_id": "{{ email.id }}"
+                          },
+                          "timing": null
+                        }
+                      ],
+                      "filters": {
+                        "filters": [],
+                        "groups": [],
+                        "predicate": "and"
+                      },
+                      "metadata": {},
+                      "should_evaluate_filter_after_delay": false
+                    }
+                  }
                 }
               }
             },
@@ -1889,6 +1978,48 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/AutomationInput"
+              },
+              "examples": {
+                "create_automation": {
+                  "summary": "Create an automation",
+                  "value": {
+                    "name": "Forward replies to support",
+                    "trigger": "subscriber.replied",
+                    "filters": {
+                      "filters": [],
+                      "groups": [],
+                      "predicate": "and"
+                    },
+                    "actions": [
+                      {
+                        "type": "forward_reply",
+                        "metadata": {
+                          "recipient": "support@example.com"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "create_send_email_automation": {
+                  "summary": "Create an automation that sends an existing draft",
+                  "value": {
+                    "name": "Send welcome email on confirmation",
+                    "trigger": "subscriber.confirmed",
+                    "filters": {
+                      "filters": [],
+                      "groups": [],
+                      "predicate": "and"
+                    },
+                    "actions": [
+                      {
+                        "type": "send_email",
+                        "metadata": {
+                          "email_id": "{{ email.id }}"
+                        }
+                      }
+                    ]
+                  }
+                }
               }
             }
           },
@@ -1923,6 +2054,34 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Automation"
+                },
+                "examples": {
+                  "retrieve_automation": {
+                    "summary": "Retrieve an automation",
+                    "value": {
+                      "id": "{{ id }}",
+                      "creation_date": "2020-01-01T00:00:00Z",
+                      "name": "Forward replies to support",
+                      "status": "inactive",
+                      "trigger": "subscriber.replied",
+                      "actions": [
+                        {
+                          "type": "forward_reply",
+                          "metadata": {
+                            "recipient": "support@example.com"
+                          },
+                          "timing": null
+                        }
+                      ],
+                      "filters": {
+                        "filters": [],
+                        "groups": [],
+                        "predicate": "and"
+                      },
+                      "metadata": {},
+                      "should_evaluate_filter_after_delay": false
+                    }
+                  }
                 }
               }
             },
@@ -7284,6 +7443,26 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Form"
+                },
+                "examples": {
+                  "create_form": {
+                    "summary": "Create a form",
+                    "value": {
+                      "id": "{{ id }}",
+                      "creation_date": "2020-01-01T00:00:00Z",
+                      "title": "Newsletter signup",
+                      "slug": "{{ email.slug }}",
+                      "body": "",
+                      "css": "",
+                      "success_body": "",
+                      "surveys": [],
+                      "admin": false,
+                      "status": "active",
+                      "subscriber_count": 0,
+                      "confirmed_subscriber_count": 0,
+                      "page_view_count": 0
+                    }
+                  }
                 }
               }
             },
@@ -7387,6 +7566,15 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/FormInput"
+              },
+              "examples": {
+                "create_form": {
+                  "summary": "Create a form",
+                  "value": {
+                    "title": "Newsletter signup",
+                    "slug": "newsletter-signup"
+                  }
+                }
               }
             }
           },
@@ -7502,6 +7690,33 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/FormPage"
+                },
+                "examples": {
+                  "list_forms": {
+                    "summary": "List forms",
+                    "value": {
+                      "results": [
+                        {
+                          "id": "{{ id }}",
+                          "creation_date": "2020-01-01T00:00:00Z",
+                          "title": "Newsletter signup",
+                          "slug": "{{ email.slug }}",
+                          "body": "",
+                          "css": "",
+                          "success_body": "",
+                          "surveys": [],
+                          "admin": false,
+                          "status": "active",
+                          "subscriber_count": 0,
+                          "confirmed_subscriber_count": 0,
+                          "page_view_count": 0
+                        }
+                      ],
+                      "next": null,
+                      "previous": null,
+                      "count": 1
+                    }
+                  }
                 }
               }
             }
@@ -7599,6 +7814,26 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Form"
+                },
+                "examples": {
+                  "retrieve_form": {
+                    "summary": "Retrieve a form",
+                    "value": {
+                      "id": "{{ id }}",
+                      "creation_date": "2020-01-01T00:00:00Z",
+                      "title": "Newsletter signup",
+                      "slug": "{{ email.slug }}",
+                      "body": "",
+                      "css": "",
+                      "success_body": "",
+                      "surveys": [],
+                      "admin": false,
+                      "status": "active",
+                      "subscriber_count": 0,
+                      "confirmed_subscriber_count": 0,
+                      "page_view_count": 0
+                    }
+                  }
                 }
               }
             },
@@ -10343,6 +10578,20 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Snippet"
+                },
+                "examples": {
+                  "create_snippet": {
+                    "summary": "Create a snippet",
+                    "value": {
+                      "id": "{{ id }}",
+                      "creation_date": "2020-01-01T00:00:00Z",
+                      "identifier": "footer",
+                      "name": "Footer",
+                      "content": "Thanks for reading!",
+                      "mode": "fancy",
+                      "reference_count": 0
+                    }
+                  }
                 }
               }
             },
@@ -10456,6 +10705,16 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/SnippetInput"
+              },
+              "examples": {
+                "create_snippet": {
+                  "summary": "Create a snippet",
+                  "value": {
+                    "identifier": "footer",
+                    "name": "Footer",
+                    "content": "Thanks for reading!"
+                  }
+                }
               }
             }
           },
@@ -10497,6 +10756,27 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SnippetPage"
+                },
+                "examples": {
+                  "list_snippets": {
+                    "summary": "List snippets",
+                    "value": {
+                      "results": [
+                        {
+                          "id": "{{ id }}",
+                          "creation_date": "2020-01-01T00:00:00Z",
+                          "identifier": "footer",
+                          "name": "Footer",
+                          "content": "Thanks for reading!",
+                          "mode": "fancy",
+                          "reference_count": 0
+                        }
+                      ],
+                      "next": null,
+                      "previous": null,
+                      "count": 1
+                    }
+                  }
                 }
               }
             }
@@ -10604,6 +10884,20 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Snippet"
+                },
+                "examples": {
+                  "retrieve_snippet": {
+                    "summary": "Retrieve a snippet",
+                    "value": {
+                      "id": "{{ id }}",
+                      "creation_date": "2020-01-01T00:00:00Z",
+                      "identifier": "footer",
+                      "name": "Footer",
+                      "content": "Thanks for reading!",
+                      "mode": "fancy",
+                      "reference_count": 0
+                    }
+                  }
                 }
               }
             },
@@ -10733,6 +11027,32 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Snippet"
+                },
+                "examples": {
+                  "update_snippet": {
+                    "summary": "Update a snippet's content",
+                    "value": {
+                      "id": "{{ id }}",
+                      "creation_date": "2020-01-01T00:00:00Z",
+                      "identifier": "footer",
+                      "name": "Footer",
+                      "content": "Thanks for reading \u2014 reply any time!",
+                      "mode": "fancy",
+                      "reference_count": 0
+                    }
+                  },
+                  "update_snippet_identifier": {
+                    "summary": "Rename a snippet's identifier",
+                    "value": {
+                      "id": "{{ id }}",
+                      "creation_date": "2020-01-01T00:00:00Z",
+                      "identifier": "email-footer",
+                      "name": "Footer",
+                      "content": "Thanks for reading \u2014 reply any time!",
+                      "mode": "fancy",
+                      "reference_count": 0
+                    }
+                  }
                 }
               }
             },
@@ -10850,6 +11170,21 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/SnippetUpdateInput"
+              },
+              "examples": {
+                "update_snippet": {
+                  "summary": "Update a snippet's content",
+                  "value": {
+                    "name": "Footer",
+                    "content": "Thanks for reading \u2014 reply any time!"
+                  }
+                },
+                "update_snippet_identifier": {
+                  "summary": "Rename a snippet's identifier",
+                  "value": {
+                    "identifier": "email-footer"
+                  }
+                }
               }
             }
           },
@@ -13588,6 +13923,28 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Survey"
+                },
+                "examples": {
+                  "create_survey": {
+                    "summary": "Create a survey",
+                    "value": {
+                      "id": "{{ id }}",
+                      "creation_date": "2020-01-01T00:00:00Z",
+                      "identifier": "favorite-topic",
+                      "question": "What would you like to read more about?",
+                      "response_count": 0,
+                      "answers": [
+                        "Engineering",
+                        "Design"
+                      ],
+                      "notes": "",
+                      "randomize_answers": false,
+                      "response_cadence": "once",
+                      "status": "active",
+                      "is_freeform_response_enabled": false,
+                      "input_type": "radio"
+                    }
+                  }
                 }
               }
             },
@@ -13701,6 +14058,19 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/SurveyInput"
+              },
+              "examples": {
+                "create_survey": {
+                  "summary": "Create a survey",
+                  "value": {
+                    "identifier": "favorite-topic",
+                    "question": "What would you like to read more about?",
+                    "answers": [
+                      "Engineering",
+                      "Design"
+                    ]
+                  }
+                }
               }
             }
           },
@@ -13807,6 +14177,35 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SurveyPage"
+                },
+                "examples": {
+                  "list_surveys": {
+                    "summary": "List surveys",
+                    "value": {
+                      "results": [
+                        {
+                          "id": "{{ id }}",
+                          "creation_date": "2020-01-01T00:00:00Z",
+                          "identifier": "favorite-topic",
+                          "question": "What would you like to read more about?",
+                          "response_count": 0,
+                          "answers": [
+                            "Engineering",
+                            "Design"
+                          ],
+                          "notes": "",
+                          "randomize_answers": false,
+                          "response_cadence": "once",
+                          "status": "active",
+                          "is_freeform_response_enabled": false,
+                          "input_type": "radio"
+                        }
+                      ],
+                      "next": null,
+                      "previous": null,
+                      "count": 1
+                    }
+                  }
                 }
               }
             }
@@ -15625,6 +16024,36 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Webhook"
+                },
+                "examples": {
+                  "create_webhook": {
+                    "summary": "Create a webhook",
+                    "value": {
+                      "id": "{{ id }}",
+                      "creation_date": "2020-01-01T00:00:00Z",
+                      "status": "enabled",
+                      "event_types": [
+                        "email.created"
+                      ],
+                      "url": "https://my.api/webhook",
+                      "description": "Notify Slack when an email is created.",
+                      "signing_key": ""
+                    }
+                  },
+                  "create_webhook_minimal": {
+                    "summary": "Create a webhook with only the required fields",
+                    "value": {
+                      "id": "{{ id }}",
+                      "creation_date": "2020-01-01T00:00:00Z",
+                      "status": "enabled",
+                      "event_types": [
+                        "subscriber.created"
+                      ],
+                      "url": "https://my.api/minimal",
+                      "description": "",
+                      "signing_key": ""
+                    }
+                  }
                 }
               }
             },
@@ -15738,6 +16167,27 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/WebhookInput"
+              },
+              "examples": {
+                "create_webhook": {
+                  "summary": "Create a webhook",
+                  "value": {
+                    "url": "https://my.api/webhook",
+                    "event_types": [
+                      "email.created"
+                    ],
+                    "description": "Notify Slack when an email is created."
+                  }
+                },
+                "create_webhook_minimal": {
+                  "summary": "Create a webhook with only the required fields",
+                  "value": {
+                    "url": "https://my.api/minimal",
+                    "event_types": [
+                      "subscriber.created"
+                    ]
+                  }
+                }
               }
             }
           },
@@ -15784,6 +16234,29 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/WebhookPage"
+                },
+                "examples": {
+                  "list_webhooks": {
+                    "summary": "List webhooks",
+                    "value": {
+                      "results": [
+                        {
+                          "id": "{{ id }}",
+                          "creation_date": "2020-01-01T00:00:00Z",
+                          "status": "enabled",
+                          "event_types": [
+                            "email.created"
+                          ],
+                          "url": "https://my.api/webhook",
+                          "description": "Notify Slack when an email is created.",
+                          "signing_key": ""
+                        }
+                      ],
+                      "next": null,
+                      "previous": null,
+                      "count": 1
+                    }
+                  }
                 }
               }
             }
@@ -15891,6 +16364,22 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Webhook"
+                },
+                "examples": {
+                  "retrieve_webhook": {
+                    "summary": "Retrieve a webhook",
+                    "value": {
+                      "id": "{{ id }}",
+                      "creation_date": "2020-01-01T00:00:00Z",
+                      "status": "enabled",
+                      "event_types": [
+                        "email.created"
+                      ],
+                      "url": "https://my.api/webhook",
+                      "description": "Notify Slack when an email is created.",
+                      "signing_key": ""
+                    }
+                  }
                 }
               }
             },
