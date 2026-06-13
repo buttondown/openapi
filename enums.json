@@ -1756,6 +1756,11 @@
       "name": "Firewall blocked",
       "variant": "error"
     },
+    "metadata_invalid": {
+      "description": "The metadata provided is invalid.",
+      "name": "Metadata invalid",
+      "variant": "error"
+    },
     "subscriber_type_invalid": {
       "description": "The subscriber type provided is not valid.",
       "name": "Subscriber type invalid",

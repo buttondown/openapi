@@ -11418,6 +11418,16 @@
           "409": {
             "description": "Conflict"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "429": {
             "description": "Too Many Requests",
             "content": {
@@ -11469,7 +11479,7 @@
             "schema": {
               "description": "If provided, only return subscribers who last bounced on or before the given date.",
               "title": "Bounce Date  End",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -11481,7 +11491,7 @@
             "schema": {
               "description": "If provided, only return subscribers who last bounced on or after the given date.",
               "title": "Bounce Date  Start",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -11507,7 +11517,7 @@
             "schema": {
               "description": "If provided, only return subscribers who churned on or before the given date.",
               "title": "Churn Date  End",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -11519,7 +11529,7 @@
             "schema": {
               "description": "If provided, only return subscribers who churned on or after the given date.",
               "title": "Churn Date  Start",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -11559,7 +11569,7 @@
             "schema": {
               "description": "If provided, only return subscribers created before the given date.",
               "title": "Date  End",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -11571,7 +11581,7 @@
             "schema": {
               "description": "If provided, only return subscribers created on or after the given date.",
               "title": "Date  Start",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -11690,7 +11700,7 @@
             "schema": {
               "description": "If provided, only return subscribers whose last click was on or before the given date.",
               "title": "Last Click Date  End",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -11702,7 +11712,7 @@
             "schema": {
               "description": "If provided, only return subscribers whose last click was on or after the given date.",
               "title": "Last Click Date  Start",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -11714,7 +11724,7 @@
             "schema": {
               "description": "If provided, only return subscribers whose last open was on or before the given date.",
               "title": "Last Open Date  End",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -11726,7 +11736,7 @@
             "schema": {
               "description": "If provided, only return subscribers whose last open was on or after the given date.",
               "title": "Last Open Date  Start",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -11981,7 +11991,7 @@
             "schema": {
               "description": "If provided, only return subscribers who became undeliverable on or before the given date.",
               "title": "Undeliverability Date  End",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -11993,7 +12003,7 @@
             "schema": {
               "description": "If provided, only return subscribers who became undeliverable on or after the given date.",
               "title": "Undeliverability Date  Start",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -12019,7 +12029,7 @@
             "schema": {
               "description": "If provided, only return subscribers who unsubscribed on or before the given date.",
               "title": "Unsubscription Date  End",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -12031,7 +12041,7 @@
             "schema": {
               "description": "If provided, only return subscribers who unsubscribed on or after the given date.",
               "title": "Unsubscription Date  Start",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -12063,7 +12073,7 @@
             "schema": {
               "description": "If provided, only return subscribers who upgraded on or before the given date.",
               "title": "Upgrade Date  End",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -12075,7 +12085,7 @@
             "schema": {
               "description": "If provided, only return subscribers who upgraded on or after the given date.",
               "title": "Upgrade Date  Start",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -12547,6 +12557,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -24911,6 +24931,7 @@
         "type": "object"
       },
       "SubscriberInput": {
+        "additionalProperties": false,
         "properties": {
           "email_address": {
             "description": "The email address of the subscriber.",
@@ -24974,6 +24995,7 @@
           "referring_subscriber_id": {
             "anyOf": [
               {
+                "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:sub)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
                 "type": "string"
               },
               {
@@ -25095,6 +25117,7 @@
           "email_invalid",
           "email_has_been_changed_too_many_times",
           "firewall_blocked",
+          "metadata_invalid",
           "subscriber_type_invalid",
           "tag_invalid"
         ],
@@ -25102,6 +25125,7 @@
         "type": "string"
       },
       "SubscriberUpdateInput": {
+        "additionalProperties": false,
         "properties": {
           "commenting_disabled": {
             "anyOf": [
@@ -25212,6 +25236,7 @@
           "email_which_prompted_unsubscription_id": {
             "anyOf": [
               {
+                "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:em)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
                 "type": "string"
               },
               {
@@ -25314,6 +25339,7 @@
         "type": "string"
       },
       "AutomationAttemptUpdateInput": {
+        "additionalProperties": false,
         "properties": {
           "status": {
             "const": "skipped",
