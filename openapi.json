@@ -4388,6 +4388,16 @@
           "409": {
             "description": "Conflict"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -4499,6 +4509,7 @@
             "schema": {
               "description": "If provided, only return emails with the given IDs.",
               "items": {
+                "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:em)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
                 "type": "string"
               },
               "title": "Ids",
@@ -4577,7 +4588,7 @@
             "schema": {
               "description": "If provided, only return emails created after the given date.",
               "title": "Creation Date  Start",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -4589,7 +4600,7 @@
             "schema": {
               "description": "If provided, only return emails created before the given date.",
               "title": "Creation Date  End",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -4601,7 +4612,7 @@
             "schema": {
               "description": "If provided, only return emails published after the given date.",
               "title": "Publish Date  Start",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -4613,7 +4624,7 @@
             "schema": {
               "description": "If provided, only return emails published before the given date.",
               "title": "Publish Date  End",
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "format": "date",
               "type": "string"
             },
             "required": false,
@@ -4706,6 +4717,7 @@
             "schema": {
               "description": "If provided, only return emails with the given attachments.",
               "items": {
+                "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:att)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
                 "type": "string"
               },
               "title": "Attachments",
@@ -4720,6 +4732,7 @@
             "schema": {
               "description": "If provided, only return emails that reference the given [snippets](https://docs.buttondown.com/api-snippets-introduction).",
               "items": {
+                "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:snip)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
                 "type": "string"
               },
               "title": "Snippet Id",
@@ -4857,6 +4870,16 @@
           "409": {
             "description": "Conflict"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -4988,6 +5011,16 @@
           "409": {
             "description": "Conflict"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -5117,6 +5150,16 @@
           "409": {
             "description": "Conflict"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -5215,6 +5258,16 @@
           "409": {
             "description": "Conflict"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -5307,6 +5360,7 @@
             "name": "field",
             "schema": {
               "description": "The field to retrieve history for.",
+              "minLength": 1,
               "title": "Field",
               "type": "string"
             },
@@ -5377,6 +5431,16 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -5399,6 +5463,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -5531,6 +5605,16 @@
           "409": {
             "description": "Conflict"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -5637,6 +5721,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -5770,6 +5864,16 @@
           "409": {
             "description": "Conflict"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
+          },
           "401": {
             "description": "Unauthorized",
             "content": {
@@ -5879,6 +5983,16 @@
           },
           "409": {
             "description": "Conflict"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -20304,11 +20418,16 @@
         "type": "object"
       },
       "EmailInput": {
+        "additionalProperties": false,
         "properties": {
           "attachments": {
             "default": [],
             "description": "A list of attachment IDs present on the email. (See [Attachments](https://docs.buttondown.com/api-attachments-introduction) for more information.)",
+            "example": [
+              "att_01h8xg4j3k2m1n0p9q8r7s6t5v"
+            ],
             "items": {
+              "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:att)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
               "type": "string"
             },
             "title": "Attachments",
@@ -20338,6 +20457,7 @@
             "anyOf": [
               {
                 "maxLength": 100,
+                "pattern": "^[a-zA-Z0-9_-]+$",
                 "type": "string"
               },
               {
@@ -20345,6 +20465,7 @@
               }
             ],
             "description": "A short, human-readable identifier for the email, used in the archive URL.",
+            "example": "hello-world",
             "title": "Slug"
           },
           "description": {
@@ -20446,7 +20567,11 @@
           },
           "related_email_ids": {
             "description": "IDs of emails related to this one. Shown at the bottom of the email and archive pages.",
+            "example": [
+              "em_01h8xg4j3k2m1n0p9q8r7s6t5v"
+            ],
             "items": {
+              "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:em)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
               "type": "string"
             },
             "title": "Related Email Ids",
@@ -20512,11 +20637,13 @@
         "type": "object"
       },
       "EmailUpdateInput": {
+        "additionalProperties": false,
         "properties": {
           "attachments": {
             "anyOf": [
               {
                 "items": {
+                  "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:att)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
                   "type": "string"
                 },
                 "type": "array"
@@ -20526,6 +20653,9 @@
               }
             ],
             "description": "A list of attachment IDs present on the email. (See [Attachments](https://docs.buttondown.com/api-attachments-introduction) for more information.)",
+            "example": [
+              "att_01h8xg4j3k2m1n0p9q8r7s6t5v"
+            ],
             "title": "Attachments"
           },
           "publish_date": {
@@ -20667,6 +20797,7 @@
             "anyOf": [
               {
                 "maxLength": 100,
+                "pattern": "^[a-zA-Z0-9_-]+$",
                 "type": "string"
               },
               {
@@ -20733,6 +20864,7 @@
             "anyOf": [
               {
                 "items": {
+                  "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:em)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
                   "type": "string"
                 },
                 "type": "array"
@@ -20742,6 +20874,9 @@
               }
             ],
             "description": "IDs of emails related to this one. Shown at the bottom of the email and archive pages.",
+            "example": [
+              "em_01h8xg4j3k2m1n0p9q8r7s6t5v"
+            ],
             "title": "Related Email Ids"
           },
           "featured": {
@@ -20974,11 +21109,13 @@
         "type": "object"
       },
       "SendDraftInput": {
+        "additionalProperties": false,
         "properties": {
           "subscribers": {
             "anyOf": [
               {
                 "items": {
+                  "pattern": "^(?:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|(?:sub)_(?:[0-7][0-9abcdefghjkmnpqrstvwxyz]{25}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}))$",
                   "type": "string"
                 },
                 "type": "array"
@@ -20989,8 +21126,7 @@
             ],
             "description": "A list of subscriber ids to which to send the email.",
             "example": [
-              "bc5601f4-b180-4e02-8501-c18080662376",
-              "24ee3338-daaf-42b0-bf7b-0cab38972fe5"
+              "sub_01h8xg4j3k2m1n0p9q8r7s6t5v"
             ],
             "title": "Subscribers"
           },
