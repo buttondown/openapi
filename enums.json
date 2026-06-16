@@ -1494,6 +1494,11 @@
       "name": "Patreon",
       "variant": "info"
     },
+    "shopify": {
+      "description": "This subscriber joined via Shopify.",
+      "name": "Shopify",
+      "variant": "info"
+    },
     "stripe": {
       "description": "This subscriber joined via Stripe.",
       "name": "Stripe",
