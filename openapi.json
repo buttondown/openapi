@@ -19619,7 +19619,6 @@
           "email_address_regex",
           "email_address_sandbox_test",
           "email_address_shannon_entropy",
-          "email_address_stopforumspam_score",
           "email_address_tied_to_account",
           "email_address_typo",
           "embedded_form_honeypot",
