@@ -1097,6 +1097,10 @@
       "description": "Whenever a customer changes their email address in Stripe.",
       "name": "stripe.customer.updated"
     },
+    "stripe.invoice.upcoming": {
+      "description": "When a paid subscriber's subscription is approaching its renewal date, mapped from Stripe's `invoice.upcoming` webhook. Lets you message subscribers before they're charged again.",
+      "name": "stripe.invoice.upcoming"
+    },
     "stripe.subscription.activated": {
       "description": "Whenever a subscription is activated in Stripe.",
       "name": "stripe.subscription.activated"

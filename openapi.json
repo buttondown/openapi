@@ -26887,6 +26887,7 @@
           "social_mention.created",
           "stripe.checkout.session.completed",
           "stripe.customer.updated",
+          "stripe.invoice.upcoming",
           "stripe.subscription.activated",
           "stripe.subscription.churning",
           "stripe.subscription.deactivated",
