@@ -14877,8 +14877,40 @@
       "post": {
         "operationId": "create_tag",
         "summary": "Create Tag",
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Buttondown-Collision-Behavior",
+            "schema": {
+              "allOf": [
+                {
+                  "description": "Behavior applied when a tag with the same name already exists on create.",
+                  "enum": [
+                    "no_op",
+                    "overwrite"
+                  ],
+                  "title": "TagCollisionBehavior",
+                  "type": "string"
+                }
+              ],
+              "default": "no_op",
+              "description": "The behavior to apply when a tag with the same name already exists.\nDefaults to \"no_op\", which returns a 400 error. Set to \"overwrite\" to update the existing tag with the supplied values and return it with a 200 status code instead."
+            },
+            "required": false,
+            "description": "The behavior to apply when a tag with the same name already exists.\nDefaults to \"no_op\", which returns a 400 error. Set to \"overwrite\" to update the existing tag with the supplied values and return it with a 200 status code instead."
+          }
+        ],
         "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
           "201": {
             "description": "Created",
             "content": {
