@@ -11791,6 +11791,7 @@
               "description": "If provided, only return subscribers with the given IP address(es).",
               "title": "Ip Address",
               "items": {
+                "format": "ipvanyaddress",
                 "type": "string"
               },
               "type": "array"
@@ -12315,7 +12316,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
+                  "$ref": "#/components/schemas/ValidationErrorMessage"
                 }
               }
             }
@@ -25160,7 +25161,7 @@
           "ip_address": {
             "anyOf": [
               {
-                "pattern": "^[^\\s]+$",
+                "format": "ipvanyaddress",
                 "type": "string"
               },
               {
