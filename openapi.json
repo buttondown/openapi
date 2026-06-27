@@ -20089,7 +20089,7 @@
           },
           "type": {
             "$ref": "#/components/schemas/SubscriberType",
-            "description": "The subscriber's lifecycle state \u2014 e.g. `regular` (active), `premium` (paid), `unactivated` (pending confirmation), `unsubscribed`, `removed`."
+            "description": "The subscriber's lifecycle state. One of: `blocked` (blocked by the newsletter), `churned` (previously paid, subscription ended), `churning` (paying but won't renew), `complained` (marked an email as spam), `gifted` (granted free premium access by the newsletter), `past_due` (paid subscription with an overdue invoice), `paused` (premium subscription paused), `premium` (paying subscriber), `regular` (active free subscriber), `removed` (removed by the newsletter), `trialed` (temporarily enrolled in premium), `unactivated` (pending double opt-in confirmation), `undeliverable` (determined undeliverable), `unpaid` (has not paid yet), `unsubscribed` (voluntarily unsubscribed), `upcoming` (paid subscription that has not started yet). Subscribers with `premium`, `gifted`, `trialed`, or `churning` have access to premium content; use these to distinguish paid from free subscribers."
           },
           "undeliverability_date": {
             "anyOf": [
@@ -25155,7 +25155,7 @@
                 "type": "null"
               }
             ],
-            "description": "The subscriber's lifecycle state \u2014 e.g. `regular` (active), `premium` (paid), `unactivated` (pending confirmation), `unsubscribed`, `removed`.",
+            "description": "The subscriber's lifecycle state. One of: `blocked` (blocked by the newsletter), `churned` (previously paid, subscription ended), `churning` (paying but won't renew), `complained` (marked an email as spam), `gifted` (granted free premium access by the newsletter), `past_due` (paid subscription with an overdue invoice), `paused` (premium subscription paused), `premium` (paying subscriber), `regular` (active free subscriber), `removed` (removed by the newsletter), `trialed` (temporarily enrolled in premium), `unactivated` (pending double opt-in confirmation), `undeliverable` (determined undeliverable), `unpaid` (has not paid yet), `unsubscribed` (voluntarily unsubscribed), `upcoming` (paid subscription that has not started yet). Subscribers with `premium`, `gifted`, `trialed`, or `churning` have access to premium content; use these to distinguish paid from free subscribers.",
             "example": "regular"
           },
           "ip_address": {
@@ -25360,7 +25360,7 @@
                 "type": "null"
               }
             ],
-            "description": "The subscriber's lifecycle state \u2014 e.g. `regular` (active), `premium` (paid), `unactivated` (pending confirmation), `unsubscribed`, `removed`."
+            "description": "The subscriber's lifecycle state. One of: `blocked` (blocked by the newsletter), `churned` (previously paid, subscription ended), `churning` (paying but won't renew), `complained` (marked an email as spam), `gifted` (granted free premium access by the newsletter), `past_due` (paid subscription with an overdue invoice), `paused` (premium subscription paused), `premium` (paying subscriber), `regular` (active free subscriber), `removed` (removed by the newsletter), `trialed` (temporarily enrolled in premium), `unactivated` (pending double opt-in confirmation), `undeliverable` (determined undeliverable), `unpaid` (has not paid yet), `unsubscribed` (voluntarily unsubscribed), `upcoming` (paid subscription that has not started yet). Subscribers with `premium`, `gifted`, `trialed`, or `churning` have access to premium content; use these to distinguish paid from free subscribers."
           },
           "unsubscription_reason": {
             "anyOf": [
