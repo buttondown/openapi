@@ -26876,6 +26876,7 @@
           "subscriber.referred.paid",
           "subscriber.rejected",
           "subscriber.replied",
+          "subscriber.sent",
           "subscriber.responded_to_survey",
           "subscriber.tags.changed",
           "subscriber.trial_ended",

@@ -1189,6 +1189,10 @@
       "description": "When a subscriber has resumed their subscription after pausing it.",
       "name": "subscriber.resumed"
     },
+    "subscriber.sent": {
+      "description": "Whenever an email has been sent to a subscriber.",
+      "name": "subscriber.sent"
+    },
     "subscriber.tags.changed": {
       "description": "When a subscriber's tags have been modified.",
       "name": "subscriber.tags.changed"
