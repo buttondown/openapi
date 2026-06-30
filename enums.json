@@ -1944,6 +1944,11 @@
       "name": "French",
       "variant": "info"
     },
+    "ja-JP": {
+      "description": "Japanese (Japan).",
+      "name": "Japanese",
+      "variant": "info"
+    },
     "de": {
       "description": "German.",
       "name": "German",
