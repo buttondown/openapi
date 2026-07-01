@@ -1113,6 +1113,34 @@
       "description": "Whenever a subscription is deactivated in Stripe.",
       "name": "stripe.subscription.deactivated"
     },
+    "subscriber.activation_bounced": {
+      "description": "When a subscriber's confirmation (opt-in) email bounced.",
+      "name": "subscriber.activation_bounced"
+    },
+    "subscriber.activation_clicked": {
+      "description": "When a subscriber clicked a link in their confirmation (opt-in) email.",
+      "name": "subscriber.activation_clicked"
+    },
+    "subscriber.activation_complained": {
+      "description": "When a subscriber marked their confirmation (opt-in) email as spam.",
+      "name": "subscriber.activation_complained"
+    },
+    "subscriber.activation_deferred": {
+      "description": "When a subscriber's confirmation (opt-in) email was deferred (a transient delivery failure the provider will retry).",
+      "name": "subscriber.activation_deferred"
+    },
+    "subscriber.activation_delivered": {
+      "description": "When a subscriber's confirmation (opt-in) email was successfully delivered.",
+      "name": "subscriber.activation_delivered"
+    },
+    "subscriber.activation_opened": {
+      "description": "When a subscriber opened their confirmation (opt-in) email.",
+      "name": "subscriber.activation_opened"
+    },
+    "subscriber.activation_rejected": {
+      "description": "When a subscriber's confirmation (opt-in) email was rejected (a permanent delivery failure).",
+      "name": "subscriber.activation_rejected"
+    },
     "subscriber.bounced": {
       "description": "Whenever a subscriber's email is bounced.",
       "name": "subscriber.bounced"
@@ -1144,6 +1172,10 @@
     "subscriber.created": {
       "description": "Whenever a new subscriber is created.",
       "name": "subscriber.created"
+    },
+    "subscriber.deferred": {
+      "description": "When a subscriber's email was deferred (a transient delivery failure the email provider will retry).",
+      "name": "subscriber.deferred"
     },
     "subscriber.deleted": {
       "description": "When a subscriber has been deleted from your newsletter.",
