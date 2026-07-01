@@ -1943,6 +1943,11 @@
       "name": "Estonian",
       "variant": "info"
     },
+    "fi-FI": {
+      "description": "Finnish (Finland).",
+      "name": "Finnish",
+      "variant": "info"
+    },
     "fr": {
       "description": "French.",
       "name": "French",
