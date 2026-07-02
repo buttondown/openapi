@@ -1420,6 +1420,11 @@
       "name": "Classic",
       "variant": "info"
     },
+    "custom": {
+      "description": "Your own HTML template, wrapped around every email's content.",
+      "name": "Custom",
+      "variant": "warning"
+    },
     "modern": {
       "description": "The default email template.",
       "name": "Modern",
