@@ -20825,6 +20825,17 @@
             },
             "description": "Tag-based filter rules determining which subscribers receive this email."
           },
+          "template": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/NewsletterEmailTemplate"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "If present, this template overrides your newsletter's default email template."
+          },
           "commenting_mode": {
             "allOf": [
               {
