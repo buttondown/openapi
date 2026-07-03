@@ -28980,6 +28980,7 @@
       "SubscriberInputValidationErrorCode": {
         "description": "Represents the type of error that occurred when validating subscriber input.\n\nHuman-readable error messages are provided in the `detail` field of the response;\nthese values are meant to be parseable by code or client logic.",
         "enum": [
+          "currency_mismatch",
           "email_already_exists",
           "email_blocked",
           "email_empty",
