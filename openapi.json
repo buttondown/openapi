@@ -19895,6 +19895,7 @@
           "fingerprint_missing",
           "ip_address_cleantalk_score",
           "ip_address_country_risk",
+          "ip_address_datacenter",
           "ip_address_extant_subscriber_count",
           "ip_address_peaceful",
           "ip_address_previous_evaluation",
