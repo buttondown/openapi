@@ -25199,7 +25199,7 @@
           },
           "mode": {
             "$ref": "#/components/schemas/SnippetMode",
-            "description": "The editor mode for the snippet, which controls how `content` is rendered: `fancy` (Markdown), `plaintext`, or `naked` (raw HTML with no processing)."
+            "description": "The editor mode for the snippet, which controls how `content` is rendered: `fancy` (rich text, stored as HTML), `plaintext` (Markdown), or `naked` (raw HTML with no processing)."
           },
           "reference_count": {
             "default": 0,
@@ -25253,7 +25253,7 @@
               }
             ],
             "default": "fancy",
-            "description": "The editor mode for the snippet, which controls how `content` is rendered: `fancy` (Markdown), `plaintext`, or `naked` (raw HTML with no processing).",
+            "description": "The editor mode for the snippet, which controls how `content` is rendered: `fancy` (rich text, stored as HTML), `plaintext` (Markdown), or `naked` (raw HTML with no processing).",
             "example": "fancy"
           }
         },
@@ -25320,7 +25320,7 @@
                 "type": "null"
               }
             ],
-            "description": "The editor mode for the snippet, which controls how `content` is rendered: `fancy` (Markdown), `plaintext`, or `naked` (raw HTML with no processing).",
+            "description": "The editor mode for the snippet, which controls how `content` is rendered: `fancy` (rich text, stored as HTML), `plaintext` (Markdown), or `naked` (raw HTML with no processing).",
             "example": "fancy"
           }
         },
