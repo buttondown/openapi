@@ -45,6 +45,29 @@
         "content_submitted_at": "2024-11-08T00:00:00+00:00",
         "inquiry_message": ""
       }
+    },
+    {
+      "description": "Sold advertising slot awaiting content",
+      "object": {
+        "id": "adslot_2k28edc3fw896bp4mrhc535z5k",
+        "creation_date": "2024-01-01T00:00:00Z",
+        "date": "2025-03-15",
+        "status": "sold",
+        "invoice_url": "https://example.com/invoice.pdf",
+        "sku_id": "adsku_1k28edc3fw896bp4mrhc535z5k",
+        "submission_url": "https://buttondown.com/test/sponsorships/submit/33333333-3333-3333-3333-333333333333/",
+        "sponsor_company": "",
+        "sponsor_email": "",
+        "sponsor_name": "",
+        "content": "",
+        "content_image_id": null,
+        "content_url": "",
+        "content_approved_at": null,
+        "content_rejected_at": null,
+        "content_rejection_reason": "",
+        "content_submitted_at": null,
+        "inquiry_message": ""
+      }
     }
   ],
   "AdvertisingUnit": [
@@ -105,6 +128,24 @@
             "inquiry_message": ""
           }
         ]
+      }
+    },
+    {
+      "description": "Active advertising unit sold through Stripe with no slots",
+      "object": {
+        "id": "adsku_1k28edc3fw896bp4mrhc535z5k",
+        "creation_date": "2024-01-01T00:00:00Z",
+        "status": "active",
+        "title": "Premium Sponsorship",
+        "description": "Your brand featured prominently in the newsletter",
+        "behavior": "stripe",
+        "url": "",
+        "price": 500,
+        "allows_html": false,
+        "allows_image": true,
+        "max_characters": 500,
+        "submission_deadline_days": 3,
+        "slots": []
       }
     }
   ],
@@ -345,6 +386,7 @@
         "creation_date": "2020-09-29T00:00:00+00:00",
         "last_checked_date": null,
         "status": "active",
+        "error": null,
         "behavior": "draft",
         "cadence": "daily",
         "cadence_metadata": {},
@@ -368,6 +410,7 @@
         "creation_date": "2020-09-29T00:00:00+00:00",
         "last_checked_date": null,
         "status": "active",
+        "error": null,
         "behavior": "draft",
         "cadence": "daily",
         "cadence_metadata": {},
@@ -660,6 +703,7 @@
       "description": "Basic analytics response",
       "object": {
         "recipients": 100,
+        "attempts": 100,
         "deliveries": 99,
         "opens": 50,
         "clicks": 25,
@@ -715,7 +759,6 @@
         "source": "app",
         "status": "sent",
         "subject": "Welcome to the newsletter",
-        "suppression_reason": null,
         "template": null
       }
     },
@@ -751,7 +794,6 @@
         "source": "app",
         "status": "draft",
         "subject": "Welcome to the newsletter",
-        "suppression_reason": null,
         "template": null
       }
     },
@@ -787,7 +829,6 @@
         "source": "app",
         "status": "scheduled",
         "subject": "Welcome to the newsletter",
-        "suppression_reason": null,
         "template": null
       }
     }
@@ -946,7 +987,7 @@
         "creation_date": "2019-08-24T14:15:22Z",
         "completion_date": "2019-08-24T14:17:22Z",
         "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
-        "status": "completed",
+        "status": "processed",
         "type": "delete_subscribers",
         "metadata": {
           "ids": [
@@ -961,7 +1002,7 @@
         "creation_date": "2019-08-24T14:15:22Z",
         "completion_date": "2019-08-24T14:17:22Z",
         "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
-        "status": "completed",
+        "status": "processed",
         "type": "apply_tags",
         "metadata": {
           "tag": "4931-4f5c-9b5b-2c9f6c9f6c9f",
@@ -978,7 +1019,7 @@
         "creation_date": "2019-08-24T14:15:22Z",
         "completion_date": "2019-08-24T14:17:22Z",
         "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
-        "status": "completed",
+        "status": "processed",
         "type": "rename_metadata",
         "metadata": {
           "rename_mapping": {
@@ -1006,6 +1047,7 @@
     {
       "description": "Basic validation error",
       "object": {
+        "code": "invalid_input",
         "detail": [
           {
             "type": "missing",
@@ -1273,100 +1315,6 @@
       }
     }
   ],
-  "SubscriberImport": [
-    {
-      "description": "Basic subscriber import",
-      "object": {
-        "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
-        "creation_date": "2020-09-29T00:00:00+00:00",
-        "source": "substack",
-        "status": "succeeded",
-        "label": "Import subscribers",
-        "metadata": {
-          "email_column": 0,
-          "metadata_columns": {}
-        },
-        "results": {
-          "new_subscribers": 100,
-          "updated_subscribers": null,
-          "updated_subscriber_emails": [],
-          "existing_subscribers": 20,
-          "reason_to_bad_subscribers": {
-            "That email address is invalid.": [
-              "email@examplecom"
-            ],
-            "No MX record found for domain": [
-              "email@example.biz",
-              "helen@example.biz"
-            ]
-          },
-          "new_tags": 2
-        },
-        "parsed_text": [
-          [
-            "email",
-            "name",
-            "tags",
-            "notes",
-            "metadata"
-          ],
-          [
-            "email@example.com",
-            "John Doe",
-            "foo",
-            "notes",
-            "metadata"
-          ]
-        ]
-      }
-    },
-    {
-      "description": "Standard subscriber import",
-      "object": {
-        "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
-        "creation_date": "2020-09-29T00:00:00+00:00",
-        "source": "standard",
-        "status": "succeeded",
-        "label": "Import subscribers",
-        "metadata": {
-          "email_column": 0,
-          "metadata_columns": {
-            "first_name": 1
-          }
-        },
-        "results": {
-          "new_subscribers": 100,
-          "updated_subscribers": null,
-          "updated_subscriber_emails": [],
-          "existing_subscribers": 20,
-          "reason_to_bad_subscribers": {
-            "That email address is invalid.": [
-              "email@examplecom"
-            ],
-            "No MX record found for domain": [
-              "email@example.biz",
-              "helen@example.biz"
-            ]
-          },
-          "new_tags": 2
-        },
-        "parsed_text": [
-          [
-            "email",
-            "first_name"
-          ],
-          [
-            "email@example.com",
-            "John"
-          ],
-          [
-            "email2@example.com",
-            "Jane"
-          ]
-        ]
-      }
-    }
-  ],
   "APIRequest": [
     {
       "description": "Basic API request",
@@ -1470,8 +1418,8 @@
       "object": {
         "subscription_id": "sub_whatever",
         "url": "https://dashboard.stripe.com/subscriptions/sub_whatever",
-        "creation_date": "2023-01-01T00:00:00",
-        "ending_date": "2023-01-01T00:00:00",
+        "creation_date": "2023-01-01T00:00:00+00:00",
+        "ending_date": "2023-01-01T00:00:00+00:00",
         "amount": 1000,
         "currency": "usd",
         "cadence": "month",
@@ -1600,6 +1548,7 @@
       "description": "Newsletter owner",
       "object": {
         "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "creation_date": "2020-09-01T00:00:00+00:00",
         "email_address": "owner@buttondown.email",
         "permissions": {
           "subscriber": "write",
@@ -1618,6 +1567,7 @@
       "description": "Pending user invitation",
       "object": {
         "id": "23121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "creation_date": "2020-09-27T09:00:00+00:00",
         "email_address": "editor@buttondown.email",
         "permissions": {
           "subscriber": "read",
@@ -1636,6 +1586,7 @@
       "description": "Accepted user with limited permissions",
       "object": {
         "id": "33121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "creation_date": "2020-09-15T00:00:00+00:00",
         "email_address": "analyst@buttondown.email",
         "permissions": {
           "subscriber": "read",
@@ -1654,6 +1605,7 @@
       "description": "Declined user invitation",
       "object": {
         "id": "43121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "creation_date": "2020-09-20T00:00:00+00:00",
         "email_address": "declined@buttondown.email",
         "permissions": {
           "subscriber": "none",
@@ -1853,7 +1805,48 @@
             ]
           },
           "new_tags": 2
-        }
+        },
+        "error_message": null,
+        "email_count": null,
+        "subscriber_imports": null
+      }
+    },
+    {
+      "description": "Completed archive import with subscribers",
+      "object": {
+        "id": "em_imp_1bbhdmwvva9h1stjrddwqrm71y",
+        "creation_date": "2020-09-29T00:00:00+00:00",
+        "type": "archive_import",
+        "status": "succeeded",
+        "source": "mailchimp_v3",
+        "label": null,
+        "metadata": {},
+        "results": null,
+        "error_message": "",
+        "email_count": 120,
+        "subscriber_imports": [
+          {
+            "id": "sub_imp_2yh97hrb9v99q9yz0v5mz4ypkb",
+            "creation_date": "2020-09-29T00:04:00+00:00",
+            "type": "subscriber_import",
+            "status": "succeeded",
+            "source": "mailchimp",
+            "label": null,
+            "metadata": {
+              "email_column": 0
+            },
+            "results": {
+              "new_subscribers": 950,
+              "updated_subscribers": null,
+              "existing_subscribers": 0,
+              "reason_to_bad_subscribers": {},
+              "new_tags": 1
+            },
+            "error_message": null,
+            "email_count": null,
+            "subscriber_imports": null
+          }
+        ]
       }
     },
     {
@@ -1877,7 +1870,10 @@
           "existing_subscribers": null,
           "reason_to_bad_subscribers": {},
           "new_tags": null
-        }
+        },
+        "error_message": null,
+        "email_count": null,
+        "subscriber_imports": null
       }
     }
   ],
@@ -1973,6 +1969,271 @@
           ],
           "groups": [],
           "predicate": "and"
+        }
+      }
+    }
+  ],
+  "SubscriberImportText": [
+    {
+      "description": "Basic subscriber import",
+      "object": {
+        "id": "sub_imp_0k28edc3fw896bp4mrhc535z5k",
+        "creation_date": "2020-09-29T00:00:00+00:00",
+        "type": "subscriber_import",
+        "status": "succeeded",
+        "source": "substack",
+        "label": "Import subscribers",
+        "metadata": {
+          "email_column": 0,
+          "metadata_columns": {}
+        },
+        "results": {
+          "new_subscribers": 100,
+          "updated_subscribers": null,
+          "existing_subscribers": 20,
+          "reason_to_bad_subscribers": {
+            "That email address is invalid.": [
+              "email@examplecom"
+            ],
+            "No MX record found for domain": [
+              "email@example.biz",
+              "helen@example.biz"
+            ]
+          },
+          "new_tags": 2,
+          "updated_subscriber_emails": []
+        },
+        "error_message": null,
+        "email_count": null,
+        "subscriber_imports": null,
+        "parsed_text": [
+          [
+            "email",
+            "name",
+            "tags",
+            "notes",
+            "metadata"
+          ],
+          [
+            "email@example.com",
+            "John Doe",
+            "foo",
+            "notes",
+            "metadata"
+          ]
+        ]
+      }
+    },
+    {
+      "description": "Standard subscriber import",
+      "object": {
+        "id": "sub_imp_0k28edc3fw896bp4mrhc535z5k",
+        "creation_date": "2020-09-29T00:00:00+00:00",
+        "type": "subscriber_import",
+        "status": "succeeded",
+        "source": "standard",
+        "label": "Import subscribers",
+        "metadata": {
+          "email_column": 0,
+          "metadata_columns": {
+            "first_name": 1
+          }
+        },
+        "results": {
+          "new_subscribers": 100,
+          "updated_subscribers": null,
+          "existing_subscribers": 20,
+          "reason_to_bad_subscribers": {
+            "That email address is invalid.": [
+              "email@examplecom"
+            ],
+            "No MX record found for domain": [
+              "email@example.biz",
+              "helen@example.biz"
+            ]
+          },
+          "new_tags": 2,
+          "updated_subscriber_emails": []
+        },
+        "error_message": null,
+        "email_count": null,
+        "subscriber_imports": null,
+        "parsed_text": [
+          [
+            "email",
+            "first_name"
+          ],
+          [
+            "email@example.com",
+            "John"
+          ],
+          [
+            "email2@example.com",
+            "Jane"
+          ]
+        ]
+      }
+    }
+  ],
+  "Form": [
+    {
+      "description": "Contact form",
+      "object": {
+        "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "creation_date": "2020-09-29T00:00:00+00:00",
+        "title": "Contact Form",
+        "slug": "contact",
+        "body": "<p>Get in touch with us!</p>",
+        "css": "",
+        "success_body": "Thank you for your submission!",
+        "surveys": [],
+        "tags": [],
+        "admin": false,
+        "status": "active",
+        "subscriber_count": 12,
+        "confirmed_subscriber_count": 9,
+        "page_view_count": 48
+      }
+    },
+    {
+      "description": "Feedback form",
+      "object": {
+        "id": "13121cd6-0dfc-424c-bb12-988b0a32fc9e",
+        "creation_date": "2020-01-29T00:00:00+00:00",
+        "title": "Feedback Form",
+        "slug": "feedback",
+        "body": "<p>We'd love to hear your thoughts.</p>",
+        "css": "",
+        "success_body": "Thanks for your feedback!",
+        "surveys": [
+          "13121cd6-0dfc-424c-bb12-988b0a32fcb3"
+        ],
+        "tags": [],
+        "admin": false,
+        "status": "active",
+        "subscriber_count": 3,
+        "confirmed_subscriber_count": 3,
+        "page_view_count": 12
+      }
+    }
+  ],
+  "APIKey": [
+    {
+      "description": "API key with full access",
+      "object": {
+        "id": "1",
+        "legacy_id": "1",
+        "api_key": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "api_version": "2026-01-01",
+        "type": "api_key",
+        "label": "",
+        "creation_date": "2024-01-01T00:00:00Z",
+        "last_used_date": null,
+        "disablement_date": null,
+        "disablement_reason": "",
+        "subscriber_access": "write",
+        "email_access": "write",
+        "sending_access": "write",
+        "administrivia_access": "write",
+        "automations_access": "write",
+        "forms_access": "write",
+        "styling_access": "write",
+        "surveys_access": "write"
+      }
+    },
+    {
+      "description": "API key for a Zapier integration",
+      "object": {
+        "id": "1",
+        "legacy_id": "1",
+        "api_key": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "api_version": "2026-01-01",
+        "type": "api_key",
+        "label": "Zapier Integration",
+        "creation_date": "2024-01-01T00:00:00Z",
+        "last_used_date": null,
+        "disablement_date": null,
+        "disablement_reason": "",
+        "subscriber_access": "write",
+        "email_access": "write",
+        "sending_access": "write",
+        "administrivia_access": "read",
+        "automations_access": "write",
+        "forms_access": "write",
+        "styling_access": "read",
+        "surveys_access": "write"
+      }
+    },
+    {
+      "description": "API key with limited access",
+      "object": {
+        "id": "3",
+        "legacy_id": "3",
+        "api_key": "11111111-2222-3333-4444-555555555555",
+        "api_version": "2026-01-01",
+        "type": "api_key",
+        "label": "Read-Only Script",
+        "creation_date": "2024-01-01T00:00:00Z",
+        "last_used_date": null,
+        "disablement_date": null,
+        "disablement_reason": "",
+        "subscriber_access": "read",
+        "email_access": "read",
+        "sending_access": "none",
+        "administrivia_access": "none",
+        "automations_access": "none",
+        "forms_access": "none",
+        "styling_access": "none",
+        "surveys_access": "none"
+      }
+    },
+    {
+      "description": "Disabled API key",
+      "object": {
+        "id": "4",
+        "legacy_id": "4",
+        "api_key": "deadbeef-dead-beef-dead-beefdeadbeef",
+        "api_version": "2025-06-01",
+        "type": "api_key",
+        "label": "Broken Zapier Integration",
+        "creation_date": "2024-01-01T00:00:00Z",
+        "last_used_date": null,
+        "disablement_date": "2024-03-01T00:00:00Z",
+        "disablement_reason": "This key was making excessive requests that degraded service for other users.",
+        "subscriber_access": "write",
+        "email_access": "write",
+        "sending_access": "write",
+        "administrivia_access": "read",
+        "automations_access": "write",
+        "forms_access": "write",
+        "styling_access": "read",
+        "surveys_access": "write"
+      }
+    }
+  ],
+  "InboxItem": [
+    {
+      "description": "Unread conversation",
+      "object": {
+        "id": "13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "legacy_id": "legacy-13121cd6-0dfc-424c-bb12-988b0a32fcb3",
+        "kind": "conversation",
+        "status": "unread",
+        "occurred_at": "2024-01-15T10:00:00Z",
+        "source_id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+        "payload": {},
+        "subscriber": {
+          "id": "6a7b8c9d-0e1f-4a2b-8c3d-4e5f6a7b8c9d",
+          "creation_date": "2024-01-10T08:00:00Z",
+          "email_address": "subscriber@example.com",
+          "referral_code": "",
+          "secondary_id": 1,
+          "source": "organic",
+          "tags": [],
+          "type": "regular",
+          "utm_campaign": "",
+          "utm_medium": "",
+          "utm_source": ""
         }
       }
     }
